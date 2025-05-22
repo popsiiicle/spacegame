@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 
+#game constants
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const THRUSTVEL = 10
@@ -20,7 +21,7 @@ func dashcd_reset() -> void:
 #On game start
 func _ready():
 	
-	#Initialize Dash Cooldown
+	#initialize Dash Cooldown
 	dashcd.wait_time = 1.0 # 1 second
 	dashcd.one_shot = true # don't loop, run once
 	dashcd.timeout.connect(dashcd_reset)
@@ -93,7 +94,6 @@ func _physics_process(delta):
 	
 	#rotation
 	#fix so that angular moment is conserved around body rather than camera
-	
 	var rot_input = 1 * int(Input.is_action_pressed("rotate_l")) + -1 * int(Input.is_action_pressed("rotate_r"))
 	rotv = rotv + rot_input
 	transform.basis = transform.basis.rotated(camera.global_transform.basis.z, ROTATIONSPEED * rotv)
