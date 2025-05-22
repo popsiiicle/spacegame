@@ -16,13 +16,16 @@ func _ready():
 			push_warning("State Machine Contains Incompatible Child Node")
 	current_state.enter()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+# forward process and physics process functions from current state to the character.  
 func _process(delta):
 	current_state.update(delta)
 
 func _physics_process(delta):
 	current_state.physics_update(delta)
 
+
+# When states transition between each other
 func on_child_transition(new_state_name: StringName) -> void:
 	var new_state = states.get(new_state_name)
 	if new_state != null:
