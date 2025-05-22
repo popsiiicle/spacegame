@@ -20,4 +20,5 @@ Melee is another arm?
 - Enormous anti-material rifle, shoulder mounted
 - long scope in time
 - one shot to eye
-- laser sight visible to enemies, turns from red to green.  
+- laser sight visible to enemies.  During scope in, turns from red to green when the gun is ready to fire, as a warning shot.
+- Very long bolt draw time, small mag size.  Fast reload, as it doesn't matter for actual gameplay, mostly cosmetic.  
