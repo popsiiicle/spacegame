@@ -16,4 +16,8 @@ Vent on top is smallest, biggest DMG multiplier.
 Melee is another arm?
 
 ### Weapons
-
+#### Heavy Caliber Sniper Rifle
+- Enormous anti-material rifle, shoulder mounted
+- long scope in time
+- one shot to eye
+- laser sight visible to enemies, turns from red to green.  
