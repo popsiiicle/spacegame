@@ -16,8 +16,11 @@ Vent on top is smallest, biggest DMG multiplier.
 Melee is another arm?
 
 ### Weapons
-#### Heavy Caliber Sniper Rifle
-- Enormous anti-material rifle, shoulder mounted
+(will have creation dates for all of these weapons, some in the past
+and some in the future)
+
+#### Anti-material Sniper Rifle 
+- Enormous large caliber sniper rifle, shoulder mounted
 - long scope in time
 - one shot to eye
 - laser sight visible to enemies.  During scope in, turns from red to green when the gun is ready to fire, as a warning shot.
@@ -28,3 +31,5 @@ Melee is another arm?
 - 1 shot to vent
 - pretty similar to ssg/sr-84/marshal
 - no one knows how it works in space
+
+#### Arm cannon
