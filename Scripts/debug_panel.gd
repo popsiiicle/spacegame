@@ -18,4 +18,4 @@ func add_debug_property(title : String,value):
 	property = Label.new() #create new label node
 	property_container.add_child(property) #adds label as a child node to vbox
 	property.name = title #sets a title to the node
-	property.text = property.name + value
+	property.text = property.name + value #display property text
