@@ -1,8 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=7 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7vn4t"]
-[ext_resource type="Script" path="res://Scripts/statemachine.gd" id="2_lnc8h"]
-[ext_resource type="Script" path="res://Scripts/SpaceState.gd" id="3_gsgmx"]
 [ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://resource/debug_ui.tres" id="4_d2p3h"]
 [ext_resource type="Script" path="res://Scripts/debug_panel.gd" id="5_e877l"]
 
@@ -38,10 +36,8 @@ visible = false
 mesh = SubResource("TextMesh_k87y8")
 
 [node name="PlayerStateMachine" type="Node" parent="."]
-script = ExtResource("2_lnc8h")
 
 [node name="SpaceState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("3_gsgmx")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -70,4 +66,5 @@ script = ExtResource("5_e877l")
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/DebugContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2

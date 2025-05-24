@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 #game constants
+const SENS = 0.00375
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const THRUSTVEL = 10
@@ -62,9 +63,9 @@ func _unhandled_input(event):
 			var msign = sign(-event.relative.x)
 			if msign != 0:
 				if msign * neckroty < deg_to_rad(60):
-					neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*0.002)
+					neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*SENS)
 				else:
-					cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*0.002)
+					cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*SENS)
 			
 			
 			#controls up and down movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
