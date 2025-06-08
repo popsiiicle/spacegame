@@ -2,14 +2,14 @@ extends CharacterBody3D
 
 
 #game constants
-const SENS = 0.00375
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-const THRUSTVEL = 10
-const TOPAIRSPEED = 30
-const DASHSTRENGTH = 10
-const ROTATIONSPEED = .0005
-var ingrav = true #true if the user is in a gravitational field.  Used for normal controls
+const SENS = 0.00375 ## Mouse Sensitivity
+const SPEED = 5.0 ## Player speed
+const JUMP_VELOCITY = 4.5 ## Player jump velocity
+const THRUSTVEL = 10 ## Constant thrust velocity using WSAD keys
+const TOPAIRSPEED = 30 ## At this speed, the thrusters shut off
+const DASHSTRENGTH = 10 ## How strong the dash ability is
+const ROTATIONSPEED = .0005 ## How fast the character rotates
+var ingrav = true ##true if the user is in a gravitational field.  Used for normal controls
 
 
 var dash_rdy := true ## if the dash ability is off cooldown
