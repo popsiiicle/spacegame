@@ -33,3 +33,8 @@ and some in the future)
 - no one knows how it works in space
 
 #### Arm cannon
+
+#random ideas
+
+- skill could be varied, but not hard.  eg movement + aim, but both arent that hard to learn.
+- game needs to make you feel something.  multiplayer shooter is no excuse
