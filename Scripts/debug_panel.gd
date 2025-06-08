@@ -1,14 +1,22 @@
 extends PanelContainer
 
 var property
+var fps : String
 @onready var property_container = %VBoxContainer
 
 #set debug panel to not loaded on start
 func _ready():
 	visible=false
-	add_debug_property("test","test")
+	add_debug_property("FPS","fps")
 
 #toggle debug panel
+
+func _process(delta):
+	if visible:
+		
+		fps = "%.2f" % (1.0/delta)
+		property.text = property.name + ": " + fps
+
 func _input(event):
 	if event.is_action_pressed("debug"):
 		visible = !visible
