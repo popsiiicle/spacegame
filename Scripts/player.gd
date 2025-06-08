@@ -73,9 +73,9 @@ func _unhandled_input(event):
 			msign = sign(-event.relative.y)
 			if msign != 0:
 				if msign * camrotx < deg_to_rad(60):
-					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*0.002)
+					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 				else:
-					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*0.002)
+					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 			
 var rotv = 0
 func _physics_process(delta):
