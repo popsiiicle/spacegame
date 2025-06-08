@@ -3,7 +3,6 @@ extends PanelContainer
 var fps : String
 @onready var property_container = %VBoxContainer
 
-#set debug panel to not loaded on start
 func _ready():
 	visible=false
 	
