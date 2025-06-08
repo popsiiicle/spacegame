@@ -80,6 +80,9 @@ func _unhandled_input(event):
 var rotv = 0
 func _physics_process(delta):
 	
+	#debug properties
+	gvars.debug.add_property("Dash Cooldown",dashcd.time_left,1)
+	
 	#gets input direction in 3d and constrained to 2d
 	var input_dir = get_vector3("left", "right", "crouch", "jump","forward","back")
 	#var direction_2d = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
