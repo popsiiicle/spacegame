@@ -33,8 +33,12 @@ and some in the future)
 - no one knows how it works in space
 
 #### Arm cannon
+- gauntlet with a gurved blade and 2 sided cannon over your arm
+- left click fires front cannon.  Large hitbox, one shot kill but low range and active for 1 frame.  mb a delay if its too strong?
+- right click launches you forward by firing back cannon.  Hitbox on blade.
+- hitting both at the same time does a special animation similar to loose cannon double doink.  possibly additional buff, like invisibility, or launching the body of the blade boosts the character.  
 
-#random ideas
+# random ideas
 
 - skill could be varied, but not hard.  eg movement + aim, but both arent that hard to learn.
 - game needs to make you feel something.  multiplayer shooter is no excuse
