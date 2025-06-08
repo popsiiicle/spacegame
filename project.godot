@@ -15,6 +15,14 @@ run/main_scene="res://Scenes/3dlevel.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+gvars="*res://Scripts/globalvars.gd"
+
+[display]
+
+window/vsync/vsync_mode=0
+
 [input]
 
 forward={
