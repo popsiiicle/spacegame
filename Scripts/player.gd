@@ -92,8 +92,7 @@ func _physics_process(delta):
 	var dashcdstr = "%.1f" % dashcd.time_left
 	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
 	
-	## Detects if the character is touching an object.  Exported to state machine
-	var touching_surface = is_on_ceiling() or is_on_floor() or is_on_wall()
+	gvars.debug.add_property("Touching Wall",is_on_wall(),5)
 	
 	#gets input direction in 3d and constrained to 2d
 	var input_dir = get_vector3("left", "right", "crouch", "jump","forward","back")
