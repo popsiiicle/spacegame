@@ -11,9 +11,13 @@ const DASHSTRENGTH = 10
 const ROTATIONSPEED = .0005
 var ingrav = true #true if the user is in a gravitational field.  Used for normal controls
 
-var dash_rdy := true
-var dashcd := Timer.new()
+
+var dash_rdy := true ## if the dash ability is off cooldown
+
+var dashcd := Timer.new() ## cooldown for the dash ability
 #timer for dash cooldown
+
+var touching_surface: bool = false ## if the character is touching any surface.  Used for state machine
 
 #What happens when dash goes off cooldown
 func dashcd_reset() -> void:
@@ -27,6 +31,9 @@ func _ready():
 	dashcd.one_shot = true # don't loop, run once
 	dashcd.timeout.connect(dashcd_reset)
 	add_child(dashcd)
+	
+	#initialize global variable
+	gvars.player = self
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -77,13 +84,16 @@ func _unhandled_input(event):
 				else:
 					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 			
-var rotv = 0
+var rotv = 0 ##????
+
 func _physics_process(delta):
 	
 	#debug properties
-	
 	var dashcdstr = "%.1f" % dashcd.time_left
 	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
+	
+	## Detects if the character is touching an object.  Exported to state machine
+	var touching_surface = is_on_ceiling() or is_on_floor() or is_on_wall()
 	
 	#gets input direction in 3d and constrained to 2d
 	var input_dir = get_vector3("left", "right", "crouch", "jump","forward","back")

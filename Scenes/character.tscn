@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=10 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7vn4t"]
+[ext_resource type="Script" path="res://Scripts/statemachine.gd" id="2_o1hri"]
+[ext_resource type="Script" path="res://Scripts/SpaceState.gd" id="3_c31uv"]
+[ext_resource type="Script" path="res://Scenes/SlidingPlayerState.gd" id="4_26ynk"]
 [ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://resource/debug_ui.tres" id="4_d2p3h"]
 [ext_resource type="Script" path="res://Scripts/debug_panel.gd" id="5_e877l"]
 
@@ -35,9 +38,15 @@ transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 
 visible = false
 mesh = SubResource("TextMesh_k87y8")
 
-[node name="PlayerStateMachine" type="Node" parent="."]
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("2_o1hri")
+current_state = NodePath("SpaceState")
 
 [node name="SpaceState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("3_c31uv")
+
+[node name="State" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_26ynk")
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

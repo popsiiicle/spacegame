@@ -1,3 +1,4 @@
 extends Node
 
-var debug
+var debug ## for debug window stuff
+var player ## for state machine stuff
