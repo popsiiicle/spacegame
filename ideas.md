@@ -42,3 +42,5 @@ and some in the future)
 
 - skill could be varied, but not hard.  eg movement + aim, but both arent that hard to learn.
 - game needs to make you feel something.  multiplayer shooter is no excuse
+- zero g doesn't matter if the game doesn't reward you for doing crazy shit
+- 
