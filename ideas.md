@@ -24,12 +24,14 @@ and some in the future)
 - long scope in time
 - one shot to eye
 - laser sight visible to enemies.  During scope in, turns from red to green when the gun is ready to fire, as a warning shot.
+- wide beam unscoped with shotgun-like damage, laser shows cone when unscoped (could just be green all the time)
 - Very long bolt draw time, small mag size.  Fast reload, as it doesn't matter for actual gameplay, mostly cosmetic.
 
 #### Marksman Rifle
 - Also scoped
 - 1 shot to vent
 - pretty similar to ssg/sr-84/marshal
+- hitscan,super fast projectile animation (no one will know)
 - no one knows how it works in space
 
 #### Arm cannon
@@ -43,4 +45,5 @@ and some in the future)
 - skill could be varied, but not hard.  eg movement + aim, but both arent that hard to learn.
 - game needs to make you feel something.  multiplayer shooter is no excuse
 - zero g doesn't matter if the game doesn't reward you for doing crazy shit
-- 
+- heavy class that's fast but strong (funny rock guy esque)
+- Prioritize individualism, 1v1 fights
