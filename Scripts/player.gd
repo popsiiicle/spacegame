@@ -115,7 +115,7 @@ func _physics_process(delta):
 	
 	
 	#floaty code
-	if is_on_floor:
+	if true: #replace later with space state stuff
 		if direction_3d:
 			velocity += direction_3d*THRUSTVEL*delta
 			if velocity.length() >= TOPAIRSPEED:
