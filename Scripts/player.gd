@@ -120,5 +120,10 @@ func _physics_process(delta):
 			velocity += direction_3d*THRUSTVEL*delta
 			if velocity.length() >= TOPAIRSPEED:
 				velocity = velocity*(TOPAIRSPEED/velocity.length())
-
+	
+	#slides across walls (temporary)
+	if is_on_wall():
+		var wallnorm = get_wall_normal()
+		if velocity.dot(wallnorm) < 0:
+			velocity = velocity.slide(get_wall_normal())
 	move_and_slide()
