@@ -35,7 +35,6 @@ shape = SubResource("ConvexPolygonShape3D_gwqq1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Camera_Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
-visible = false
 mesh = SubResource("TextMesh_k87y8")
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]

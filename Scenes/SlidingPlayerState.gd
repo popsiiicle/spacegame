@@ -1,6 +1,7 @@
 class_name SlidingPlayerState
 
-extends State
+extends PlayerMovementState
+
 
 func update(delta):
 	if gvars.player.is_on_wall() == false:

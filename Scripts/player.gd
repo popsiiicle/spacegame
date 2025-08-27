@@ -1,3 +1,4 @@
+class_name player
 extends CharacterBody3D
 
 
@@ -13,11 +14,9 @@ var ingrav = true ##true if the user is in a gravitational field.  Used for norm
 
 
 var dash_rdy := true ## if the dash ability is off cooldown
-
 var dashcd := Timer.new() ## cooldown for the dash ability
 #timer for dash cooldown
 
-var touching_surface: bool = false ## if the character is touching any surface.  Used for state machine
 
 #What happens when dash goes off cooldown
 func dashcd_reset() -> void:
@@ -113,17 +112,14 @@ func _physics_process(delta):
 	rotv = rotv + rot_input
 	transform.basis = transform.basis.rotated(camera.global_transform.basis.z, ROTATIONSPEED * rotv)
 	
-	
-	#floaty code
-	if true: #replace later with space state stuff
-		if direction_3d:
-			velocity += direction_3d*THRUSTVEL*delta
-			if velocity.length() >= TOPAIRSPEED:
-				velocity = velocity*(TOPAIRSPEED/velocity.length())
+	#update from spacestate
+	# DO LATER
+	#
+	#
 	
 	#slides across walls (temporary)
 	if is_on_wall():
 		var wallnorm = get_wall_normal()
 		if velocity.dot(wallnorm) < 0:
-			velocity = velocity.slide(get_wall_normal())
+			velocity = velocity.slide(wallnorm)
 	move_and_slide()

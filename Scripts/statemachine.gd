@@ -18,6 +18,7 @@ func _ready():
 			child.transition.connect(on_child_transition)
 		else:
 			push_warning("State Machine Contains Incompatible Child Node")
+	await owner.ready
 	current_state.enter()
 
 
