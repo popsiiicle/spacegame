@@ -47,3 +47,4 @@ and some in the future)
 - zero g doesn't matter if the game doesn't reward you for doing crazy shit
 - heavy class that's fast but strong (funny rock guy esque)
 - Prioritize individualism, 1v1 fights
+- negative team balance of FFAs like Root?  Maybe???
