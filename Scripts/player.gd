@@ -6,8 +6,7 @@ extends CharacterBody3D
 const SENS = 0.00375 ## Mouse Sensitivity
 const SPEED = 5.0 ## Player speed
 const JUMP_VELOCITY = 4.5 ## Player jump velocity
-const THRUSTVEL = 10 ## Constant thrust velocity using WSAD keys
-const TOPAIRSPEED = 30 ## At this speed, the thrusters shut off
+
 const DASHSTRENGTH = 10 ## How strong the dash ability is
 const ROTATIONSPEED = .0005 ## How fast the character rotates
 var ingrav = true ##true if the user is in a gravitational field.  Used for normal controls
@@ -17,6 +16,7 @@ var dash_rdy := true ## if the dash ability is off cooldown
 var dashcd := Timer.new() ## cooldown for the dash ability
 #timer for dash cooldown
 
+var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of the camera
 
 #What happens when dash goes off cooldown
 func dashcd_reset() -> void:
@@ -96,7 +96,7 @@ func _physics_process(delta):
 	#gets input direction in 3d and constrained to 2d
 	var input_dir = get_vector3("left", "right", "crouch", "jump","forward","back")
 	#var direction_2d = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
-	var direction_3d = camera.global_transform.basis * input_dir
+	direction_3d = camera.global_transform.basis * input_dir
 
 	
 	
