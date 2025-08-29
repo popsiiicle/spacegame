@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=10 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7vn4t"]
-[ext_resource type="Script" path="res://Scripts/PlayerMovementState.gd" id="2_agqrw"]
 [ext_resource type="Script" path="res://Scripts/statemachine.gd" id="2_o1hri"]
 [ext_resource type="Script" path="res://Scripts/SpaceState.gd" id="3_c31uv"]
 [ext_resource type="Script" path="res://Scenes/SlidingPlayerState.gd" id="4_26ynk"]
@@ -37,9 +36,6 @@ shape = SubResource("ConvexPolygonShape3D_gwqq1")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Camera_Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
 mesh = SubResource("TextMesh_k87y8")
-
-[node name="PlayerMovementState" type="Node" parent="CharacterBody3D"]
-script = ExtResource("2_agqrw")
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("2_o1hri")

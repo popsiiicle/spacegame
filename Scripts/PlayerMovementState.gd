@@ -3,9 +3,10 @@ extends State
 
 var PLAYER: player
 
+
 func _ready() -> void:
 	await owner.ready
-	PLAYER = owner as player
+	PLAYER = gvars.player as player
 
 func _process(delta: float) -> void:
 	pass
