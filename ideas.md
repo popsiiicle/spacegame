@@ -1,6 +1,6 @@
 # spacegame
 
-##Name ideas
+## Name ideas
 something dust.  spacedust?  stardust?  stellar dust?
 
 ### Lore
