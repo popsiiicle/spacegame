@@ -118,8 +118,4 @@ func _physics_process(delta):
 	#
 	
 	#slides across walls (temporary)
-	if is_on_wall():
-		var wallnorm = get_wall_normal()
-		if velocity.dot(wallnorm) < 0:
-			velocity = velocity.slide(wallnorm)
 	move_and_slide()
