@@ -1,6 +1,6 @@
 # spacegame
 
-## Name ideas
+### Name ideas
 something dust.  spacedust?  stardust?  stellar dust?
 
 ### Lore
@@ -18,7 +18,7 @@ Skates/wheels to wallslide, spike to grind on walls.
 Vent on top is smallest, biggest DMG multiplier.
 Melee is another arm?
 
-### Weapons
+## Weapons
 (will have creation dates for all of these weapons, some in the past
 and some in the future)
 
