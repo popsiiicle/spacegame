@@ -1,5 +1,8 @@
 # spacegame
 
+##Name ideas
+something dust.  spacedust?  stardust?  stellar dust?
+
 ### Lore
 Humans came, colonized space, took over everything, and disappeared.  
 Robots called scavengers take their equipment
