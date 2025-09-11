@@ -1,7 +1,7 @@
 # Roadmap
 
 - Clean up and comment code
-## The shooting part
+### The Shooting Part
 - add basic weapon model
 - weapon class
 - add shooting, hit registration, health, dummies
@@ -9,27 +9,28 @@
 - sniper scope so i can go crazy
 - maybe 2 more basic weapons
 
-## peer-to-peer Multiplayer
+### Peer-To-Peer Multiplayer
 - should be very easy and totally painless
 - add basic gamemode (1v1 first to 5)
 - actual map
 
-## physics cleanup
+### physics cleanup
 - round player model
 - mouse rotation
 - add camera snap
 - balance movement stats
 
 
-# **FIRST PLAYTEST**
+## **FIRST PLAYTEST**
 - test feel of movement and camera
 - make sure nothing explodes
 - see how bad my netcode is
 
-## After Playtest
+### After Playtest
 - artifact and ability classes
 - get some abilities down before the second playtest
 - Better animations for sliding
-- grinding, wall hug, and other movement options
+- wall grinding, corner hug, and other movement options
 
 - Gravity physics in the far far future
+- dedicated server (thank you for volunteering your laptop ozan)
