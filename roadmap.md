@@ -5,9 +5,10 @@
 - add basic weapon model
 - weapon class
 - add shooting, hit registration, health, dummies
-basic ui
+- basic ui
 - sniper scope so i can go crazy
 - maybe 2 more basic weapons
+
 ## peer-to-peer Multiplayer
 - should be very easy and totally painless
 - add basic gamemode (1v1 first to 5)
@@ -28,3 +29,7 @@ basic ui
 ## After Playtest
 - artifact and ability classes
 - get some abilities down before the second playtest
+- Better animations for sliding
+- grinding, wall hug, and other movement options
+
+- Gravity physics in the far far future
