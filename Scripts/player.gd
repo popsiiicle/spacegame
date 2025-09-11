@@ -10,7 +10,7 @@ const JUMP_VELOCITY = 4.5 ## Player jump velocity
 const DASHSTRENGTH = 10 ## How strong the dash ability is
 const ROTATIONSPEED = .0005 ## How fast the character rotates
 var ingrav = true ##true if the user is in a gravitational field.  Used for normal controls
-
+var rotv: float
 
 var dash_rdy := true ## if the dash ability is off cooldown
 var dashcd := Timer.new() ## cooldown for the dash ability
@@ -83,7 +83,6 @@ func _unhandled_input(event):
 				else:
 					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 			
-var rotv = 0 ##????
 
 func _physics_process(delta):
 	

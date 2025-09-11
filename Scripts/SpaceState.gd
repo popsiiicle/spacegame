@@ -1,7 +1,7 @@
 class_name SpaceState
 extends PlayerMovementState
 
-const THRUSTVEL = 10 ## Constant thrust velocity using WSAD keys
+const THRUSTVEL = 30 ## Constant thrust velocity using WSAD keys
 const TOPAIRSPEED = 30 ## At this speed, the thrusters shut off
 var velocity = Vector3.ZERO ## Shortcut for the player's velocity
 var direction_3d = Vector3.ZERO ## Shortcut for the player's input in player.gd
