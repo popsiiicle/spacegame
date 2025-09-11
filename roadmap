@@ -1,0 +1,7 @@
+# Roadmap
+
+- Clean up and comment code
+## The shooting part
+- add basic weapon model
+- add shooting, hit registration, health, alternate characters
+## peer-to-peer Multiplayer
