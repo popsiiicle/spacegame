@@ -1,19 +1,22 @@
+class_name player
 extends CharacterBody3D
 
 
 #game constants
-const SENS = 0.00375
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-const THRUSTVEL = 10
-const TOPAIRSPEED = 30
-const DASHSTRENGTH = 10
-const ROTATIONSPEED = .0005
-var ingrav = true #true if the user is in a gravitational field.  Used for normal controls
+const SENS = 0.00375 ## Mouse Sensitivity
+const SPEED = 5.0 ## Player speed
+const JUMP_VELOCITY = 4.5 ## Player jump velocity
 
-var dash_rdy := true
-var dashcd := Timer.new()
+const DASHSTRENGTH = 10 ## How strong the dash ability is
+const ROTATIONSPEED = .0005 ## How fast the character rotates
+var ingrav = true ##true if the user is in a gravitational field.  Used for normal controls
+var rotv: float
+
+var dash_rdy := true ## if the dash ability is off cooldown
+var dashcd := Timer.new() ## cooldown for the dash ability
 #timer for dash cooldown
+
+var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of the camera
 
 #What happens when dash goes off cooldown
 func dashcd_reset() -> void:
@@ -27,6 +30,9 @@ func _ready():
 	dashcd.one_shot = true # don't loop, run once
 	dashcd.timeout.connect(dashcd_reset)
 	add_child(dashcd)
+	
+	#initialize global variable
+	gvars.player = self
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -77,18 +83,19 @@ func _unhandled_input(event):
 				else:
 					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 			
-var rotv = 0
+
 func _physics_process(delta):
 	
 	#debug properties
-	
 	var dashcdstr = "%.1f" % dashcd.time_left
 	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
+	
+	gvars.debug.add_property("Touching Wall",is_on_wall(),5)
 	
 	#gets input direction in 3d and constrained to 2d
 	var input_dir = get_vector3("left", "right", "crouch", "jump","forward","back")
 	#var direction_2d = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
-	var direction_3d = camera.global_transform.basis * input_dir
+	direction_3d = camera.global_transform.basis * input_dir
 
 	
 	
@@ -104,12 +111,10 @@ func _physics_process(delta):
 	rotv = rotv + rot_input
 	transform.basis = transform.basis.rotated(camera.global_transform.basis.z, ROTATIONSPEED * rotv)
 	
+	#update from spacestate
+	# DO LATER
+	#
+	#
 	
-	#floaty code
-	if is_on_floor:
-		if direction_3d:
-			velocity += direction_3d*THRUSTVEL*delta
-			if velocity.length() >= TOPAIRSPEED:
-				velocity = velocity*(TOPAIRSPEED/velocity.length())
-
+	#slides across walls (temporary)
 	move_and_slide()

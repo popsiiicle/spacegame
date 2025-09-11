@@ -1,6 +1,7 @@
 extends PanelContainer
 
-var fps : String
+var fps : String ## Frames per second the game is displaying
+var tps : String ## Tick rate of the physics engine
 @onready var property_container = %VBoxContainer
 
 func _ready():
@@ -11,12 +12,16 @@ func _ready():
 	
 #toggle debug panel
 
+#FPS
 func _process(delta):
 	if visible:
-		
 		fps = "%.2f" % (1.0/delta)
 		add_property("FPS",fps,0)
 
+func _physics_process(delta):
+	if visible:
+		tps = "%.2f" % (1.0/delta)
+		add_property("TPS",tps,0.5)
 func _input(event):
 	if event.is_action_pressed("debug"):
 		visible = !visible
