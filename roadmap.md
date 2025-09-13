@@ -1,6 +1,6 @@
 # Roadmap
 
-- Clean up and comment code
+- ~Clean up and comment code~
 ### The Shooting Part
 - add basic weapon model
 - weapon class
@@ -21,7 +21,7 @@
 - balance movement stats
 
 
-## **FIRST PLAYTEST**
+## ***FIRST PLAYTEST***
 - test feel of movement and camera
 - make sure nothing explodes
 - see how bad my netcode is
