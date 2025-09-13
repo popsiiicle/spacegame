@@ -14,34 +14,47 @@ const JUMPBOOST = 3
 var jumpangle: float ##The angle between camera direction and wall normal vectors
 var rotaxis: Vector3 ##cross of jumpangle and wallnorm
 var rotangle: float ##angle the jumpangle is rotated so that it faces away from the while, while is still influenced by direction.
+
+
+
 func enter():
+
+	#cancels out velocity moving towards the wall
 	wallnorm = PLAYER.get_wall_normal()
-	gvars.debug.add_property("wallnorm",wallnorm,13)
 	if PLAYER.velocity.dot(wallnorm) < 0:
 		PLAYER.velocity = PLAYER.velocity.slide(wallnorm)
+		
+	#give player boost upon touching the wall
 	PLAYER.velocity = PLAYER.velocity.normalized()*(PLAYER.velocity.length() + SLIDEBOOST) #Add more later
 	
 	
 func physics_update(delta):
+	
+	#DI while sliding code (might add later, probably all wrong)
+	
 	#cameradirection = 
-	
 	#camera direction cross wallnorm
-	
 	#basis -cross, wallnorm, camera slide
 	#vector3transform = vector2d yada yada
 	#basis.xform
 	
+	
+	#Jump away from wall
 	if Input.is_action_pressed("jump"):
 		camvector = -gvars.pcamera.global_transform.basis.z.normalized()
 		jumpboost = camvector*JUMPBOOST
 		jumpangle = jumpboost.angle_to(wallnorm)
-		# Find axis of rotation
+		#jumpboost is a vector that has the magnitude JUMPBOOST and points to where you are looking
+		
+		#clamps jumpboost so that it is at least 25 degrees away from the wall (remove the other part later)
 		rotaxis = jumpboost.cross(wallnorm).normalized()
 		rotangle = -clamp(0,0.349066-jumpangle,1.13446-jumpangle)
-		gvars.debug.add_property("jumpangle",jumpangle,13)
-		gvars.debug.add_property("clamped jump angle",rotangle,14)
 		jumpboost = jumpboost.rotated(rotaxis,rotangle)
+		
+		#adds the jumpboost
 		PLAYER.velocity = PLAYER.velocity + jumpboost
+		
+	#go to spacestate if the player isn't on the wall.  
 	if gvars.player.is_on_wall() == false:
 		transition.emit("SpaceState")
 
