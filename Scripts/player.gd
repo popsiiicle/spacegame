@@ -7,10 +7,13 @@ const SPEED = 5.0 ## Player speed
 const JUMP_VELOCITY = 4.5 ## Player jump velocity
 const DASHSTRENGTH = 10 ## How strong the dash ability is
 
-#camera constants
+#camera variables
 const SENS = 0.00375 ## Mouse Sensitivity
-const ROTATIONSPEED = .0005 ## How fast the character rotates
-var rotv: float
+const ROTATIONSPEED = 0.01 ## How fast the character rotates
+var rotcameramod: bool ##Whether the rotation modifier for the camera is currently being held down
+var neckroty: float ##The current y rotation of the neck node
+var camrotx: float ##The current x rotation of the camera node
+var msign: int ##The sign of left right or up down mouse movement
 
 #dash ability constants
 var dash_rdy := true ## if the dash ability is off cooldown
@@ -67,19 +70,24 @@ func _unhandled_input(event):
 			
 			
 			#controls up and down movements of the mouse, moves neck if neck is not moved to the max, rotates body if it isn't
-			var neckroty = neck.rotation.y
-			var msign = sign(-event.relative.x)
-			if msign != 0:
+			rotcameramod = Input.is_action_pressed("rotate")
+			neckroty = neck.rotation.y
+			msign = sign(-event.relative.x)
+			if msign != 0 and !rotcameramod:
 				if msign * neckroty < deg_to_rad(60):
 					neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*SENS)
 				else:
 					cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*SENS)
 			
 			
-			#controls up and down movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
-			var camrotx = camera.rotation.x
+			#controls left and right movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
+			camrotx = camera.rotation.x
 			msign = sign(-event.relative.y)
-			if msign != 0:
+			
+			#Rotate camera instead of yaw when the rotate button is held down
+			if rotcameramod:
+				transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATIONSPEED)
+			elif msign != 0:
 				if msign * camrotx < deg_to_rad(60):
 					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 				else:
@@ -108,9 +116,9 @@ func _physics_process(delta):
 	
 	#rotation
 	#fix so that angular moment is conserved around body rather than camera
-	var rot_input = 1 * int(Input.is_action_pressed("rotate_l")) + -1 * int(Input.is_action_pressed("rotate_r"))
-	rotv = rotv + rot_input
-	transform.basis = transform.basis.rotated(camera.global_transform.basis.z, ROTATIONSPEED * rotv)
+	#var rot_input = 1 * int(Input.is_action_pressed("rotate_l")) + -1 * int(Input.is_action_pressed("rotate_r"))
+	#rotv = rotv + rot_input
+	#transform.basis = transform.basis.rotated(camera.global_transform.basis.z, ROTATIONSPEED * rotv)
 	
 	#update from spacestate
 	# DO LATER
