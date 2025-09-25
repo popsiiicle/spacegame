@@ -2,7 +2,7 @@
 
 - ~Clean up and comment code~
 ### The Shooting Part
-- add basic weapon model
+- ~add basic weapon model~
 - weapon class
 - add shooting, hit registration, health, dummies
 - basic ui
@@ -34,3 +34,4 @@
 
 - Gravity physics in the far far future
 - dedicated server (thank you for volunteering your laptop ozan)
+- seperate rendering viewport for the gun
