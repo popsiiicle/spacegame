@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=13 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7vn4t"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovementState.gd" id="2_agqrw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/SlidingPlayerState.gd" id="4_26ynk"]
 [ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://resource/debug_ui.tres" id="4_d2p3h"]
 [ext_resource type="Script" path="res://Scripts/debug_panel.gd" id="5_e877l"]
+[ext_resource type="PackedScene" uid="uid://bmjghtx05npec" path="res://models/model.gltf" id="9_l1uim"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8obhc"]
 
@@ -35,6 +36,9 @@ shape = SubResource("ConvexPolygonShape3D_gwqq1")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Camera_Pivot/Neck"]
 script = ExtResource("2_nnuju")
+
+[node name="gun" parent="CharacterBody3D/Camera_Pivot/Neck/Camera3D" instance=ExtResource("9_l1uim")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.434995, -0.413552, -0.463619)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Camera_Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
