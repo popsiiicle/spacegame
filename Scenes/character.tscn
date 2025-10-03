@@ -37,8 +37,10 @@ shape = SubResource("ConvexPolygonShape3D_gwqq1")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Camera_Pivot/Neck"]
 script = ExtResource("2_nnuju")
 
-[node name="pweapon" parent="CharacterBody3D/Camera_Pivot/Neck/Camera3D" instance=ExtResource("3_6uhuw")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.463064, -0.164107, -0.406056)
+[node name="weapon_rig" type="Node3D" parent="CharacterBody3D/Camera_Pivot/Neck/Camera3D"]
+
+[node name="pweapon" parent="CharacterBody3D/Camera_Pivot/Neck/Camera3D/weapon_rig" instance=ExtResource("3_6uhuw")]
+transform = Transform3D(0.229813, 0, 0.192836, 0, 0.3, 0, -0.192836, 0, 0.229813, 0.375, -0.275, -0.3)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Camera_Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
