@@ -5,12 +5,12 @@ extends PlayerMovementState
 
 
 var camvector: Vector3 ##The direction the player's camera is facing
-const SLIDEBOOST = 9 ## The intitial boost you get while initially sliding on a wall
+const SLIDEBOOST = 6 ## The intitial boost you get while initially sliding on a wall
 
 #jumping off wall vectors
 var jumpboost: Vector3 ##The velocity increase you get after jumping on a wall
 var wallnorm: Vector3 ##The wall normal you are jumping off of
-const JUMPBOOST = 3
+const JUMPBOOST = 12
 var jumpangle: float ##The angle between camera direction and wall normal vectors
 var rotaxis: Vector3 ##cross of jumpangle and wallnorm
 var rotangle: float ##angle the jumpangle is rotated so that it faces away from the while, while is still influenced by direction.
