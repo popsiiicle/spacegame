@@ -23,6 +23,7 @@
 * ~mouse rotation~
 * add camera snap
 * balance movement stats
+* make backwards drift go slower
 
 
 
