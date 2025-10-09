@@ -85,9 +85,9 @@ func _unhandled_input(event):
 			msign = sign(-event.relative.y)
 			
 			#Rotate camera instead of yaw when the rotate button is held down
-			if rotcameramod:
+			if msign != 0 and rotcameramod:
 				transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATIONSPEED)
-			elif msign != 0:
+			else:
 				if msign * camrotx < deg_to_rad(60):
 					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 				else:
