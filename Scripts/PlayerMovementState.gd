@@ -10,6 +10,6 @@ func _ready() -> void:
 	await owner.ready
 	PLAYER = gvars.player as player
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 

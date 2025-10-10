@@ -28,7 +28,7 @@ func enter():
 	PLAYER.velocity = PLAYER.velocity.normalized()*(PLAYER.velocity.length() + SLIDEBOOST) #Add more later
 	
 	
-func physics_update(delta):
+func physics_update(_delta):
 	
 	#DI while sliding code (might add later, probably all wrong)
 	
