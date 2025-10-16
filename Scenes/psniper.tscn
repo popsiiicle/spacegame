@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bedn2qlejkf5c"]
+
+[ext_resource type="PackedScene" uid="uid://bmjghtx05npec" path="res://models/model.gltf" id="1_imbfx"]
+
+[node name="psniper" type="Node3D"]
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_imbfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0233482, -0.763237, 0.801891)
