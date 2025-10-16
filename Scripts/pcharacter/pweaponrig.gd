@@ -5,8 +5,8 @@ class_name pweapon extends Node3D
 var _model_instance: Node3D = null
 
 func _ready():
-	loadweapon()
-	
+	#loadweapon()
+	pass
 
 func loadweapon():
 	
