@@ -5,13 +5,14 @@ class_name pweapon extends Node3D
 var _model_instance: Node3D = null
 
 func _ready():
-	#loadweapon()
+	weaponres = preload("res://scenes/pweapons/psniper/psniper.tres")
+	loadweapon(weaponres)
 	pass
 
-func loadweapon():
+func loadweapon(weapon):
 	
-	if weaponres:
-		_model_instance = weaponres.SCENE.instantiate()
+	if weapon:
+		_model_instance = weapon.SCENE.instantiate()
 		add_child(_model_instance)
 		#_model_instance.transform.position = weaponres.POSITION
 	else:
