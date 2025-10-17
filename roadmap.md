@@ -5,7 +5,8 @@
 ### The Shooting Part
 
 * ~add basic weapon model~
-* weapon class
+* ~weapon resource and initialization~
+* weapon class script
 * add shooting, hit registration, health, dummies
 * basic ui
 * sniper scope so i can go crazy
