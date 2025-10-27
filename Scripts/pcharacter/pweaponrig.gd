@@ -1,10 +1,10 @@
 @tool
 
-class_name pweapon extends Node3D
+class_name pweaponrig extends Node3D
 
-@export var weaponres: pweaponres
+var weaponres: pweaponres
 
-var _model_instance: Node3D = null
+@export var _model_instance: Node3D = null
 
 func _ready():
 	weaponres = preload("res://scenes/pweapons/psniper/psniper.tres")
@@ -13,9 +13,9 @@ func _ready():
 
 func loadweapon(weapon):
 	
-	if weapon:
+	if weapon.SCENE:
 		_model_instance = weapon.SCENE.instantiate()
 		add_child(_model_instance)
-		#_model_instance.transform.position = weaponres.POSITION
+		#_model_instance.transform.rotation = weaponres.ROTATION
 	else:
-		push_warning("No model_scene set for %s" % weaponres.NAME)
+		push_warning("No model scene set for %s" % weaponres.NAME)
