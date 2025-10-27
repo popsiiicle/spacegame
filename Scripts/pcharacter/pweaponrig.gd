@@ -1,3 +1,5 @@
+@tool
+
 class_name pweapon extends Node3D
 
 @export var weaponres: pweaponres

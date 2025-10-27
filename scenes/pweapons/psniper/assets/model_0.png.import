@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bml2k0pnjpdq1"
-path.s3tc="res://.godot/imported/model_0.png-726ca1236aad85464ced7a208ad9a817.s3tc.ctex"
+uid="uid://ctltiswe88sv0"
+path.s3tc="res://.godot/imported/model_0.png-1546cef2ef9bac34ca7a2901bd60e435.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://scenes/pweapons/psniper/assets/model_0.png"
-dest_files=["res://.godot/imported/model_0.png-726ca1236aad85464ced7a208ad9a817.s3tc.ctex"]
+source_file="res://Scenes/pweapons/psniper/assets/model_0.png"
+dest_files=["res://.godot/imported/model_0.png-1546cef2ef9bac34ca7a2901bd60e435.s3tc.ctex"]
 
 [params]
 

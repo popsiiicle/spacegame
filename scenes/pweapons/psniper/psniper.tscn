@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bedn2qlejkf5c"]
+[gd_scene load_steps=2 format=3 uid="uid://0q3eneb4nfyj"]
 
-[ext_resource type="PackedScene" uid="uid://bmjghtx05npec" path="res://scenes/pweapons/bigsniper/assets/model.gltf" id="1_fasu8"]
+[ext_resource type="PackedScene" uid="uid://ctcfgict2xgd8" path="res://scenes/model.gltf" id="1_gj4gl"]
 
-[node name="psniper" type="Node3D"]
+[node name="Psniper" type="Node3D"]
 
-[node name="blockbench_export" parent="." instance=ExtResource("1_fasu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0233482, -0.763237, 0.801891)
+[node name="blockbench_export" parent="." instance=ExtResource("1_gj4gl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
