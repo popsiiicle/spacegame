@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ctcfgict2xgd8"
-path="res://.godot/imported/model.gltf-e4691cd01ff375ef68375f02e59d38ff.scn"
+path="res://.godot/imported/model.gltf-c2d79a63a1eb12588c0acd1214609fa7.scn"
 
 [deps]
 
-source_file="res://Scenes/pweapons/psniper/assets/model.gltf"
-dest_files=["res://.godot/imported/model.gltf-e4691cd01ff375ef68375f02e59d38ff.scn"]
+source_file="res://scenes/pweapons/psniper/assets/model.gltf"
+dest_files=["res://.godot/imported/model.gltf-c2d79a63a1eb12588c0acd1214609fa7.scn"]
 
 [params]
 
