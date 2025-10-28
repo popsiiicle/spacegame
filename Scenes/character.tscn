@@ -35,6 +35,7 @@ shape = SubResource("ConvexPolygonShape3D_gwqq1")
 [node name="Neck" type="Node3D" parent="CharacterBody3D/Camera_Pivot"]
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Camera_Pivot/Neck"]
+fov = 90.0
 script = ExtResource("2_j2vfj")
 
 [node name="weapon_rig" type="Node3D" parent="CharacterBody3D/Camera_Pivot/Neck/Camera3D" node_paths=PackedStringArray("_model_instance")]
