@@ -5,4 +5,4 @@
 [node name="Psniper" type="Node3D"]
 
 [node name="blockbench_export" parent="." instance=ExtResource("1_gj4gl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.766864, 2)
