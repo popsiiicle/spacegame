@@ -46,9 +46,9 @@ func set_gravity(new_gravity: Vector3):
 	gravity = new_gravity  # Assuming `gravity` is a variable controlling movement
 
 #Mouse and Neck Variables
-@onready var cpivot := $Camera_Pivot
-@onready var neck := $Camera_Pivot/Neck
-@onready var camera := $Camera_Pivot/Neck/Camera3D
+@onready var cpivot := $CameraPivot
+@onready var neck := $CameraPivot/Neck
+@onready var camera := $CameraPivot/Neck/Camera3D
 
 #Input.get_vector(), but for 3 axis.  Used for RCS movement
 func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg_z: String, pos_z: String) -> Vector3:
