@@ -1,25 +1,23 @@
 class_name pweaponrig extends Node3D
 
-@export var weaponres: pweaponres:
-	set(value):
-		_weaponres = value
-		loadweapon(value)
-var _weaponres: pweaponres
-
-var _model_instance: Node3D = null
+@export var weapon: pweapon
+@export var resource: pweaponres
+var _weapon_instance: Node3D = null
 
 func _ready():
-	weaponres = load("res://scenes/pweapons/psniper/psniper.tres")
-	loadweapon(weaponres)
-	pass
-
-func loadweapon(weapon):
-	if weapon:
-		_model_instance = weapon.SCENE.instantiate()
-		add_child(_model_instance)
-		_model_instance.rotation = weapon.ROTATION
-		_model_instance.position = weapon.POSITION
-		_model_instance.scale = Vector3(weapon.SCALE,weapon.SCALE,weapon.SCALE)
+	loadweapon(resource)
+	
+func loadweapon(resource):
+	if resource:
+		_weapon_instance = resource.SCENE.instantiate()
+		add_child(_weapon_instance)
+		_weapon_instance.rotation = resource.ROTATION
+		_weapon_instance.position = resource.POSITION
+		_weapon_instance.scale = Vector3(resource.SCALE,resource.SCALE,resource.SCALE)
 	else:
 		push_warning("No model scene set for weapon.")
 		
+func _physics_process(delta):
+	if Input.is_action_just_pressed("shoot"):
+		pass
+	pass

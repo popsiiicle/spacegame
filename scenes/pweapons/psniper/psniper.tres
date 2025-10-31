@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_yav6s")
-NAME = "psniper"
+NAME = ""
 SCENE = ExtResource("1_aadau")
 POSITION = Vector3(0.35, -0.35, -0.75)
 ROTATION = Vector3(0, 0, 0)
