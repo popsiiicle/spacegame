@@ -1,5 +1,3 @@
-@tool
-
 class_name pweaponrig extends Node3D
 
 @export var weaponres: pweaponres:
@@ -25,8 +23,3 @@ func loadweapon(weapon):
 	else:
 		push_warning("No model scene set for weapon.")
 		
-#func _process(delta):
-	#if Engine.is_editor_hint():
-		#_model_instance.rotation = weaponres.ROTATION
-		#_model_instance.position = weaponres.POSITION
-		#_model_instance.scale = Vector3(weaponres.SCALE,weaponres.SCALE,weaponres.SCALE) 
