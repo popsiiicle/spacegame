@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="spacegame"
-run/main_scene="res://Scenestmp/level/3dlevel.tscn"
+run/main_scene="res://scenes/level/3dlevel.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-gvars="*res://Scriptstmp/globalvars.gd"
+gvars="*res://scripts/globalvars.gd"
 
 [display]
 
