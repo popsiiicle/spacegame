@@ -30,18 +30,18 @@ mesh = SubResource("CapsuleMesh_8obhc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("ConvexPolygonShape3D_gwqq1")
 
-[node name="Camera_Pivot" type="Node3D" parent="CharacterBody3D"]
+[node name="CameraPivot" type="Node3D" parent="CharacterBody3D"]
 
-[node name="Neck" type="Node3D" parent="CharacterBody3D/Camera_Pivot"]
+[node name="Neck" type="Node3D" parent="CharacterBody3D/CameraPivot"]
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Camera_Pivot/Neck"]
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivot/Neck"]
 fov = 90.0
 script = ExtResource("2_j2vfj")
 
-[node name="weapon_rig" type="Node3D" parent="CharacterBody3D/Camera_Pivot/Neck/Camera3D"]
+[node name="WeaponRig" type="Node3D" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
 script = ExtResource("3_l0gq2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Camera_Pivot"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
 mesh = SubResource("TextMesh_k87y8")
 
