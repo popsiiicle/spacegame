@@ -1,6 +1,5 @@
 class_name pweaponrig extends Node3D
 
-@export var weapon: pweapon  ##remove, not sure how to attach node with script (maybe attach script to resource)
 @export var resource: pweaponres
 var _weapon_instance: Node3D = null
 
@@ -19,5 +18,4 @@ func loadweapon(res):
 		
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
-		pass
-	pass
+		_weapon_instance.leftclick()
