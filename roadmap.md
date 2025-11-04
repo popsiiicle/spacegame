@@ -2,8 +2,8 @@
 
 - ~Clean up and comment code~
 ### The Shooting Part
-- add basic weapon model
-- weapon class
+- ~add basic weapon model~
+- ~weapon class~
 - add shooting, hit registration, health, dummies
 - basic ui
 - sniper scope so i can go crazy
