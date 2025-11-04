@@ -7,13 +7,13 @@ var _weapon_instance: Node3D = null
 func _ready():
 	loadweapon(resource)
 	
-func loadweapon(resource):
-	if resource:
-		_weapon_instance = resource.SCENE.instantiate()
+func loadweapon(res):
+	if res:
+		_weapon_instance = res.SCENE.instantiate()
 		add_child(_weapon_instance)
-		_weapon_instance.rotation = resource.ROTATION
-		_weapon_instance.position = resource.POSITION
-		_weapon_instance.scale = Vector3(resource.SCALE,resource.SCALE,resource.SCALE)
+		_weapon_instance.rotation = res.ROTATION
+		_weapon_instance.position = res.POSITION
+		_weapon_instance.scale = Vector3(res.SCALE,res.SCALE,res.SCALE)
 	else:
 		push_warning("No model scene set for weapon.")
 		
