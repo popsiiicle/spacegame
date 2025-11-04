@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=15 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" path="res://scripts/pcharacter/player.gd" id="1_gfh01"]
 [ext_resource type="Script" path="res://scripts/pcharacter/Camera3D.gd" id="2_j2vfj"]
 [ext_resource type="Script" path="res://scripts/statemachine.gd" id="2_o1hri"]
 [ext_resource type="Script" path="res://scripts/pcharacter/pweaponrig.gd" id="3_l0gq2"]
+[ext_resource type="Resource" uid="uid://b2pttlkm1367p" path="res://scenes/pweapons/psniper/psniper.tres" id="4_87bd3"]
 [ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://resources/misc godot resources/debug_ui.tres" id="4_d2p3h"]
 [ext_resource type="Script" path="res://scripts/pcharacter/PlayerMovementState.gd" id="4_urvne"]
+[ext_resource type="Script" path="res://scripts/pcharacter/WeaponPositionTool.gd" id="5_6j0oe"]
 [ext_resource type="Script" path="res://scripts/pcharacter/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" path="res://scripts/pcharacter/SlidingPlayerState.gd" id="7_xnji0"]
 [ext_resource type="Script" path="res://scripts/pcharacter/debug_panel.gd" id="9_iv4xy"]
@@ -40,6 +42,10 @@ script = ExtResource("2_j2vfj")
 
 [node name="WeaponRig" type="Node3D" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
 script = ExtResource("3_l0gq2")
+resource = ExtResource("4_87bd3")
+
+[node name="WeaponPositionTool" type="Node" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
+script = ExtResource("5_6j0oe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
