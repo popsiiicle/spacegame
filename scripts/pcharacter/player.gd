@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.5 ## Player jump velocity
 const DASHSTRENGTH = 10 ## How strong the dash ability is
 
 #camera variables
-const SENS = 0.00375 ## Mouse Sensitivity
+const SENS = 0.001 ## Mouse Sensitivity
 const ROTATIONSPEED = 0.01 ## How fast the character rotates
 var rotcameramod: bool ##Whether the rotation modifier for the camera is currently being held down
 var neckroty: float ##The current y rotation of the neck node

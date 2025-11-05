@@ -43,7 +43,7 @@ and some in the future)
 - right click launches you forward by firing back cannon.  Hitbox on blade.
 - hitting both at the same time does a special animation similar to loose cannon double doink.  possibly additional buff, like invisibility, or launching the body of the blade boosts the character.  
 
-###Workshop
+### Workshop
 - steam workshop for adding new artifacts and weapons
 - balanced weapons and artifacts that fit the game will become official 
 - workshop mode for complete character that are somewhat balanced
@@ -57,3 +57,5 @@ and some in the future)
 - heavy class that's fast but strong (funny rock guy esque)
 - Prioritize individualism, 1v1 fights
 - negative team balance of FFAs like Root?  Maybe???
+
+- interaction is about how the game is: eg who actually wins.  control is about how the game feels (you don't care about how your opponent feels when playing the game (i think??).  
