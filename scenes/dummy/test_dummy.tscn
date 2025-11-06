@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ylmptn4rlb1s"]
+
+[ext_resource type="Texture2D" uid="uid://t1kdkweuv3ya" path="res://scenes/dummy/dummy.jpg" id="2_6u3n1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7rrmn"]
+size = Vector3(5.07, 5.628, 2)
+
+[node name="TestDummy" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+inertia = Vector3(5, 5, 5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_7rrmn")
+
+[node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
+texture = ExtResource("2_6u3n1")
+
+[node name="DestroyableObject" type="Node" parent="RigidBody3D"]
+
+[node name="Hitbox" type="Area3D" parent="RigidBody3D/DestroyableObject"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/DestroyableObject/Hitbox"]
+shape = SubResource("BoxShape3D_7rrmn")
