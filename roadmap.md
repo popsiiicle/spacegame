@@ -1,32 +1,30 @@
 # Roadmap
 
-* ~Clean up and comment code~
+* Clean up and comment code
 
 ### The Shooting Part
 
 * ~add basic weapon model~
 * ~weapon resource and initialization~
-* weapon class script
-* add shooting, hit registration, health, dummies
-* basic ui
-* sniper scope so i can go crazy
+* ~weapon class script~
+* ~add shooting, hit registration,~ health, dummies
 * maybe 2 more basic weapons
 
 ### Peer-To-Peer Multiplayer
-
 * should be very easy and totally painless
 * add basic gamemode (1v1 first to 5)
 * actual map
 
 ### physics cleanup
-
 * round player model
 * ~mouse rotation~
 * add camera snap
 * balance movement stats
 * make backwards drift go slower
 
-
+### polish
+* basic ui
+* sniper scope so I can go crazy
 
 ## ***FIRST PLAYTEST***
 
