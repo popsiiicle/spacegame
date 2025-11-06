@@ -7,7 +7,7 @@
 * ~add basic weapon model~
 * ~weapon resource and initialization~
 * ~weapon class script~
-* ~add shooting, hit registration,~ health, dummies
+* ~add shooting, hit registration, health, dummies~
 * maybe 2 more basic weapons
 
 ### Peer-To-Peer Multiplayer
