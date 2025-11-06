@@ -17,6 +17,28 @@ func hitscanraycast():
 	var result = space_state.intersect_ray(query)
 	return result
 
+
+
+# CLEAN UP CODE
+var targethbox: Node3D
+var target: Node
+var healthnode: Node
+var hitscaninfo: Dictionary
+func hitscandmg(damage: float):
+	hitscaninfo = hitscanraycast()
+	if hitscaninfo != {}:
+		target = hitscaninfo.collider
+		if target is CollisionObject3D:
+			if target.get_collision_layer_value(2) == true:
+				healthnode = target.get_parent()
+				if healthnode is shootable:
+					healthnode._take_damage(damage)
+				else:
+					push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
+		else:
+			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
+
+
 func leftclick():
 	pass
 
