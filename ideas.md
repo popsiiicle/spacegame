@@ -59,3 +59,5 @@ and some in the future)
 - negative team balance of FFAs like Root?  Maybe???
 
 - interaction is about how the game is: eg who actually wins.  control is about how the game feels (you don't care about how your opponent feels when playing the game (i think??).  
+
+- balance is very hard when you only care about characters at their strongest (overwatch charavters are meta with certain comp, finals classes are meta based off of meta gadgets
