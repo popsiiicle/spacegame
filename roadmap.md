@@ -2,13 +2,23 @@
 
 * Clean up and comment code
 
+### Basic Movement
+
+-add later (teehee)
+
 ### The Shooting Part
 
 * ~add basic weapon model~
 * ~weapon resource and initialization~
 * ~weapon class script~
 * ~add shooting, hit registration, health, dummies~
-* maybe 2 more basic weapons
+* ~learn about signals~
+* general cooldown script, ~add cooldown for shooting~
+* sounds, hit effects, barrel effects, tracers
+* rocket launcher
+* arm cannon
+* sniper scope so I can go crazy
+* clean up shooting code
 
 ### Peer-To-Peer Multiplayer
 * should be very easy and totally painless
@@ -24,7 +34,8 @@
 
 ### polish
 * basic ui
-* sniper scope so I can go crazy
+* clean up code
+* standardize variables
 
 ## ***FIRST PLAYTEST***
 
