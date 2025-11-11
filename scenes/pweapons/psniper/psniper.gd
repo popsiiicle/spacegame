@@ -2,7 +2,7 @@ class_name psniper extends pweapon
 
 @export var damage: float
 
-func _leftclick_cd():
+func leftclick():
 	hitscandmg(damage)
-	
+	LeftClickCooldown.start(1)
 	#Add effects here

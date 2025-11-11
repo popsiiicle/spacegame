@@ -4,6 +4,10 @@ class_name pweapon extends Node3D
 
 # Tools
 
+## Timer
+
+
+
 ##tool to create hitscan shots
 const MAX_RANGE = 1000
 func hitscanraycast():
@@ -40,8 +44,19 @@ func hitscandmg(damage: float):
 			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
 
-func _leftclick_cd():
+@onready var LeftClickCooldown := Timer.new()
+	
+
+func _ready():
+	LeftClickCooldown.one_shot = true
+	add_child(LeftClickCooldown)
+
+func leftclick():
 	pass
+
+func _leftclick():
+	if LeftClickCooldown.is_stopped():
+		leftclick()
 
 func rightclick():
 	pass
