@@ -18,4 +18,4 @@ func loadweapon(res):
 		
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
-		_weapon_instance.leftclick()
+		_weapon_instance._leftclick_cd()

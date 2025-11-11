@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0q3eneb4nfyj"]
 
-[ext_resource type="Script" path="res://scenes/pweapons/psniper/psniper.gd" id="1_6mq4v"]
+[ext_resource type="Script" uid="uid://b5f4f1vgpn82m" path="res://scenes/pweapons/psniper/psniper.gd" id="1_6mq4v"]
 [ext_resource type="PackedScene" uid="uid://ctcfgict2xgd8" path="res://scenes/pweapons/psniper/assets/model.gltf" id="1_gj4gl"]
 
 [node name="Psniper" type="Node3D"]

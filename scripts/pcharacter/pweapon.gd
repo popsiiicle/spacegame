@@ -32,14 +32,15 @@ func hitscandmg(damage: float):
 			if target.get_collision_layer_value(2) == true:
 				healthnode = target.get_parent()
 				if healthnode is shootable:
-					healthnode._take_damage(damage)
+					healthnode.taken_damage.emit(damage)
+					#add error message later if signal is not recieved
 				else:
 					push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
 		else:
 			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
 
-func leftclick():
+func _leftclick_cd():
 	pass
 
 func rightclick():

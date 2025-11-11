@@ -57,4 +57,3 @@ func physics_update(_delta):
 	#go to spacestate if the player isn't on the wall.  
 	if gvars.player.is_on_wall() == false:
 		transition.emit("SpaceState")
-
