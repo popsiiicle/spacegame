@@ -15,8 +15,9 @@
 * ~learn about signals~
 * general cooldown script, ~add cooldown for shooting~
 * sounds, hit effects, barrel effects, tracers
-* rocket launcher
-* arm cannon
+* rocket launcher, projectile spawning in weapon class
+* arm cannon, melee hitboxes in weapon class, animations (maybe)
+* integrate weaponrig code into state machine (maybe save for later)
 * sniper scope so I can go crazy
 * clean up shooting code
 
