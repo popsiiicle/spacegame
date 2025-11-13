@@ -1,1 +1,1 @@
-extends pweapon
+class_name prlauncher extends pweapon
