@@ -16,22 +16,17 @@ var camrotx: float ##The current x rotation of the camera node
 var msign: int ##The sign of left right or up down mouse movement
 
 #dash ability constants
-var dash_rdy := true ## if the dash ability is off cooldown
-var dashcd := Timer.new() ## cooldown for the dash ability
+var DashCD := Cooldown.create(self) ## cooldown for the dash ability
 #timer for dash cooldown
 
 
 var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of the camera
 
-#What happens when dash goes off cooldown
-func dashcd_reset() -> void:
-	dash_rdy = true
-
 #On game start
 func _ready():
 	
 	#initialize Dash Cooldown
-	dashcd.wait_time = 1.0 # 1 second
+	DashCD.wait_time = 1.0 # 1 second
 	dashcd.one_shot = true # don't loop, run once
 	dashcd.timeout.connect(dashcd_reset)
 	add_child(dashcd)
