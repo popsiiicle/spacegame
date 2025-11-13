@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bht8esp4idi8i"]
+
+[ext_resource type="Script" uid="uid://dkuj7mi0q63xu" path="res://scripts/pcharacter/pweapon.gd" id="1_a7tat"]
+
+[node name="PRLauncher" type="Node3D"]
+script = ExtResource("1_a7tat")
+metadata/_custom_type_script = "uid://dkuj7mi0q63xu"
