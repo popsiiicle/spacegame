@@ -37,6 +37,7 @@
 * basic ui
 * clean up code
 * standardize variables
+* add local classes
 
 ## ***FIRST PLAYTEST***
 
