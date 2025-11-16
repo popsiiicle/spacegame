@@ -44,12 +44,7 @@ func hitscandmg(damage: float):
 			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
 
-@onready var LeftClickCooldown := Timer.new()
-	
-
-func _ready():
-	LeftClickCooldown.one_shot = true
-	add_child(LeftClickCooldown)
+@onready var LeftClickCooldown: Cooldown = Cooldown.create(self)
 
 func leftclick():
 	pass
