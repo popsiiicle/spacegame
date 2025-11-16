@@ -16,7 +16,7 @@ var camrotx: float ##The current x rotation of the camera node
 var msign: int ##The sign of left right or up down mouse movement
 
 #dash ability constants
-var DashCD := Cooldown.create(self) ## cooldown for the dash ability
+var DashCD: Cooldown = Cooldown.create(self) ## cooldown for the dash ability
 #timer for dash cooldown
 
 
@@ -26,10 +26,6 @@ var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of t
 func _ready():
 	
 	#initialize Dash Cooldown
-	DashCD.wait_time = 1.0 # 1 second
-	dashcd.one_shot = true # don't loop, run once
-	dashcd.timeout.connect(dashcd_reset)
-	add_child(dashcd)
 	
 	#initialize global variable
 	gvars.player = self
@@ -92,7 +88,7 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	
 	#adds variables to debug panels
-	var dashcdstr = "%.1f" % dashcd.time_left
+	var dashcdstr = "%.1f" % DashCD.time_left
 	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
 	gvars.debug.add_property("Touching Wall",is_on_wall(),5)
 	
@@ -104,10 +100,9 @@ func _physics_process(delta):
 	
 	
 	#dash execution
-	if Input.is_action_pressed("dash") and dash_rdy == true:
+	if Input.is_action_pressed("dash") and DashCD.is_stopped() == true:
 		velocity = velocity + direction_3d * DASHSTRENGTH
-		dash_rdy = false
-		dashcd.start()
+		DashCD.start()
 	
 	#rotation
 	#fix so that angular moment is conserved around body rather than camera
