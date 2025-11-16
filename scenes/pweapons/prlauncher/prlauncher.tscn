@@ -8,4 +8,4 @@ script = ExtResource("1_bdoww")
 metadata/_custom_type_script = "uid://dkuj7mi0q63xu"
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_bdoww")]
-transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

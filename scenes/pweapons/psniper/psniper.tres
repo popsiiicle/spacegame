@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="pweaponres" load_steps=3 format=3 uid="uid://b2pttlkm1367p"]
 
 [ext_resource type="PackedScene" uid="uid://0q3eneb4nfyj" path="res://scenes/pweapons/psniper/psniper.tscn" id="1_aadau"]
-[ext_resource type="Script" uid="uid://b1rbi1qxn0dpm" path="res://scripts/pcharacter/pweaponresource.gd" id="1_yav6s"]
+[ext_resource type="Script" path="res://scripts/pcharacter/pweaponresource.gd" id="1_yav6s"]
 
 [resource]
 script = ExtResource("1_yav6s")
 NAME = "psniper"
 SCENE = ExtResource("1_aadau")
 POSITION = Vector3(0.35, -0.35, -0.75)
+ROTATION = Vector3(0, 0, 0)
 SCALE = 0.3
