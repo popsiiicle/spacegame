@@ -55,7 +55,8 @@ and some in the future)
 - game needs to make you feel something.  multiplayer shooter is no excuse
 - zero g doesn't matter if the game doesn't reward you for doing crazy shit
 - heavy class that's fast but strong (funny rock guy esque)
-- Prioritize individualism, 1v1 fights
+- Prioritize individualism, 1v1 fights0
+- original rotation gives space vibe, new one takes it away.  Maybe consider bringing it back, or looking at other controls with that lens
 - negative team balance of FFAs like Root?  Maybe???
 
 - interaction is about how the game is: eg who actually wins.  control is about how the game feels (you don't care about how your opponent feels when playing the game (i think??).  
