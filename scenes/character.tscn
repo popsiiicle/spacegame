@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=15 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" uid="uid://rl0ria6dghnu" path="res://scripts/pcharacter/player.gd" id="1_gfh01"]
 [ext_resource type="Script" uid="uid://dayrh5mw5t6bj" path="res://scripts/pcharacter/Camera3D.gd" id="2_j2vfj"]
@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://b2pttlkm1367p" path="res://scenes/pweapons/psniper/psniper.tres" id="4_irmqu"]
 [ext_resource type="Script" uid="uid://bdncpedjqfsrp" path="res://scripts/pcharacter/PlayerMovementState.gd" id="4_urvne"]
 [ext_resource type="Script" uid="uid://b8w6tyav2ct0g" path="res://scripts/pcharacter/weaponpositioningtool.gd" id="5_6j0oe"]
-[ext_resource type="Resource" uid="uid://bvmnu84mn3tm0" path="res://scenes/pweapons/prlauncher/prlauncher.tres" id="6_7eonc"]
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scripts/pcharacter/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scripts/pcharacter/SlidingPlayerState.gd" id="7_xnji0"]
 [ext_resource type="Script" uid="uid://cnn6k2lh4hgd" path="res://scripts/pcharacter/debug_panel.gd" id="9_iv4xy"]
@@ -44,12 +43,11 @@ script = ExtResource("2_j2vfj")
 [node name="WeaponRig" type="Node3D" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.2, 0)
 script = ExtResource("3_l0gq2")
-resource = ExtResource("4_irmqu")
 
 [node name="WeaponPositionTool" type="Node" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
 script = ExtResource("5_6j0oe")
-scale = 1.3
-resource = ExtResource("6_7eonc")
+scale = 0.3
+resource = ExtResource("4_irmqu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
