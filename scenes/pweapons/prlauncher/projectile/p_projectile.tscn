@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh6t7wihk70lj"]
+
+[ext_resource type="Script" uid="uid://duiab2td4u6e5" path="res://scenes/pweapons/templates/pprojectile.gd" id="1_46hsp"]
+
+[node name="Node3D" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_46hsp")
