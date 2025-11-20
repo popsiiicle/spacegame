@@ -1,6 +1,6 @@
 class_name pProjectile extends RigidBody3D
 
-var projspeed := 10
+@export var projspeed: float
 var projdirection: Vector3
 var projid: String
 
@@ -8,4 +8,3 @@ var projid: String
 
 func _ready():
 	linear_velocity = projdirection.normalized() * projspeed
-	print(linear_velocity)

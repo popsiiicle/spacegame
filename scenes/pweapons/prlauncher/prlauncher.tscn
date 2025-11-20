@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bht8esp4idi8i"]
 
 [ext_resource type="Script" uid="uid://bconf1mu15qif" path="res://scenes/pweapons/prlauncher/prlauncher.gd" id="1_bdoww"]
-[ext_resource type="PackedScene" uid="uid://dh6t7wihk70lj" path="res://scenes/pweapons/prlauncher/projectile/p_projectile.tscn" id="2_04vx3"]
+[ext_resource type="PackedScene" uid="uid://dh6t7wihk70lj" path="res://scenes/pweapons/prlauncher/projectile/p_rprojectile.tscn" id="2_04vx3"]
 [ext_resource type="PackedScene" uid="uid://h5jqpqtb3vgo" path="res://scenes/pweapons/prlauncher/assets/scene.gltf" id="2_bdoww"]
 
 [node name="PRLauncher" type="Node3D"]
