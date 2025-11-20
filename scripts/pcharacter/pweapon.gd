@@ -51,6 +51,7 @@ func spawn_projectile(projpackedscene,projdirection):
 		SCENE.projdirection = projdirection
 		get_tree().get_root().add_child(SCENE)
 		SCENE.position = self.global_position
+		SCENE.rotation = self.global_rotation
 
 
 var LeftClickCooldown: Cooldown = Cooldown.create(self)
