@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh6t7wihk70lj"]
+[gd_scene load_steps=4 format=3 uid="uid://ta2rssm2qoui"]
 
 [ext_resource type="Script" uid="uid://ckfxcnyt5d2oi" path="res://scenes/pweapons/prlauncher/projectile/prlauncherproj.gd" id="1_w6m8d"]
 [ext_resource type="Texture2D" uid="uid://b8oglrl7ibuvd" path="res://scenes/pweapons/prlauncher/projectile/1000_F_483935263_lcqhlkQrHniGARor9L40vFOUy94cF1fn.jpg" id="2_326jn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w6m8d"]
 
 [node name="RLauncherProj" type="RigidBody3D"]
 script = ExtResource("1_w6m8d")
@@ -9,5 +11,8 @@ projspeed = 10.0
 metadata/_custom_type_script = "uid://duiab2td4u6e5"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 texture = ExtResource("2_326jn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_w6m8d")

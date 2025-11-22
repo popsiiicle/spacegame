@@ -1,7 +1,6 @@
 class_name prlauncher extends pweapon
 
-@export var Projectile: PackedScene
+@export var projectile: PackedScene
 
 func leftclick():
-	spawn_projectile(Projectile,-gvars.pcamera.global_transform.basis.z)
-	
+	spawn_projectile(projectile,-gvars.pcamera.global_transform.basis.z)
