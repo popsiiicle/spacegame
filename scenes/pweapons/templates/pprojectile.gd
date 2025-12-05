@@ -12,6 +12,14 @@ func _ready():
 	set_collision_layer_value(1,false)
 	set_collision_layer_value(3,true)
 	set_collision_mask_value(2,true)
-func _physics_process(_delta):
-	pass
 	
+	set_contact_monitor(true)
+	max_contacts_reported = 5
+	
+	var on_body_entered_callable = on_body_entered
+	body_entered.connect(on_body_entered_callable)
+
+	
+func on_body_entered(node):
+	print("hit")
+	self.queue_free()
