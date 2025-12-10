@@ -7,6 +7,9 @@ something dust.  spacedust?  stardust?  stellar dust?
 Humans came, colonized space, took over everything, and disappeared.  
 Robots called scavengers take their equipment
 
+### Art Style
+Something easy to add for modders.  simple geometry, classic "cool" futuristic style.  maybe 2D?  Colors are vibrant like smash ultimate, but with the dark atmosphere of space.  Highly exaggerated animations, maybe skipped frames.
+
 ### Loop
 Scavengers come in in separate ships, try to take loot from wrecks, kill other scavenger ships, and exit.  Respawns are quick (back on ship), ship death is permadeath.  Squads increase in size, with single player ships being similar to space titans.  Ships are large to accommodate movement.  
 
