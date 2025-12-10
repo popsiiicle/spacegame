@@ -1,7 +1,16 @@
-class_name pweaponrig extends pweaponhandler
+class_name pweaponrig extends Node3D
+
+@export var resource: pweaponres
 
 var weapon_instance: Node3D = null
-var WeaponRig := pweaponhandler
+
+func load_weapon(res) -> Node3D:
+	var _weapon_instance = res.SCENE.instantiate()
+	add_child(_weapon_instance)
+	_weapon_instance.rotation = res.ROTATION
+	_weapon_instance.position = res.POSITION
+	_weapon_instance.scale = Vector3(res.SCALE,res.SCALE,res.SCALE)
+	return _weapon_instance
 
 func _ready():
 	weapon_instance = load_weapon(resource)

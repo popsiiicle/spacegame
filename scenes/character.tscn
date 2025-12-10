@@ -43,11 +43,12 @@ script = ExtResource("2_j2vfj")
 [node name="WeaponRig" type="Node3D" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.2, 0)
 script = ExtResource("3_l0gq2")
+resource = ExtResource("4_irmqu")
 
 [node name="WeaponPositionTool" type="Node" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
 script = ExtResource("5_6j0oe")
-scale = 0.3
 resource = ExtResource("4_irmqu")
+scale = 0.3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.561997, 0.827139, 0, -0.827139, 0.561997, 0, -1.23046, -0.110986)
