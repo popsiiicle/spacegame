@@ -9,10 +9,11 @@ func _ready():
 	linear_velocity = projdirection.normalized() * projspeed
 	
 	#collision layers
-	set_collision_layer_value(1,false)
+	collision_layer = 0
+	collision_mask = 0
 	set_collision_layer_value(3,true)
 	set_collision_mask_value(2,true)
-	
+	set_collision_mask_value(1,true)
 	set_contact_monitor(true)
 	max_contacts_reported = 5
 	
@@ -21,6 +22,13 @@ func _ready():
 
 	
 func on_body_entered(node):
-	print("hit")
 	print(node)
+	
+	#very jank, correct later (check for mask instead or smth)
+	var target = node.get_parent()
+	if target is shootable:
+		print("hit")
+		target.taken_damage.emit(100)
+	else:
+		print("miss")
 	self.queue_free()

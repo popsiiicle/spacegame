@@ -47,11 +47,13 @@ func spawn_projectile(projpackedscene,projdirection):
 	if projpackedscene is not PackedScene:
 		push_error("projectile scene invalid")
 	else:
-		var SCENE = projpackedscene.instantiate()
-		SCENE.projdirection = projdirection
-		get_tree().get_root().add_child(SCENE)
-		SCENE.position = self.global_position
-		SCENE.rotation = self.global_rotation
+		var PROJ = projpackedscene.instantiate()
+		PROJ.projdirection = projdirection
+		
+		#adds to root, adds to scene tree later
+		get_tree().get_root().add_child(PROJ)
+		PROJ.position = self.global_position
+		PROJ.rotation = self.global_rotation
 
 
 var LeftClickCooldown: Cooldown = Cooldown.create(self)

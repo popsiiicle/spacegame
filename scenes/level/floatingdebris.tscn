@@ -13,6 +13,7 @@ mesh = SubResource("BoxMesh_qhby8")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rtpv6")

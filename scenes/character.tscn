@@ -23,6 +23,7 @@ text = "imagine this is ur legs"
 [node name="Node3D" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_gfh01")
 
