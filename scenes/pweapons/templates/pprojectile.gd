@@ -22,4 +22,5 @@ func _ready():
 	
 func on_body_entered(node):
 	print("hit")
+	print(node)
 	self.queue_free()

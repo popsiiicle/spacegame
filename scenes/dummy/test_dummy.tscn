@@ -5,15 +5,17 @@
 [ext_resource type="Script" uid="uid://bw04x56y7gc1m" path="res://scenes/dummy/shootable.gd" id="3_67l2r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7rrmn"]
-size = Vector3(5.07, 5.628, 2)
+size = Vector3(2.159587, 5.628, 3.3789063)
 
 [node name="TestDummy" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_mask = 0
 inertia = Vector3(5, 5, 5)
 script = ExtResource("1_ekeyc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9284545, 0, 0.6381185)
 shape = SubResource("BoxShape3D_7rrmn")
 
 [node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
@@ -22,8 +24,11 @@ texture = ExtResource("2_6u3n1")
 [node name="DestroyableObject" type="Node" parent="RigidBody3D"]
 script = ExtResource("3_67l2r")
 
-[node name="Hitbox" type="Area3D" parent="RigidBody3D/DestroyableObject"]
+[node name="Hitbox" type="RigidBody3D" parent="RigidBody3D/DestroyableObject"]
 collision_layer = 2
+collision_mask = 0
+inertia = Vector3(4.95, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/DestroyableObject/Hitbox"]
+transform = Transform3D(0.99998313, 0, -0.005811914, 0, 1, 0, 0.005811914, 0, 0.99998313, 1.3529149, 0, 0.46848357)
 shape = SubResource("BoxShape3D_7rrmn")
