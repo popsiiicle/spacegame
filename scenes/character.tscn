@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=18 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" uid="uid://rl0ria6dghnu" path="res://scripts/pcharacter/player.gd" id="1_gfh01"]
 [ext_resource type="Script" uid="uid://dayrh5mw5t6bj" path="res://scripts/pcharacter/Camera3D.gd" id="2_j2vfj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scripts/pcharacter/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scripts/pcharacter/SlidingPlayerState.gd" id="7_xnji0"]
 [ext_resource type="Script" uid="uid://cnn6k2lh4hgd" path="res://scripts/pcharacter/debug_panel.gd" id="9_iv4xy"]
+[ext_resource type="Script" uid="uid://bn7w7sirsvnmh" path="res://scenes/crosshair.gd" id="12_7eonc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8obhc"]
 
@@ -19,6 +20,16 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [sub_resource type="TextMesh" id="TextMesh_k87y8"]
 text = "imagine this is ur legs"
+
+[sub_resource type="Gradient" id="Gradient_irmqu"]
+offsets = PackedFloat32Array(0.11261261, 0.15765765)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7eonc"]
+gradient = SubResource("Gradient_irmqu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(2, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -93,3 +104,9 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UserInterface"]
+position = Vector2(581, 308)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_7eonc")
+script = ExtResource("12_7eonc")
