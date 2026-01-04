@@ -1,0 +1,34 @@
+class_name pProjectile extends RigidBody3D
+
+@export var projspeed: float
+var projdirection: Vector3
+var projid: String
+
+func _ready():
+	## FIX, ADD FORCE LATER
+	linear_velocity = projdirection.normalized() * projspeed
+	
+	#collision layers
+	collision_layer = 0
+	collision_mask = 0
+	set_collision_layer_value(3,true)
+	set_collision_mask_value(2,true)
+	set_collision_mask_value(1,true)
+	set_contact_monitor(true)
+	max_contacts_reported = 5
+	
+	var on_body_entered_callable = on_body_entered
+	body_entered.connect(on_body_entered_callable)
+
+	
+func on_body_entered(node):
+	print(node)
+	
+	#very jank, correct later (check for mask instead or smth)
+	var target = node.get_parent()
+	if target is shootable:
+		print("hit")
+		target.taken_damage.emit(100)
+	else:
+		print("miss")
+	self.queue_free()

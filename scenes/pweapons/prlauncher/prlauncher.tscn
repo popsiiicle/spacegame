@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bht8esp4idi8i"]
+[gd_scene load_steps=4 format=3 uid="uid://bht8esp4idi8i"]
 
 [ext_resource type="Script" uid="uid://bconf1mu15qif" path="res://scenes/pweapons/prlauncher/prlauncher.gd" id="1_bdoww"]
+[ext_resource type="PackedScene" uid="uid://ta2rssm2qoui" path="res://scenes/pweapons/prlauncher/projectile/p_rprojectile.tscn" id="2_04vx3"]
 [ext_resource type="PackedScene" uid="uid://h5jqpqtb3vgo" path="res://scenes/pweapons/prlauncher/assets/scene.gltf" id="2_bdoww"]
 
 [node name="PRLauncher" type="Node3D"]
 script = ExtResource("1_bdoww")
+projectile = ExtResource("2_04vx3")
 metadata/_custom_type_script = "uid://dkuj7mi0q63xu"
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_bdoww")]

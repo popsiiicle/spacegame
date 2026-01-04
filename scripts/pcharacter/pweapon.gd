@@ -43,8 +43,20 @@ func hitscandmg(damage: float):
 		else:
 			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
+func spawn_projectile(projpackedscene,projdirection):
+	if projpackedscene is not PackedScene:
+		push_error("projectile scene invalid")
+	else:
+		var PROJ = projpackedscene.instantiate()
+		PROJ.projdirection = projdirection
+		
+		#adds to root, adds to scene tree later
+		get_tree().get_root().add_child(PROJ)
+		PROJ.position = self.global_position
+		PROJ.rotation = self.global_rotation
 
-@onready var LeftClickCooldown: Cooldown = Cooldown.create(self)
+
+var LeftClickCooldown: Cooldown = Cooldown.create(self)
 
 func leftclick():
 	pass
