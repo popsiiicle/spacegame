@@ -4,3 +4,4 @@ class_name prlauncher extends pweapon
 
 func leftclick():
 	spawn_projectile(projectile,-gvars.pcamera.global_transform.basis.z)
+	LeftClickCooldown.start(.66)
