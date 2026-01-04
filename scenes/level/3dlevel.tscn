@@ -42,6 +42,7 @@ transform = Transform3D(0.452046, 0.891995, 0, -0.891995, 0.452046, 0, 0, 0, 1, 
 transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.318347, -0.318038, -0.0140303, 0.947974, 24.4647, 19.3807, 13.5258)
 
 [node name="Node3D" parent="." instance=ExtResource("2_xuvdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.851708)
 
 [node name="TestDummy" parent="." instance=ExtResource("3_cclwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.757067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4076266)
