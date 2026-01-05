@@ -1,3 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://tuilnf23jg44"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ts76v"]
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 1200.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts76v"]
+emission_enabled = true
 emission = Color(0, 0.33333334, 1, 1)
 use_particle_trails = true
 stencil_flags = 2
@@ -8,8 +19,10 @@ radius = 0.1
 
 [node name="GPUParticles3D" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+emitting = false
 amount = 1
 lifetime = 2.0
+one_shot = true
 trail_enabled = true
 trail_lifetime = 0.09
 process_material = SubResource("ParticleProcessMaterial_ts76v")
