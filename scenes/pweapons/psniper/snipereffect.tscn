@@ -1,0 +1,16 @@
+emission = Color(0, 0.33333334, 1, 1)
+use_particle_trails = true
+stencil_flags = 2
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_cl34j"]
+material = SubResource("StandardMaterial3D_ts76v")
+radius = 0.1
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+amount = 1
+lifetime = 2.0
+trail_enabled = true
+trail_lifetime = 0.09
+process_material = SubResource("ParticleProcessMaterial_ts76v")
+draw_pass_1 = SubResource("TubeTrailMesh_cl34j")
