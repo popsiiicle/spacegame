@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ta2rssm2qoui"]
+[gd_scene load_steps=5 format=3 uid="uid://ta2rssm2qoui"]
 
 [ext_resource type="Script" uid="uid://ckfxcnyt5d2oi" path="res://scenes/pweapons/prlauncher/projectile/prlauncherproj.gd" id="1_w6m8d"]
 [ext_resource type="Texture2D" uid="uid://b8oglrl7ibuvd" path="res://scenes/pweapons/prlauncher/projectile/1000_F_483935263_lcqhlkQrHniGARor9L40vFOUy94cF1fn.jpg" id="2_326jn"]
+[ext_resource type="AudioStream" uid="uid://c8xl6jcfpm3wh" path="res://scenes/pweapons/prlauncher/projectile/Vine boom sound effect.mp3" id="3_326jn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w6m8d"]
 
@@ -18,3 +19,7 @@ texture = ExtResource("2_326jn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_w6m8d")
+
+[node name="DetonateSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_326jn")
+doppler_tracking = 2

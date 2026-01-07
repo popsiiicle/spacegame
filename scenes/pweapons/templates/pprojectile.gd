@@ -3,6 +3,7 @@ class_name pProjectile extends RigidBody3D
 @export var projspeed: float
 var projdirection: Vector3
 var projid: String
+@onready var detonation_sound = $DetonateSound
 
 func _ready():
 	## FIX, ADD FORCE LATER
@@ -31,4 +32,10 @@ func on_body_entered(node):
 		target.taken_damage.emit(100)
 	else:
 		print("miss")
-	self.queue_free()
+	
+	#splash code here
+	
+	
+	detonation_sound.play(0)
+	
+	#self.queue_free()
