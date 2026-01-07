@@ -23,8 +23,14 @@ func physics_update(delta):
 		if velocity.length() >= TOPAIRSPEED:
 			velocity = velocity*(TOPAIRSPEED/velocity.length())
 			
+	
+	if Input.is_action_just_pressed("stop"):
+		velocity = Vector3.ZERO
 	#re-update global var
+	#there's a cleaner way to do this, fix later
 	PLAYER.velocity = velocity
+	
+
 	
 	#go to slidingplayerstate upon touching a wall
 	if gvars.player.is_on_wall() == true:
