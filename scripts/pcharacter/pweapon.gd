@@ -51,7 +51,7 @@ func spawn_projectile(projpackedscene,projdirection):
 		PROJ.projdirection = projdirection
 		
 		#adds to root, adds to scene tree later
-		get_tree().get_root().add_child(PROJ)
+		get_tree().get_current_scene().add_child(PROJ)
 		PROJ.position = self.global_position
 		PROJ.rotation = self.global_rotation
 
