@@ -57,9 +57,9 @@ func spawn_projectile(projpackedscene,projdirection):
 
 func path_particle(particlescene: PackedScene,startpoint: Marker3D):
 	var PARTICLE = particlescene.instantiate()
-	add_child(PARTICLE)
-	PARTICLE.position = self.global_position
-	PARTICLE.rotation = self.global_rotation
+	get_tree().get_current_scene().add_child(PARTICLE)
+	PARTICLE.position = startpoint.global_position
+	PARTICLE.rotation = gvars.pcamera.global_rotation
 	
 var LeftClickCooldown: Cooldown = Cooldown.create(self)
 

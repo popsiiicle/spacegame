@@ -2,7 +2,7 @@ class_name psniper extends pweapon
 
 @export var damage: float
 @export var hitscan_path_particle: PackedScene
-@onready var emission_point: Marker3D = $Emission_Point
+@onready var emission_point: Marker3D = $"Emission Point"
 
 func leftclick():
 	hitscandmg(damage)

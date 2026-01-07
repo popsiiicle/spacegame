@@ -49,4 +49,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.851708)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4076266)
 
 [node name="Snipereffect" parent="." instance=ExtResource("4_sxl2r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8417792, 0, 2.6454005)
+transform = Transform3D(1, 0, 0, 0, 0.87629825, -0.481769, 0, 0.481769, 0.87629825, 9.720778, 0, 3.278113)
