@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyqevfe4afidq"
+path="res://.godot/imported/ES_Rifle, Medium Shot - Epidemic Sound.mp3-9c5a4623971ed8930f1c2cf5eece1daa.mp3str"
+
+[deps]
+
+source_file="res://scenes/pweapons/psniper/assets/ES_Rifle, Medium Shot - Epidemic Sound.mp3"
+dest_files=["res://.godot/imported/ES_Rifle, Medium Shot - Epidemic Sound.mp3-9c5a4623971ed8930f1c2cf5eece1daa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
