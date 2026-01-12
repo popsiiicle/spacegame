@@ -3,7 +3,6 @@ class_name pProjectile extends RigidBody3D
 @export var projspeed: float
 var projdirection: Vector3
 var projid: String
-@onready var detonation_sound = $DetonateSound
 
 func _ready():
 	## FIX, ADD FORCE LATER
@@ -21,11 +20,11 @@ func _ready():
 	var on_body_entered_callable = on_body_entered
 	body_entered.connect(on_body_entered_callable)
 
-func on_hit(node: CollisionObject3D,target: shootable):
+func on_hit(_node: CollisionObject3D,_target: shootable):
 	pass
-func on_miss(node: CollisionObject3D):
+func on_miss(_node: CollisionObject3D):
 	pass
-func on_any_collision(node: CollisionObject3D):
+func on_any_collision(_node: CollisionObject3D):
 	pass
 	
 func on_body_entered(node):
@@ -43,11 +42,12 @@ func on_body_entered(node):
 	
 	#splash code here
 func play_collision_particle(particle: PackedScene) -> void:
+	print("unpacking scene")
 	var PARTICLE = particle.instantiate()
 	get_tree().get_root().add_child(PARTICLE)
+	PARTICLE.position = position
+	PARTICLE.rotation = rotation
 	PARTICLE.emitting = true
 	
-	
-	detonation_sound.play(0)
 	
 	#self.queue_free()

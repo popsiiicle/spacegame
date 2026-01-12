@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=7 format=3 uid="uid://bfjb177uy7050"]
 
 [ext_resource type="PackedScene" uid="uid://yiapmafoosfp" path="res://scenes/character.tscn" id="2_xuvdx"]
 [ext_resource type="PackedScene" uid="uid://ylmptn4rlb1s" path="res://scenes/dummy/test_dummy.tscn" id="3_cclwq"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
-[ext_resource type="PackedScene" uid="uid://tuilnf23jg44" path="res://scenes/pweapons/psniper/snipereffect.tscn" id="4_sxl2r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7hgs"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,6 +46,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.851708)
 
 [node name="TestDummy" parent="." instance=ExtResource("3_cclwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4076266)
-
-[node name="Snipereffect" parent="." instance=ExtResource("4_sxl2r")]
-transform = Transform3D(1, 0, 0, 0, 0.87629825, -0.481769, 0, 0.481769, 0.87629825, 9.720778, 0, 3.278113)

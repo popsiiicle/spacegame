@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyl3e0rsjxtse"]
+[gd_scene load_steps=6 format=3 uid="uid://dyl3e0rsjxtse"]
+
+[ext_resource type="Script" uid="uid://588of3hkwn8t" path="res://scenes/pweapons/prlauncher/projectile/explosion_effect.gd" id="1_scc51"]
+[ext_resource type="AudioStream" uid="uid://c8xl6jcfpm3wh" path="res://scenes/pweapons/prlauncher/projectile/Vine boom sound effect.mp3" id="2_wi017"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qftsh"]
+direction = Vector3(0, 0, 1)
 spread = 80.0
 initial_velocity_min = 40.0
 initial_velocity_max = 40.0
 gravity = Vector3(0, 0, 0)
-tangential_accel_min = 99.99999
-tangential_accel_max = 99.99999
 scale_min = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scc51"]
@@ -20,9 +22,16 @@ radial_segments = 4
 rings = 4
 
 [node name="ExplosionEffect" type="GPUParticles3D"]
+emitting = false
 amount = 120
 lifetime = 1.5
+one_shot = true
 explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qftsh")
 draw_pass_1 = SubResource("SphereMesh_wi017")
+script = ExtResource("1_scc51")
+
+[node name="DetonateSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_wi017")
+doppler_tracking = 2
