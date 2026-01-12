@@ -21,19 +21,31 @@ func _ready():
 	var on_body_entered_callable = on_body_entered
 	body_entered.connect(on_body_entered_callable)
 
+func on_hit(node: CollisionObject3D,target: shootable):
+	pass
+func on_miss(node: CollisionObject3D):
+	pass
+func on_any_collision(node: CollisionObject3D):
+	pass
 	
 func on_body_entered(node):
-	print(node)
 	
 	#very jank, correct later (check for mask instead or smth)
 	var target = node.get_parent()
 	if target is shootable:
 		print("hit")
+		on_hit(node,target)
 		target.taken_damage.emit(100)
 	else:
 		print("miss")
+		on_miss(node)
+	on_any_collision(node)
 	
 	#splash code here
+func play_collision_particle(particle: PackedScene) -> void:
+	var PARTICLE = particle.instantiate()
+	get_tree().get_root().add_child(PARTICLE)
+	PARTICLE.emitting = true
 	
 	
 	detonation_sound.play(0)
