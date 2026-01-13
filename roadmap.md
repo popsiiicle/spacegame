@@ -13,12 +13,11 @@
 * ~weapon class script~
 * ~add shooting, hit registration, health, dummies~
 * ~learn about signals~
-* general cooldown script, ~add cooldown for shooting~
-* sounds, hit effects, barrel effects, tracers
-* rocket launcher, projectile spawning in weapon class
-* arm cannon, melee hitboxes in weapon class, animations (maybe)
-* integrate weaponrig code into state machine (maybe save for later)
+* ~general cooldown script, add cooldown for shooting~
+* ~sounds, hit effects, tracers~
+* ~rocket launcher, projectile spawning in weapon class~
 * sniper scope so I can go crazy
+* integrate weaponrig code into state machine (maybe save for later)
 * clean up shooting code
 
 ### Peer-To-Peer Multiplayer
@@ -35,9 +34,11 @@
 
 ### polish
 * basic ui
+* movement sounds
 * clean up code
 * standardize variables
 * add local classes
+* controls and sens customization
 
 ## ***FIRST PLAYTEST***
 
@@ -47,6 +48,7 @@
 
 ### After Playtest
 
+* arm cannon, melee hitboxes in weapon class, animations (maybe)
 * artifact and ability classes
 * get some abilities down before the second playtest
 * Better animations for sliding
@@ -55,4 +57,5 @@
 * dedicated server (thank you for volunteering your laptop ozan)
 * seperate rendering viewport for the gun
 * weapon shadow
+* barrel effects
 * controls and sens customization
