@@ -63,12 +63,15 @@ func save_position():
 @export_custom(PROPERTY_HINT_RANGE,"-1.5,1.5,0.05,slider") var position := Vector3.ZERO:
 	set(value):
 		position = value
+		_model_instance.position = value
 @export_custom(PROPERTY_HINT_RANGE,"-1.5,1.5,0.05,slider") var rotation := Vector3.ZERO:
 	set(value):
 		rotation = value
+		_model_instance.rotation = value
 @export_range(0,3,0.05, "or_greater") var scale := 1.0:
 	set(value):
 		scale = float(value)
+		_model_instance.scale = Vector3.
 
 func _init():
 	if not Engine.is_editor_hint():
