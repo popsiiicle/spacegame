@@ -12,7 +12,8 @@ collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_w6m8d")
 explosion_particle = ExtResource("2_lgl8o")
-projspeed = 10.0
+projspeed = 15.0
+projlifespan = 20.0
 metadata/_custom_type_script = "uid://duiab2td4u6e5"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

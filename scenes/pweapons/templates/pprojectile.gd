@@ -1,6 +1,7 @@
 class_name pProjectile extends RigidBody3D
 
 @export var projspeed: float
+@export var projlifespan := 5.0
 var projdirection: Vector3
 var projid: String
 
@@ -19,7 +20,11 @@ func _ready():
 	
 	var on_body_entered_callable = on_body_entered
 	body_entered.connect(on_body_entered_callable)
-
+	
+	#check if this is actually clean
+	await get_tree().create_timer(projlifespan).timeout
+	queue_free()
+	
 func on_hit(_node: CollisionObject3D,_target: shootable):
 	pass
 func on_miss(_node: CollisionObject3D):
@@ -48,6 +53,3 @@ func play_collision_particle(particle: PackedScene) -> void:
 	PARTICLE.position = position
 	PARTICLE.rotation = rotation
 	PARTICLE.emitting = true
-	
-	
-	#self.queue_free()
