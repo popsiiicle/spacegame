@@ -1,12 +1,15 @@
+@tool
+
 class_name pweaponrig extends Node3D
 
-var psniper = load("res://scenes/pweapons/psniper/psniper.tres")
-var prlauncher = load("res://scenes/pweapons/prlauncher/prlauncher.tres")
+var psniperres := load("res://scenes/pweapons/psniper/psniper.tres")
+var prlauncherres := load("res://scenes/pweapons/prlauncher/prlauncher.tres")
+@export var editorres: pweaponres
 var weapon_loaded := false
 var _weapon_instance: Node3D = null
 
 func _ready():
-	loadweapon(psniper)
+	loadweapon(psniperres)
 	
 func loadweapon(res):
 	if _weapon_instance:
@@ -22,11 +25,19 @@ func loadweapon(res):
 		push_warning("No model scene set for weapon.")
 		
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("number_1"):
-		loadweapon(psniper)
-	if Input.is_action_just_pressed("number_2"):
-		loadweapon(prlauncher)
 	
-func _physics_process(delta):
-	if Input.is_action_just_pressed("shoot") and weapon_loaded:
-		_weapon_instance._leftclick()
+	if Engine.is_editor_hint():
+		#loadweapon(editorres)
+		pass
+	else:
+		if Input.is_action_just_pressed("number_1"):
+			loadweapon(psniperres)
+		if Input.is_action_just_pressed("number_2"):
+			loadweapon(prlauncherres)
+		if Input.is_action_just_pressed("shoot") and weapon_loaded:
+			_weapon_instance._leftclick()
+	
+func _physics_process(_delta):
+	pass
+	
+	
