@@ -7,5 +7,5 @@
 script = ExtResource("1_yav6s")
 NAME = "psniper"
 SCENE = ExtResource("1_aadau")
-POSITION = Vector3(0.35, -0.35, -0.75)
-SCALE = 0.3
+POSITION = Vector3(0.6, -0.1, -0.4)
+SCALE = 0.25

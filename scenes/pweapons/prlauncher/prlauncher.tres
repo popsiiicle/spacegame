@@ -7,4 +7,5 @@
 script = ExtResource("1_hv54i")
 NAME = "Explosive Cannon"
 SCENE = ExtResource("1_4nc6y")
+POSITION = Vector3(0.8, -0.18, 0)
 metadata/_custom_type_script = "uid://b1rbi1qxn0dpm"
