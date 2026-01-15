@@ -43,7 +43,7 @@ func hitscandmg(damage: float):
 		else:
 			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
-func spawn_projectile(projpackedscene,projdirection):
+func spawn_projectile(projpackedscene,projdirection, launchpoint):
 	if projpackedscene is not PackedScene:
 		push_error("projectile scene invalid")
 	else:
@@ -52,8 +52,8 @@ func spawn_projectile(projpackedscene,projdirection):
 		
 		#adds to root, adds to scene tree later
 		get_tree().get_current_scene().add_child(PROJ)
-		PROJ.position = self.global_position
-		PROJ.rotation = self.global_rotation
+		PROJ.position = launchpoint.global_position
+		PROJ.rotation = launchpoint.global_rotation
 
 func path_particle(particlescene: PackedScene,startpoint: Marker3D):
 	var PARTICLE = particlescene.instantiate()
