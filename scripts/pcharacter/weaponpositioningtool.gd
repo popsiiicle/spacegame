@@ -2,7 +2,7 @@
 extends Node
 
 @onready var weaponrig = $"../WeaponRig"
-@export var resource: PackedScene
+@export var resource: pweaponres
 
 @export_category("Weapon Positioner")
 @export_tool_button("Load Weapon","Load") var load_weapon_button_action = load_weapon_button
@@ -12,7 +12,7 @@ var _model_instance: Node3D
 func load_weapon_button():
 	
 	# Resource goes to in game position
-	_model_instance = weaponrig.load_weapon(resource)
+	_model_instance = weaponrig.load_weapon(resource.SCENE)
 	_model_instance.position = resource.POSITION
 	_model_instance.rotation = resource.ROTATION
 	_model_instance.scale.x = resource.SCALE
@@ -71,7 +71,7 @@ func save_position():
 @export_range(0,3,0.05, "or_greater") var scale := 1.0:
 	set(value):
 		scale = float(value)
-		_model_instance.scale = Vector3.
+		_model_instance.scale = Vector3(scale,scale,scale)
 
 func _init():
 	if not Engine.is_editor_hint():
