@@ -6,9 +6,9 @@ var weapon_loaded := false
 var _weapon_instance: Node3D = null
 
 func _ready():
-	loadweapon(psniper)
+	load_weapon(psniper)
 	
-func loadweapon(res):
+func load_weapon(res):
 	if _weapon_instance:
 		_weapon_instance.queue_free()
 	if res.SCENE:
@@ -23,9 +23,9 @@ func loadweapon(res):
 		
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("number_1"):
-		loadweapon(psniper)
+		load_weapon(psniper)
 	if Input.is_action_just_pressed("number_2"):
-		loadweapon(prlauncher)
+		load_weapon(prlauncher)
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot") and weapon_loaded:
