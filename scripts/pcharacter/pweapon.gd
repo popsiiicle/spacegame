@@ -62,6 +62,7 @@ func path_particle(particlescene: PackedScene,startpoint: Marker3D):
 	PARTICLE.rotation = gvars.pcamera.global_rotation
 	
 var LeftClickCooldown: Cooldown = Cooldown.create(self)
+var RightClickCooldown: Cooldown = Cooldown.create(self)
 
 func leftclick():
 	pass
@@ -70,5 +71,12 @@ func _leftclick():
 	if LeftClickCooldown.is_stopped():
 		leftclick()
 
+func _rightclick():
+	if RightClickCooldown.is_stopped():
+		rightclick()
+
 func rightclick():
+	pass
+
+func rightclickrelease():
 	pass

@@ -34,8 +34,15 @@ func _process(_delta: float) -> void:
 			loadweapon(psniperres)
 		if Input.is_action_just_pressed("number_2"):
 			loadweapon(prlauncherres)
-		if Input.is_action_just_pressed("shoot") and weapon_loaded:
-			_weapon_instance._leftclick()
+		if weapon_loaded:
+			if Input.is_action_just_pressed("shoot"):
+				_weapon_instance._leftclick()
+			if Input.is_action_just_pressed("secondaryfire"):
+				_weapon_instance._rightclick()
+			if Input.is_action_just_released("secondaryfire"):
+				_weapon_instance.rightclickrelease()
+			
+		
 	
 func _physics_process(_delta):
 	pass
