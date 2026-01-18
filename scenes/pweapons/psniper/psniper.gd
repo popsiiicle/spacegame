@@ -12,11 +12,11 @@ func leftclick():
 	audio_player.play(0)
 	path_particle(hitscan_path_particle,emission_point)
 	LeftClickCooldown.start(1)
-	#Add effects here
-
+	
 func rightclick():
 	gvars.pcamera.fov = zoom_fov
 	print("zoom in")
+	
 func rightclickrelease():
 	gvars.pcamera.resetfov()
 	print("zoom out")
