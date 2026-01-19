@@ -6,20 +6,22 @@ var psniperres := load("res://scenes/pweapons/psniper/psniper.tres")
 var prlauncherres := load("res://scenes/pweapons/prlauncher/prlauncher.tres")
 @export var editorres: pweaponres
 var weapon_loaded := false
-var _weapon_instance: Node3D = null
+var _WEAPON_INSTANCE: Node3D = null
+
 
 func _ready():
-	loadweapon(psniperres)
+	load_weapon(psniperres)
 	
-func loadweapon(res):
-	if _weapon_instance:
-		_weapon_instance.queue_free()
+## Loads the apropriate weapon to the player model
+func load_weapon(res: pweaponres):
+	if _WEAPON_INSTANCE:
+		_WEAPON_INSTANCE.queue_free()
 	if res.SCENE:
-		_weapon_instance = res.SCENE.instantiate()
-		add_child(_weapon_instance)
-		_weapon_instance.rotation = res.ROTATION
-		_weapon_instance.position = res.POSITION
-		_weapon_instance.scale = Vector3(res.SCALE,res.SCALE,res.SCALE)
+		_WEAPON_INSTANCE = res.SCENE.instantiate()
+		add_child(_WEAPON_INSTANCE)
+		_WEAPON_INSTANCE.rotation = res.ROTATION
+		_WEAPON_INSTANCE.position = res.POSITION
+		_WEAPON_INSTANCE.scale = Vector3(res.SCALE,res.SCALE,res.SCALE)
 		weapon_loaded = true
 	else:
 		push_warning("No model scene set for weapon.")
@@ -27,24 +29,21 @@ func loadweapon(res):
 func _process(_delta: float) -> void:
 	
 	if Engine.is_editor_hint():
-		#loadweapon(editorres)
+		#load_weapon(editorres)
 		pass
 	else:
+		
+		# Loads sniper when 1 is pressed, loads rl when 2 is pressed
 		if Input.is_action_just_pressed("number_1"):
-			loadweapon(psniperres)
+			load_weapon(psniperres)
 		if Input.is_action_just_pressed("number_2"):
-			loadweapon(prlauncherres)
+			load_weapon(prlauncherres)
+			
+		# transfers inputs to the weapon when it is loaded
 		if weapon_loaded:
 			if Input.is_action_just_pressed("shoot"):
-				_weapon_instance._leftclick()
+				_WEAPON_INSTANCE._leftclick()
 			if Input.is_action_just_pressed("secondaryfire"):
-				_weapon_instance._rightclick()
+				_WEAPON_INSTANCE._rightclick()
 			if Input.is_action_just_released("secondaryfire"):
-				_weapon_instance.rightclickrelease()
-			
-		
-	
-func _physics_process(_delta):
-	pass
-	
-	
+				_WEAPON_INSTANCE.rightclick_release()

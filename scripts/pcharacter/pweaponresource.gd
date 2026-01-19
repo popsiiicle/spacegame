@@ -1,4 +1,7 @@
 class_name pweaponres extends Resource
+## Holds information about the weapon name, scene, and position it should be loaded in
+## Weapon information for after loading should be contained in the weapon script
+
 
 @export var NAME: String ## The name of the weapon
 @export var SCENE: PackedScene ## The scene containing the weapon model

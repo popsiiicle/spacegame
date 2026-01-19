@@ -1,5 +1,7 @@
 class_name SpaceState
 extends PlayerMovementState
+## Player state for when the playercharacter is floating in the air (default state)
+
 
 const THRUSTVEL = 30 ## Constant thrust velocity using WSAD keys
 const TOPAIRSPEED = 30 ## At this speed, the thrusters shut off
@@ -24,6 +26,7 @@ func physics_update(delta):
 			velocity = velocity*(TOPAIRSPEED/velocity.length())
 			
 	
+	# Add a slowdown later
 	if Input.is_action_just_pressed("stop"):
 		velocity = Vector3.ZERO
 	#re-update global var

@@ -14,32 +14,29 @@ var rotcameramod: bool ##Whether the rotation modifier for the camera is current
 var neckroty: float ##The current y rotation of the neck node
 var camrotx: float ##The current x rotation of the camera node
 var msign: int ##The sign of left right or up down mouse movement
+var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of the camera
 
 #dash ability constants
 var DashCD: Cooldown = Cooldown.create(self) ## cooldown for the dash ability
-#timer for dash cooldown
-
-
-var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of the camera
-
-#On game start
-func _ready():
-	
-	#initialize Dash Cooldown
-	
-	#initialize global variable
-	gvars.player = self
-
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func set_gravity(new_gravity: Vector3):
 	gravity = new_gravity  # Assuming `gravity` is a variable controlling movement
 
-#Mouse and Neck Variables
+#Pivot and Neck Node Variables
 @onready var cpivot := $CameraPivot
 @onready var neck := $CameraPivot/Neck
 @onready var camera := $CameraPivot/Neck/Camera3D
+
+
+
+
+#On game start
+func _ready():
+	#load player as global variable
+	gvars.player = self
+
 
 #Input.get_vector(), but for 3 axis.  Used for RCS movement
 func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg_z: String, pos_z: String) -> Vector3:
@@ -85,15 +82,17 @@ func _unhandled_input(event):
 					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
 			
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	#adds variables to debug panels
 	var dashcdstr = "%.1f" % DashCD.time_left
 	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
 	gvars.debug.add_property("Touching Wall",is_on_wall(),5)
 	
+	
 	#gets input direction in 3d and constrains it to 2d
 	var input_dir = get_vector3("left", "right", "crouch", "jump","forward","back")
+
 	#var direction_2d = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
 	direction_3d = camera.global_transform.basis * input_dir
 
@@ -111,7 +110,7 @@ func _physics_process(delta):
 	#transform.basis = transform.basis.rotated(camera.global_transform.basis.z, ROTATIONSPEED * rotv)
 	
 	#update from spacestate
-	# DO LATER
+	# idk what this was
 	#
 	#
 	

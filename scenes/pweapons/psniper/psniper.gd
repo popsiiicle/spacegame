@@ -8,7 +8,7 @@ var zoom_fov: float = 35
 @onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 func leftclick():
-	hitscandmg(damage)
+	hitscan_damage(damage)
 	audio_player.play(0)
 	path_particle(hitscan_path_particle,emission_point)
 	LeftClickCooldown.start(1)
@@ -18,5 +18,5 @@ func rightclick():
 	print("zoom in")
 	
 func rightclickrelease():
-	gvars.pcamera.resetfov()
+	gvars.pcamera.reset_fov()
 	print("zoom out")
