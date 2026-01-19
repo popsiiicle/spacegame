@@ -17,6 +17,6 @@ func rightclick():
 	gvars.pcamera.fov = zoom_fov
 	print("zoom in")
 	
-func rightclickrelease():
+func rightclick_release():
 	gvars.pcamera.reset_fov()
 	print("zoom out")
