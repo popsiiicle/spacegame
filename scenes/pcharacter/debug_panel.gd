@@ -25,7 +25,7 @@ func _physics_process(delta):
 		
 		# Display TPS only when visible
 		tps = "%.2f" % (1.0/delta)
-		add_property("TPS",tps,0.5)
+		add_property("TPS",tps,1)
 
 func _input(event):
 	# Toggles debug window when f1 is pressed
