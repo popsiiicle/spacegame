@@ -9,7 +9,7 @@ const DASHSTRENGTH = 10 ## How strong the dash ability is
 
 #camera variables
 const SENS = 0.001 ## Mouse Sensitivity
-const ROTATIONSPEED = 0.01 ## How fast the character rotates
+const ROTATION_SPEED = 0.01 ## How fast the character rotates
 var rotcameramod: bool ##Whether the rotation modifier for the camera is currently being held down
 var neckroty: float ##The current y rotation of the neck node
 var camrotx: float ##The current x rotation of the camera node
@@ -75,7 +75,7 @@ func _unhandled_input(event):
 			
 			#Rotate camera instead of yaw when the rotate button is held down
 			if rotcameramod:
-				transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATIONSPEED)
+				transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
 			elif msign != 0:
 				if msign * camrotx < deg_to_rad(60):
 					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
