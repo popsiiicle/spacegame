@@ -1,12 +1,12 @@
 # Roadmap
 
-* Clean up and comment code
+### ~Basic Movement~
 
-### Basic Movement
+* ~added basic zero g movement~
+* ~added dash~
+* ~added statemachine, spacestate, and slidingplayerstate~
 
--add later (teehee)
-
-### The Shooting Part
+### ~The Shooting Part~
 
 * ~add basic weapon model~
 * ~weapon resource and initialization~
@@ -16,9 +16,8 @@
 * ~general cooldown script, add cooldown for shooting~
 * ~sounds, hit effects, tracers~
 * ~rocket launcher, projectile spawning in weapon class~
-* sniper scope so I can go crazy
-* integrate weaponrig code into state machine (maybe save for later)
-* clean up shooting code
+* ~sniper scope so I can go crazy~
+* ~clean up shooting code~
 
 ### Peer-To-Peer Multiplayer
 * should be very easy and totally painless
@@ -29,8 +28,10 @@
 * round player model
 * ~mouse rotation~
 * add camera snap
+* option for normal 360 camera
 * balance movement stats
 * make backwards drift go slower
+* dash is oomphier when going against momentum
 
 ### polish
 * basic ui
@@ -39,6 +40,7 @@
 * standardize variables
 * add local classes
 * controls and sens customization
+* integrate weaponrig code into state machine (maybe save for later)
 
 ## ***FIRST PLAYTEST***
 
