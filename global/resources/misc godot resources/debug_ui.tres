@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://coft00lm1ektl"]
 
-[ext_resource type="StyleBox" uid="uid://b1xkuo5l7wo5x" path="res://resources/misc godot resources/debug_stylebox.tres" id="1_d82wb"]
+[ext_resource type="StyleBox" uid="uid://b1xkuo5l7wo5x" path="res://global/resources/misc godot resources/debug_stylebox.tres" id="1_d82wb"]
 
 [resource]
 MarginContainer/constants/margin_bottom = 10

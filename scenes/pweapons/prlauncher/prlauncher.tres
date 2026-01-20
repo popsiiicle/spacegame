@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="pweaponres" load_steps=3 format=3 uid="uid://bvmnu84mn3tm0"]
 
 [ext_resource type="PackedScene" uid="uid://bht8esp4idi8i" path="res://scenes/pweapons/prlauncher/prlauncher.tscn" id="1_4nc6y"]
-[ext_resource type="Script" uid="uid://b1rbi1qxn0dpm" path="res://scripts/pcharacter/pweaponresource.gd" id="1_hv54i"]
+[ext_resource type="Script" uid="uid://b1rbi1qxn0dpm" path="res://scenes/pweapons/templates/pweaponresource.gd" id="1_hv54i"]
 
 [resource]
 script = ExtResource("1_hv54i")
