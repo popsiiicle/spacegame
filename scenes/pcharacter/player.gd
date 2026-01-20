@@ -18,6 +18,7 @@ var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of t
 
 #dash ability constants
 var DashCD: Cooldown = Cooldown.create(self) ## cooldown for the dash ability
+var dashdirection: Vector3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -100,7 +101,11 @@ func _physics_process(_delta):
 	
 	#dash execution
 	if Input.is_action_pressed("dash") and DashCD.is_stopped() == true:
-		velocity = velocity + direction_3d * DASHSTRENGTH
+		if direction_3d == Vector3.FORWARD or direction_3d == Vector3.ZERO:
+			dashdirection = - gvars.pcamera.global_basis.z
+		else:
+			dashdirection = direction_3d
+		velocity = velocity + dashdirection * DASHSTRENGTH
 		DashCD.start()
 	
 	#rotation
