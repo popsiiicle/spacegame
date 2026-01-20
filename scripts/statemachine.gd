@@ -31,7 +31,7 @@ func _physics_process(delta):
 	current_state.physics_update(delta)
 
 
-# When states transition between each other
+## Transitions the statemachine to the new state inputted
 func on_child_transition(new_state_name: StringName) -> void:
 	var new_state = states.get(new_state_name)
 	if new_state != null:

@@ -1,9 +1,10 @@
 class_name Cooldown extends Timer
 
-
-static func create(caller):
+## Creates cooldown
+## makes it the child of parent input and returns the timer
+static func create(parent: Node):
 	var newcd = Cooldown.new()
-	caller.add_child(newcd)
+	parent.add_child(newcd)
 	return newcd
 
 func _ready():
