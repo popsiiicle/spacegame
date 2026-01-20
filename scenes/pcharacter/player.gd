@@ -8,7 +8,9 @@ const JUMP_VELOCITY = 4.5 ## Player jump velocity
 const DASHSTRENGTH = 20 ## How strong the dash ability is
 
 #camera variables
-const SENS = 0.001 ## Mouse Sensitivity
+const UNSCOPED_SENS = 0.001 ## Mouse sensitivity
+const SCOPED_SENS_MULTIPLIER = 0.3
+var sensitivity: float
 const ROTATION_SPEED = 0.01 ## How fast the character rotates
 var rotcameramod: bool ##Whether the rotation modifier for the camera is currently being held down
 var neckroty: float ##The current y rotation of the neck node
@@ -56,7 +58,10 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			
+			if gvars.pcamera.fov < 90:
+				sensitivity = SCOPED_SENS_MULTIPLIER * UNSCOPED_SENS
+			else:
+				sensitivity = UNSCOPED_SENS
 			
 			#controls up and down movements of the mouse, moves neck if neck is not moved to the max, rotates body if it isn't
 			rotcameramod = Input.is_action_pressed("rotate")
@@ -64,9 +69,9 @@ func _unhandled_input(event):
 			msign = sign(-event.relative.x)
 			if msign != 0 and !rotcameramod:
 				if msign * neckroty < deg_to_rad(60):
-					neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*SENS)
+					neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
 				else:
-					cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*SENS)
+					cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
 			
 			
 			#controls left and right movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
@@ -78,9 +83,9 @@ func _unhandled_input(event):
 				transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
 			elif msign != 0:
 				if msign * camrotx < deg_to_rad(60):
-					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
+					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
 				else:
-					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*SENS)
+					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
 			
 
 func _physics_process(_delta):
