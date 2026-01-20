@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cejr1vwwts4m7"]
-
-[ext_resource type="Texture2D" uid="uid://qha4gw13ybgw" path="res://scenes/samuel.jpg" id="1_jr3hf"]
-
-[node name="samuel" type="Node3D"]
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-texture = ExtResource("1_jr3hf")
