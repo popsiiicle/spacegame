@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://40gjc7ufyy8h"]
+
+[ext_resource type="Script" uid="uid://dgulo1eyhycyq" path="res://scenes/pweapons/psniper/assets/scopeoverlay/sniperscope.gd" id="1_je0w8"]
+[ext_resource type="Texture2D" uid="uid://0auesm0pv14h" path="res://scenes/pweapons/psniper/assets/scopeoverlay/sniper_overlay.tres" id="2_h7v68"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_d0vw4"]
+
+[node name="SniperOverlay" type="CanvasLayer"]
+
+[node name="Viewport" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Viewport"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_je0w8")
+
+[node name="Lens" type="TextureRect" parent="Viewport/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_h7v68")
+expand_mode = 5
+
+[node name="Crosshair" type="Sprite2D" parent="Viewport/Control"]
+
+[node name="SidebarLeft" type="Sprite2D" parent="Viewport/Control"]
+texture = SubResource("CanvasTexture_d0vw4")

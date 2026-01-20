@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bht8esp4idi8i"]
+
+[ext_resource type="Script" uid="uid://bconf1mu15qif" path="res://scenes/pweapons/prlauncher/prlauncher.gd" id="1_bdoww"]
+[ext_resource type="PackedScene" uid="uid://ta2rssm2qoui" path="res://scenes/pweapons/prlauncher/projectile/p_rprojectile.tscn" id="2_04vx3"]
+[ext_resource type="PackedScene" uid="uid://h5jqpqtb3vgo" path="res://scenes/pweapons/prlauncher/assets/scene.gltf" id="2_bdoww"]
+[ext_resource type="AudioStream" uid="uid://ce5bldcjjfa3d" path="res://scenes/pweapons/prlauncher/ES_Multiple Shots, Dull - Epidemic Sound - 2840-4345.wav" id="4_t4vcu"]
+
+[node name="PRLauncher" type="Node3D"]
+script = ExtResource("1_bdoww")
+projectile = ExtResource("2_04vx3")
+metadata/_custom_type_script = "uid://dkuj7mi0q63xu"
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_bdoww")]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61870706, 0, 0)
+stream = ExtResource("4_t4vcu")
+
+[node name="LaunchPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08547437, -1.6079415)
