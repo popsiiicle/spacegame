@@ -67,3 +67,7 @@ and some in the future)
 - balance is very hard when you only care about characters at their strongest (overwatch charavters are meta with certain comp, finals classes are meta based off of meta gadgets
 
 - art style should prioritize depth and visualization bc its what I'm good at
+
+- Lots of characters are good for player expression even though they're not unique
+
+- titanfall grapple animation is sick
