@@ -9,7 +9,7 @@ const DASHSTRENGTH = 20 ## How strong the dash ability is
 
 #camera variables
 const UNSCOPED_SENS = 0.001 ## Mouse sensitivity
-const SCOPED_SENS_MULTIPLIER = 0.3
+const SCOPED_SENS_MULTIPLIER = 0.31
 var sensitivity: float
 const ROTATION_SPEED = 0.01 ## How fast the character rotates
 var rotcameramod: bool ##Whether the rotation modifier for the camera is currently being held down
