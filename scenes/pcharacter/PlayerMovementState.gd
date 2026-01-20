@@ -3,9 +3,9 @@ class_name PlayerMovementState
 extends State
 
 #initializes the variable
-var PLAYER: player
+var PLAYER: Player
 
 #sets player equal to PLAYER
 func _ready() -> void:
 	await owner.ready
-	PLAYER = gvars.player as player
+	PLAYER = gvars.player as Player
