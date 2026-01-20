@@ -5,7 +5,7 @@ extends CharacterBody3D
 #movement constants
 const SPEED = 5.0 ## Player speed
 const JUMP_VELOCITY = 4.5 ## Player jump velocity
-const DASHSTRENGTH = 10 ## How strong the dash ability is
+const DASHSTRENGTH = 20 ## How strong the dash ability is
 
 #camera variables
 const SENS = 0.001 ## Mouse Sensitivity
