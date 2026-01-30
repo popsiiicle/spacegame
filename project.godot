@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 gvars="*res://global/abstract/globalvars.gd"
+networkhandler="*res://global/networking/network_handler.gd"
 
 [display]
 
