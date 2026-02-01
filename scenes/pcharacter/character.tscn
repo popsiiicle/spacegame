@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rl0ria6dghnu" path="res://scenes/pcharacter/player.gd" id="1_gfh01"]
 [ext_resource type="Script" uid="uid://dayrh5mw5t6bj" path="res://scenes/pcharacter/Camera3D.gd" id="2_j2vfj"]
 [ext_resource type="Script" uid="uid://bp81a56ditw6t" path="res://global/state machine template/statemachine.gd" id="2_o1hri"]
-[ext_resource type="Script" uid="uid://yp6d1ifgh274" path="res://scenes/pcharacter/pweapon_rig.gd" id="3_w8ig0"]
+[ext_resource type="Script" uid="uid://2348gpp85rxk" path="res://scenes/pcharacter/pweaponrig.gd" id="3_l0gq2"]
 [ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://global/resources/misc godot resources/debug_ui.tres" id="4_d2p3h"]
 [ext_resource type="Script" uid="uid://bdncpedjqfsrp" path="res://scenes/pcharacter/PlayerMovementState.gd" id="4_urvne"]
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scenes/pcharacter/movement state machine/SpaceState.gd" id="6_ahgpj"]
@@ -11,12 +11,10 @@
 [ext_resource type="Script" uid="uid://cnn6k2lh4hgd" path="res://scenes/pcharacter/debug_panel.gd" id="9_iv4xy"]
 [ext_resource type="Script" uid="uid://bn7w7sirsvnmh" path="res://scenes/pcharacter/crosshair.gd" id="12_7eonc"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w8ig0"]
-points = PackedVector3Array(0.9803443, 0.18346941, 0.031576473, -0.9774768, -0.18335536, -0.09046389, -0.94297564, -0.27401206, -0.18147528, 0.15263842, -0.66663927, 0.7283558, -0.21103743, 0.7883101, 0.57692856, 0.1846268, -0.09156232, -0.9769694, -0.18065868, 0.8177133, -0.54399866, 0.24373744, -0.90968907, -0.3322733, -0.12110857, 0.15290199, 0.97944283, -0.54236937, -0.7247691, 0.42365742, 0.6045881, 0.7243048, -0.33064258, 0.6341709, 0.391896, 0.66407716, -0.87905467, 0.3034896, 0.36517823, -0.54266316, -0.42286858, -0.7239189, 0.8522677, -0.5167305, 0.061846383, -0.7242884, 0.33233634, -0.603236, 0.76009166, -0.12136474, -0.63641554, 0.6380708, -0.24266712, 0.7289589, -0.39456084, 0.9130951, -0.09003904, 0.36554933, 0.9111965, 0.18318951, -0.39456332, -0.91310084, -0.09003961, -0.60435694, -0.2422462, 0.7578527, 0.21337822, 0.4245216, -0.87836534, 0.27424625, -0.91069454, 0.30460545, 0.15287347, -0.66767347, -0.7272839, -0.3329039, 0.2429298, -0.9095657, -0.8165696, 0.5452269, -0.18048012, -0.66276973, 0.51303345, 0.54428345, 0.60458827, -0.72430503, -0.33064267, 0.24386668, 0.6371976, 0.72921044, 0.7294097, 0.63706744, 0.24363628, 0.15433787, -0.091776654, 0.981459)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8obhc"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_w8ig0"]
-radius = 1.0
-height = 2.0
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gwqq1"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
 
 [sub_resource type="PrismMesh" id="PrismMesh_7eonc"]
 size = Vector3(0.1, 0.15, 0.1)
@@ -38,13 +36,11 @@ collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_gfh01")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00093108416, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_w8ig0")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00093108416, 0, 0)
-mesh = SubResource("SphereMesh_w8ig0")
+mesh = SubResource("CapsuleMesh_8obhc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gwqq1")
 
 [node name="CameraPivot" type="Node3D" parent="CharacterBody3D"]
 
@@ -57,8 +53,7 @@ script = ExtResource("2_j2vfj")
 
 [node name="WeaponRig" type="Node3D" parent="CharacterBody3D/CameraPivot/Neck/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.2, 0)
-script = ExtResource("3_w8ig0")
-metadata/_custom_type_script = "uid://2348gpp85rxk"
+script = ExtResource("3_l0gq2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, -2.16)

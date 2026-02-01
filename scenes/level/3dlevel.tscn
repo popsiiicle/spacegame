@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=8 format=3 uid="uid://bfjb177uy7050"]
 
 [ext_resource type="PackedScene" uid="uid://yiapmafoosfp" path="res://scenes/pcharacter/character.tscn" id="2_xuvdx"]
 [ext_resource type="PackedScene" uid="uid://ylmptn4rlb1s" path="res://scenes/dummy/test_dummy.tscn" id="3_cclwq"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
-[ext_resource type="PackedScene" uid="uid://due2johbjwb50" path="res://scenes/ncharacter/opponent.tscn" id="4_sxl2r"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7hgs"]
@@ -48,8 +47,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.851708)
 
 [node name="TestDummy" parent="." instance=ExtResource("3_cclwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4076266)
-
-[node name="Opponent" parent="." instance=ExtResource("4_sxl2r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.834167, 0, 1.6746166)
 
 [node name="NetworkTree" parent="." instance=ExtResource("5_6dnwg")]
