@@ -6,8 +6,9 @@ extends Camera3D
 
 func _ready():
 	#loads variable permanently so other scripts can reference it
+	await owner.ready
 	gvars.pcamera = self
-
+	make_current()
 func reset_fov():
 	#resets fov when the function is called
 	fov = defaultfov

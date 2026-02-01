@@ -1,6 +1,11 @@
 class_name Player
 extends CharacterBody3D
 
+func _enter_tree():
+	set_multiplayer_authority(str(name).to_int())
+	print(str(name).to_int())
+
+
 
 #movement constants
 const SPEED = 5.0 ## Player speed
@@ -40,7 +45,6 @@ func _ready():
 	#load player as global variable
 	gvars.player = self
 
-
 #Input.get_vector(), but for 3 axis.  Used for RCS movement
 func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg_z: String, pos_z: String) -> Vector3:
 	return Vector3(
@@ -52,6 +56,7 @@ func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg
 
 #Controls Mouse Input and converts it to neck and camera rotation
 func _unhandled_input(event):
+	if !is_multiplayer_authority(): return
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):

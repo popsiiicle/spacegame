@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=9 format=3 uid="uid://bfjb177uy7050"]
 
-[ext_resource type="PackedScene" uid="uid://yiapmafoosfp" path="res://scenes/pcharacter/character.tscn" id="2_xuvdx"]
+[ext_resource type="Script" uid="uid://cbyivc4kfpc84" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://ylmptn4rlb1s" path="res://scenes/dummy/test_dummy.tscn" id="3_cclwq"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
+[ext_resource type="PackedScene" uid="uid://bklqvnu5bwflo" path="res://scenes/pcharacter/user_interface.tscn" id="5_wfk1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7hgs"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,7 +19,8 @@ sky = SubResource("Sky_jt2xe")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Node3D" type="Node3D"]
+[node name="Level" type="Node3D"]
+script = ExtResource("1_6dnwg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_li53y")
@@ -42,10 +44,16 @@ transform = Transform3D(0.452046, 0.891995, 0, -0.891995, 0.452046, 0, 0, 0, 1, 
 [node name="floatingdebris5" parent="." instance=ExtResource("3_jbaw8")]
 transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.318347, -0.318038, -0.0140303, 0.947974, 24.4647, 19.3807, 13.5258)
 
-[node name="Node3D" parent="." instance=ExtResource("2_xuvdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.851708)
-
 [node name="TestDummy" parent="." instance=ExtResource("3_cclwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4076266)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5401392, -11.849176)
 
 [node name="NetworkTree" parent="." instance=ExtResource("5_6dnwg")]
+
+[node name="PlayerSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.690218, 0, 0.348876)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PlayerSpawner"]
+_spawnable_scenes = PackedStringArray("uid://yiapmafoosfp")
+spawn_path = NodePath("../..")
+
+[node name="UserInterface" parent="." instance=ExtResource("5_wfk1n")]
