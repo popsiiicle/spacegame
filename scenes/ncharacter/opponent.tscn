@@ -1,27 +1,29 @@
 [gd_scene load_steps=4 format=3 uid="uid://due2johbjwb50"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_nh171"]
+[ext_resource type="Script" uid="uid://c7dq4qbjdln01" path="res://scenes/ncharacter/n_weapon_rig.gd" id="1_bm0s6"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nh171"]
-points = PackedVector3Array(0.4578707, 0.19807906, 0.01578243, -0.48873997, -0.09168735, -0.04518683, -0.47150937, -0.1370268, -0.090701535, 0.07635914, -0.33327514, 0.36417928, 0.13656896, -0.33242497, -0.3469059, -0.15161654, 0.47198188, -0.060245913, -0.10534735, 0.21193622, 0.43966028, -0.045016855, 0.19809827, -0.4564163, 0.4090765, -0.15116782, 0.2425159, -0.27137637, -0.37776056, 0.18187061, 0.41147974, -0.07598096, -0.27324012, 0.19819722, -0.4561612, -0.04493101, -0.24064063, -0.33167413, -0.2857683, 0.22713655, 0.2567203, 0.36304116, 0.22752243, 0.42360392, -0.13548777, -0.37899047, 0.060702223, 0.31946206, -0.40674683, 0.18104935, -0.22569102, -0.014631338, -0.09176946, 0.49022886, -0.37785473, 0.30279276, 0.121712334, 0.046232317, 0.45601088, 0.19818504, -0.22746402, -0.060786348, -0.44034815, 0.22845526, 0.06072284, -0.43988743, -0.09113759, -0.48924586, -0.045174047, 0.44186506, -0.22821625, -0.044958085, 0.31717873, 0.24121423, -0.30081153, -0.044848714, 0.39473665, -0.30295488, -0.316348, -0.19622163, 0.33255145, 0.19844188, -0.03042933, 0.45723665, 0.061471395, -0.1522456, -0.47130713, 0.36308852, 0.25670764, 0.22707908, 0.15213433, -0.43948856, 0.18237916, -0.21072462, 0.36227608, 0.2722302)
+points = PackedVector3Array(0.9803443, 0.18346941, 0.031576473, -0.9774768, -0.18335536, -0.09046389, -0.94297564, -0.27401206, -0.18147528, 0.15263842, -0.66663927, 0.7283558, -0.21103743, 0.7883101, 0.57692856, 0.1846268, -0.09156232, -0.9769694, -0.18065868, 0.8177133, -0.54399866, 0.24373744, -0.90968907, -0.3322733, -0.12110857, 0.15290199, 0.97944283, -0.54236937, -0.7247691, 0.42365742, 0.6045881, 0.7243048, -0.33064258, 0.6341709, 0.391896, 0.66407716, -0.87905467, 0.3034896, 0.36517823, -0.54266316, -0.42286858, -0.7239189, 0.8522677, -0.5167305, 0.061846383, -0.7242884, 0.33233634, -0.603236, 0.76009166, -0.12136474, -0.63641554, 0.6380708, -0.24266712, 0.7289589, -0.39456084, 0.9130951, -0.09003904, 0.36554933, 0.9111965, 0.18318951, -0.39456332, -0.91310084, -0.09003961, -0.60435694, -0.2422462, 0.7578527, 0.21337822, 0.4245216, -0.87836534, 0.27424625, -0.91069454, 0.30460545, 0.15287347, -0.66767347, -0.7272839, -0.3329039, 0.2429298, -0.9095657, -0.8165696, 0.5452269, -0.18048012, -0.66276973, 0.51303345, 0.54428345, 0.60458827, -0.72430503, -0.33064267, 0.24386668, 0.6371976, 0.72921044, 0.7294097, 0.63706744, 0.24363628, 0.15433787, -0.091776654, 0.981459)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bm0s6"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 2
-properties/1/path = NodePath(".:linear_velocity")
-properties/1/spawn = true
-properties/1/replication_mode = 2
+[sub_resource type="SphereMesh" id="SphereMesh_bm0s6"]
+radius = 1.0
+height = 2.0
 
-[node name="Opponent" type="RigidBody3D"]
-collision_layer = 0
-collision_mask = 15
+[node name="Opponent" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_nh171")
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00093108416, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_nh171")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_bm0s6")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00093108416, 0, 0)
+mesh = SubResource("SphereMesh_bm0s6")
+
+[node name="OpponentCamera" type="Node3D" parent="CharacterBody3D"]
+
+[node name="WeaponRig" type="Node3D" parent="CharacterBody3D/OpponentCamera"]
+script = ExtResource("1_bm0s6")
+metadata/_custom_type_script = "uid://2348gpp85rxk"
