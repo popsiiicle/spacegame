@@ -7,11 +7,14 @@ const THRUSTVEL = 30 ## Constant thrust velocity using WSAD keys
 const TOPAIRSPEED = 30 ## At this speed, the thrusters shut off
 var velocity = Vector3.ZERO ## Shortcut for the player's velocity
 var direction_3d = Vector3.ZERO ## Shortcut for the player's input in player.gd
-
 #func update(delta):
 	
 func physics_update(delta):
-	#if !is_multiplayer_authority(): return
+	#await owner.ready
+	if !is_multiplayer_authority(): 
+		return
+	else:
+		gvars.debug.add_property("is_authority",gvars.player.get_owner().name + str(is_multiplayer_authority()),90)
 	#shortcut vars
 	direction_3d = gvars.player.direction_3d
 	velocity = gvars.player.velocity

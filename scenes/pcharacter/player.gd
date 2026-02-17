@@ -34,9 +34,8 @@ func set_gravity(new_gravity: Vector3):
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name))
-	print("multiplayer authority:")
-	print(get_owner())
-	print(is_multiplayer_authority())
+	gfunc.cprint(self,"if %s equals %s" % [get_owner().name, str(multiplayer.get_unique_id())])
+	gfunc.cprint(self,"then multiplayer authority should be equal (it is %s)" % is_multiplayer_authority())
 
 #On game start
 func _ready():
