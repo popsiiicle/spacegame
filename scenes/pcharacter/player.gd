@@ -1,12 +1,6 @@
 class_name Player
 extends CharacterBody3D
 
-func _enter_tree():
-	set_multiplayer_authority(str(name).to_int())
-	print(str(name).to_int())
-
-
-
 #movement constants
 const SPEED = 5.0 ## Player speed
 const JUMP_VELOCITY = 4.5 ## Player jump velocity
@@ -38,14 +32,17 @@ func set_gravity(new_gravity: Vector3):
 @onready var camera := $CameraPivot/Neck/Camera3D
 
 
-
+func _enter_tree():
+	set_multiplayer_authority(int(get_owner().name))
+	print("multiplayer authority:")
+	print(get_owner())
+	print(is_multiplayer_authority())
 
 #On game start
 func _ready():
 	#load player as global variable
 	gvars.player = self
-
-#Input.get_vector(), but for 3 axis.  Used for RCS movement
+	#Input.get_vector(), but for 3 axis.  Used for RCS movement
 func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg_z: String, pos_z: String) -> Vector3:
 	return Vector3(
 		Input.get_action_strength(pos_x) - Input.get_action_strength(neg_x),
@@ -56,13 +53,13 @@ func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg
 
 #Controls Mouse Input and converts it to neck and camera rotation
 func _unhandled_input(event):
-	if !is_multiplayer_authority(): return
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
+			if !is_multiplayer_authority(): return
 			if gvars.pcamera.fov < 90:
 				sensitivity = SCOPED_SENS_MULTIPLIER * UNSCOPED_SENS
 			else:
@@ -96,6 +93,8 @@ func _unhandled_input(event):
 func _physics_process(_delta):
 	
 	#adds variables to debug panels
+	if !is_multiplayer_authority(): return
+
 	var dashcdstr = "%.1f" % DashCD.time_left
 	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
 	gvars.debug.add_property("Touching Wall",is_on_wall(),5)

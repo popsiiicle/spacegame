@@ -29,7 +29,8 @@ func enter():
 	
 	
 func physics_update(_delta):
-	
+	if !is_multiplayer_authority(): return
+
 	#DI while sliding code (might add later, probably all wrong)
 	
 	#cameradirection = 

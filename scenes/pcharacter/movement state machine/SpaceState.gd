@@ -11,12 +11,10 @@ var direction_3d = Vector3.ZERO ## Shortcut for the player's input in player.gd
 #func update(delta):
 	
 func physics_update(delta):
-
-	
+	#if !is_multiplayer_authority(): return
 	#shortcut vars
-	direction_3d = PLAYER.direction_3d
-	velocity = PLAYER.velocity
-	
+	direction_3d = gvars.player.direction_3d
+	velocity = gvars.player.velocity
 	#directional movement code (pressing buttons makes you move in that direction in space)
 	if direction_3d:
 		velocity += direction_3d*THRUSTVEL*delta
@@ -31,8 +29,9 @@ func physics_update(delta):
 		velocity = Vector3.ZERO
 	#re-update global var
 	#there's a cleaner way to do this, fix later
-	PLAYER.velocity = velocity
-	
+	gvars.player.velocity = velocity
+	gvars.debug.add_property("Velocity",velocity,60)
+	gvars.debug.add_property("pVelocity",gvars.player.velocity,60)
 
 	
 	#go to slidingplayerstate upon touching a wall
