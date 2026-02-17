@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfjb177uy7050"]
 
-[ext_resource type="Script" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
+[ext_resource type="Script" uid="uid://cbyivc4kfpc84" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://ylmptn4rlb1s" path="res://scenes/dummy/test_dummy.tscn" id="3_cclwq"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
@@ -53,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5401392, -11.849176)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.690218, 0, 0.348876)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PlayerSpawner"]
+_spawnable_scenes = PackedStringArray("uid://yiapmafoosfp")
 spawn_path = NodePath("../..")
 
 [node name="UserInterface" parent="." instance=ExtResource("5_wfk1n")]
