@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rl0ria6dghnu" path="res://scenes/pcharacter/player.gd" id="1_gfh01"]
 [ext_resource type="Script" uid="uid://dayrh5mw5t6bj" path="res://scenes/pcharacter/Camera3D.gd" id="2_j2vfj"]
 [ext_resource type="Script" uid="uid://bp81a56ditw6t" path="res://global/state machine template/statemachine.gd" id="2_o1hri"]
-[ext_resource type="Script" path="res://scenes/pcharacter/pweaponrig.gd" id="3_l0gq2"]
+[ext_resource type="Script" uid="uid://2348gpp85rxk" path="res://scenes/pcharacter/pweaponrig.gd" id="3_l0gq2"]
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scenes/pcharacter/movement state machine/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scenes/pcharacter/movement state machine/SlidingPlayerState.gd" id="7_xnji0"]
 

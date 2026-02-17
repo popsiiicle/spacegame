@@ -9,7 +9,6 @@
 script = ExtResource("1_6mq4v")
 damage = 25.0
 hitscan_path_particle = ExtResource("2_cvh4q")
-metadata/_custom_type_script = "uid://dkuj7mi0q63xu"
 
 [node name="blockbench_export" parent="." instance=ExtResource("1_gj4gl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.766864, 2)
