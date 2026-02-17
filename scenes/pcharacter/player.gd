@@ -129,3 +129,4 @@ func _physics_process(_delta):
 	#
 	
 	#slides across walls (temporary)
+	move_and_slide()
