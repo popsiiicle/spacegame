@@ -33,7 +33,7 @@ func set_gravity(new_gravity: Vector3):
 
 
 func _enter_tree():
-	set_multiplayer_authority(int(get_owner().name))
+	set_multiplayer_authority(int(get_owner().name),true)
 	gfunc.cprint(self,"if %s equals %s" % [get_owner().name, str(multiplayer.get_unique_id())])
 	gfunc.cprint(self,"then multiplayer authority should be equal (it is %s)" % is_multiplayer_authority())
 
@@ -92,8 +92,6 @@ func _unhandled_input(event):
 func _physics_process(_delta):
 	
 	#adds variables to debug panels
-	if !is_multiplayer_authority(): return
-
 	var dashcdstr = "%.1f" % DashCD.time_left
 	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
 	gvars.debug.add_property("Touching Wall",is_on_wall(),5)
@@ -108,7 +106,7 @@ func _physics_process(_delta):
 	
 	
 	#dash execution
-	if Input.is_action_pressed("dash") and DashCD.is_stopped() == true:
+	if Input.is_action_pressed("dash") and DashCD.is_stopped() and is_multiplayer_authority():
 		if direction_3d == Vector3.FORWARD or direction_3d == Vector3.ZERO:
 			dashdirection = - gvars.pcamera.global_basis.z
 		else:
