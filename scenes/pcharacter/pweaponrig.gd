@@ -28,22 +28,21 @@ func load_weapon(res: pweaponres):
 		
 func _process(_delta: float) -> void:
 	
-	if Engine.is_editor_hint():
-		#load_weapon(editorres)
-		pass
-	else:
+	if Engine.is_editor_hint(): return
+	if !is_multiplayer_authority(): return
+	
+	
+	# Loads sniper when 1 is pressed, loads rl when 2 is pressed
+	if Input.is_action_just_pressed("number_1"):
+		load_weapon(psniperres)
+	if Input.is_action_just_pressed("number_2"):
+		load_weapon(prlauncherres)
 		
-		# Loads sniper when 1 is pressed, loads rl when 2 is pressed
-		if Input.is_action_just_pressed("number_1"):
-			load_weapon(psniperres)
-		if Input.is_action_just_pressed("number_2"):
-			load_weapon(prlauncherres)
-			
-		# transfers inputs to the weapon when it is loaded
-		if weapon_loaded:
-			if Input.is_action_just_pressed("shoot"):
-				_WEAPON_INSTANCE._leftclick()
-			if Input.is_action_just_pressed("secondaryfire"):
-				_WEAPON_INSTANCE._rightclick()
-			if Input.is_action_just_released("secondaryfire"):
-				_WEAPON_INSTANCE.rightclick_release()
+	# transfers inputs to the weapon when it is loaded
+	if weapon_loaded:
+		if Input.is_action_just_pressed("shoot"):
+			_WEAPON_INSTANCE._leftclick()
+		if Input.is_action_just_pressed("secondaryfire"):
+			_WEAPON_INSTANCE._rightclick()
+		if Input.is_action_just_released("secondaryfire"):
+			_WEAPON_INSTANCE.rightclick_release()

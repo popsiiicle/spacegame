@@ -8,7 +8,9 @@ func _ready():
 	#loads variable permanently so other scripts can reference it
 	await owner.ready
 	gvars.pcamera = self
-	make_current()
+	if is_multiplayer_authority():
+		gfunc.cprint(self,"making camera current")
+		make_current()
 func reset_fov():
 	#resets fov when the function is called
 	fov = defaultfov
