@@ -1,6 +1,6 @@
 class_name SpaceState
 extends PlayerMovementState
-## Player state for when the playercharacter is floating in the air (default state)
+## Player state for when the playercharacter is floating in space (default state)
 
 
 const THRUSTVEL = 30 ## Constant thrust velocity using WSAD keys
