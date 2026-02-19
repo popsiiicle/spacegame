@@ -55,7 +55,8 @@ func _enter_tree():
 #On game start
 func _ready():
 	#load player as global variable
-	gvars.player = self
+	if is_multiplayer_authority():
+		gvars.player = self
 	#set player color
 	set_color(mesh)
 
@@ -108,6 +109,8 @@ func _unhandled_input(event):
 			
 
 func _physics_process(_delta):
+	
+	if !is_multiplayer_authority(): return
 	
 	#adds variables to debug panels
 	var dashcdstr = "%.1f" % DashCD.time_left

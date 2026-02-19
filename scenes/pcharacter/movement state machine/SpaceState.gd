@@ -11,11 +11,11 @@ var direction_3d = Vector3.ZERO ## Shortcut for the player's input in player.
 var framecount = 0
 func physics_update(delta):
 	#await gvars.player.ready
-	if !is_multiplayer_authority(): 
-		gvars.debug.add_property("is_not_authority",gvars.player.get_owner().name,90)
-	else:
-		gvars.debug.add_property("is_authority",gvars.player.get_owner().name,91)
-		
+	if !is_multiplayer_authority(): return
+	#	gvars.debug.add_property("is_not_authority",gvars.player.get_owner().name,90)
+	#else:
+	#	gvars.debug.add_property("is_authority",gvars.player.get_owner().name,91)
+	
 	#shortcut vars
 	direction_3d = gvars.player.direction_3d
 	velocity = gvars.player.velocity
