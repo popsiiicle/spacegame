@@ -41,9 +41,9 @@ static var colorarray: Array[Color] = [
 ]
 
 static func set_color(localmeshinstance:MeshInstance3D):
-	playernumber += 1
+	gfunc.cprint(localmeshinstance,"player number for color:" + str(playernumber))
 	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
-
+	playernumber += 1
 	
 
 
@@ -58,6 +58,7 @@ func _ready():
 	if is_multiplayer_authority():
 		gvars.player = self
 	#set player color
+	gfunc.cprint(self,"node %s is ready" % str(get_parent().name))
 	set_color(mesh)
 
 #Input.get_vector(), but for 3 axis.  Used for RCS movement
