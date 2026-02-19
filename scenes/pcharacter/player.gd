@@ -31,6 +31,21 @@ func set_gravity(new_gravity: Vector3):
 @onready var neck := $CameraPivot/Neck
 @onready var camera := $CameraPivot/Neck/Camera3D
 
+@export var mesh: MeshInstance3D
+static var playernumber := 0
+static var colorarray: Array[Color] = [
+	Color(0.1,0.1,1,1),
+	Color(1,0,0,1),
+	Color(0,1,0,1),
+	Color(1,1,0,1)
+]
+
+static func set_color(localmeshinstance:MeshInstance3D):
+	playernumber += 1
+	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
+
+	
+
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
@@ -41,7 +56,10 @@ func _enter_tree():
 func _ready():
 	#load player as global variable
 	gvars.player = self
-	#Input.get_vector(), but for 3 axis.  Used for RCS movement
+	#set player color
+	set_color(mesh)
+
+#Input.get_vector(), but for 3 axis.  Used for RCS movement
 func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg_z: String, pos_z: String) -> Vector3:
 	return Vector3(
 		Input.get_action_strength(pos_x) - Input.get_action_strength(neg_x),

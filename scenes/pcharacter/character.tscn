@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=12 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" uid="uid://rl0ria6dghnu" path="res://scenes/pcharacter/player.gd" id="1_gfh01"]
 [ext_resource type="Script" uid="uid://dayrh5mw5t6bj" path="res://scenes/pcharacter/Camera3D.gd" id="2_j2vfj"]
@@ -7,7 +7,10 @@
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scenes/pcharacter/movement state machine/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scenes/pcharacter/movement state machine/SlidingPlayerState.gd" id="7_xnji0"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbh7n"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8obhc"]
+material = SubResource("StandardMaterial3D_jbh7n")
 height = 1.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gwqq1"]
@@ -20,10 +23,11 @@ size = Vector3(0.1, 0.15, 0.1)
 
 [node name="pCharacter" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("mesh")]
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_gfh01")
+mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_8obhc")
