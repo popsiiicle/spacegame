@@ -74,6 +74,7 @@ script = ExtResource("6_ahgpj")
 [node name="SlidingState" type="Node" parent="CharacterBody3D/PlayerStateMachine"]
 script = ExtResource("7_xnji0")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="CharacterBody3D"]
+root_path = NodePath("../..")
 replication_config = SubResource("SceneReplicationConfig_jbh7n")
 visibility_update_mode = 1
