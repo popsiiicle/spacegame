@@ -7,8 +7,8 @@ extends Camera3D
 func _ready():
 	#loads variable permanently so other scripts can reference it
 	await owner.ready
-	gvars.pcamera = self
 	if is_multiplayer_authority():
+		gvars.pcamera = self
 		gfunc.cprint(self,"making camera current")
 		make_current()
 func reset_fov():
