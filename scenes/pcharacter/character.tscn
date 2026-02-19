@@ -55,7 +55,7 @@ current_state = NodePath("SpaceState")
 [node name="SpaceState" type="Node" parent="CharacterBody3D/PlayerStateMachine"]
 script = ExtResource("6_ahgpj")
 
-[node name="SlidingPlayerState" type="Node" parent="CharacterBody3D/PlayerStateMachine"]
+[node name="SlidingState" type="Node" parent="CharacterBody3D/PlayerStateMachine"]
 script = ExtResource("7_xnji0")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

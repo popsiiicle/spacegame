@@ -1,4 +1,4 @@
-class_name SlidingPlayerState
+class_name SlidingState
 
 
 extends PlayerMovementState

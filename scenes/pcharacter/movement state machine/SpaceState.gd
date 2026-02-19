@@ -37,9 +37,8 @@ func physics_update(delta):
 	gvars.debug.add_property("Velocity",velocity,60)
 	gvars.debug.add_property("pVelocity",gvars.player.velocity,61)
 
-	
 	#go to slidingplayerstate upon touching a wall
 	if gvars.player.is_on_wall() == true:
-		transition.emit("SlidingPlayerState")
+		transition.emit("SlidingState")
 	
 		
