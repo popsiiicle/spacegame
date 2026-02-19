@@ -20,6 +20,15 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 size = Vector3(0.1, 0.15, 0.1)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jbh7n"]
+properties/0/path = NodePath("CharacterBody3D:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("CharacterBody3D:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("CharacterBody3D:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 2
 
 [node name="pCharacter" type="Node3D"]
 
@@ -64,3 +73,4 @@ script = ExtResource("7_xnji0")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_jbh7n")
+visibility_update_mode = 1
