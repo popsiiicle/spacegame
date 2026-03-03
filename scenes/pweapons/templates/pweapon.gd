@@ -73,7 +73,7 @@ var RightClickCooldown: Cooldown = Cooldown.create(self) ## Cooldown for rightcl
 func leftclick():
 	pass
 
-func _leftclick():
+@rpc("call_local") func _leftclick():
 	if LeftClickCooldown.is_stopped():
 		leftclick()
 

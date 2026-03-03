@@ -41,7 +41,7 @@ func _process(_delta: float) -> void:
 	# transfers inputs to the weapon when it is loaded
 	if weapon_loaded:
 		if Input.is_action_just_pressed("shoot"):
-			_WEAPON_INSTANCE._leftclick()
+			_WEAPON_INSTANCE._leftclick.rpc()
 		if Input.is_action_just_pressed("secondaryfire"):
 			_WEAPON_INSTANCE._rightclick()
 		if Input.is_action_just_released("secondaryfire"):
