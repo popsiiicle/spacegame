@@ -16,8 +16,8 @@ func leftclick():
 
 # Zoom in
 func rightclick():
-	gvars.pcamera.fov = zoom_fov
+	camera.fov = zoom_fov
 
 # Zoom out
 func rightclick_release():
-	gvars.pcamera.reset_fov()
+	camera.reset_fov()

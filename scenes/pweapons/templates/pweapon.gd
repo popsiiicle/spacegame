@@ -2,14 +2,13 @@ class_name pweapon extends Node3D
 ## Abstract class for all weapons.  Contains tools for hitscan, projectiles, and inputs
 
 
-
+@onready var camera: Camera3D = get_parent().get_parent()
 const MAX_RANGE = 1000
 
 ## Casts a ray from the camera and returns the first object it hits. 
 ## Use for custom effects: hitscan_damage() is better suited for dealing damage with hitscan
 func hitscan_raycast() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
-	var camera: Camera3D = gvars.pcamera
 	var screencenter = get_viewport().size / 2
 	var origin = camera.project_ray_origin(screencenter)
 	var end = origin + camera.project_ray_normal(screencenter) * MAX_RANGE
@@ -63,7 +62,7 @@ func path_particle(particlescene: PackedScene,startpoint: Node3D):
 	var PARTICLE = particlescene.instantiate()
 	get_tree().get_current_scene().add_child(PARTICLE)
 	PARTICLE.position = startpoint.global_position
-	PARTICLE.rotation = gvars.pcamera.global_rotation
+	PARTICLE.rotation = camera.global_rotation
 	
 	
 # Cooldowns for shots
