@@ -43,6 +43,6 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("shoot"):
 			_WEAPON_INSTANCE._leftclick.rpc()
 		if Input.is_action_just_pressed("secondaryfire"):
-			_WEAPON_INSTANCE._rightclick()
+			_WEAPON_INSTANCE._rightclick.rpc()
 		if Input.is_action_just_released("secondaryfire"):
-			_WEAPON_INSTANCE.rightclick_release()
+			_WEAPON_INSTANCE.rightclick_release.rpc()
