@@ -10,9 +10,10 @@ var _WEAPON_INSTANCE: Node3D = null
 
 
 func _ready():
-	load_weapon(psniperres)
+	load_weapon.rpc(psniperres)
 	
 ## Loads the apropriate weapon to the player model
+@rpc("any_peer","call_local","reliable")
 func load_weapon(res: pweaponres):
 	if _WEAPON_INSTANCE:
 		_WEAPON_INSTANCE.queue_free()
@@ -34,9 +35,9 @@ func _process(_delta: float) -> void:
 	
 	# Loads sniper when 1 is pressed, loads rl when 2 is pressed
 	if Input.is_action_just_pressed("number_1"):
-		load_weapon(psniperres)
+		load_weapon.rpc(psniperres)
 	if Input.is_action_just_pressed("number_2"):
-		load_weapon(prlauncherres)
+		load_weapon.rpc(prlauncherres)
 		
 	# transfers inputs to the weapon when it is loaded
 	if weapon_loaded:
