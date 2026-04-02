@@ -2,11 +2,11 @@
 
 class_name pweaponrig extends Node3D
 
-var psniperres := load("res://scenes/pweapons/psniper/psniper.tres")
-var prlauncherres := load("res://scenes/pweapons/prlauncher/prlauncher.tres")
-@export var editorres: pweaponres
-var weapon_loaded := false
-var _WEAPON_INSTANCE: Node3D = null
+var psniperres := load("res://scenes/pweapons/psniper/psniper.tres") ## The sniper weapon resource
+var prlauncherres := load("res://scenes/pweapons/prlauncher/prlauncher.tres") ## The sniper weapon resource
+@export var editorres: pweaponres ## weapon resource that is loaded in the editor
+var _WEAPON_INSTANCE: Node3D ## The weapon node
+var weapon_loaded := false ## Whether a weapon is currently loaded
 
 
 func _ready():
@@ -15,11 +15,17 @@ func _ready():
 ## Loads the apropriate weapon to the player model
 @rpc("any_peer","call_local","reliable")
 func load_weapon(res: pweaponres):
+	
+	# Delete current weapon instance if there is one
 	if _WEAPON_INSTANCE:
 		_WEAPON_INSTANCE.queue_free()
+	
+	# Loads the weapon scene from the resource
 	if res.SCENE:
 		_WEAPON_INSTANCE = res.SCENE.instantiate()
 		add_child(_WEAPON_INSTANCE)
+		
+		#adjusts the weapon position from the resource
 		_WEAPON_INSTANCE.rotation = res.ROTATION
 		_WEAPON_INSTANCE.position = res.POSITION
 		_WEAPON_INSTANCE.scale = Vector3(res.SCALE,res.SCALE,res.SCALE)
@@ -29,11 +35,12 @@ func load_weapon(res: pweaponres):
 		
 func _process(_delta: float) -> void:
 	
+	# Run only in game for the multiplayer authority
 	if Engine.is_editor_hint(): return
 	if !is_multiplayer_authority(): return
 	
 	
-	# Loads sniper when 1 is pressed, loads rl when 2 is pressed
+	# Loads sniper when 1 is pressed, loads rocket launcher when 2 is pressed
 	if Input.is_action_just_pressed("number_1"):
 		load_weapon.rpc(psniperres)
 	if Input.is_action_just_pressed("number_2"):
