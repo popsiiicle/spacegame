@@ -47,6 +47,9 @@ transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.31834
 [node name="TestDummy" parent="." instance=ExtResource("3_cclwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5401392, -11.849176)
 
+[node name="TestDummy" parent="TestDummy" instance=ExtResource("3_cclwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5527, 3.5401392, -11.849176)
+
 [node name="NetworkTree" parent="." instance=ExtResource("5_6dnwg")]
 
 [node name="PlayerSpawner" type="Node3D" parent="."]
@@ -57,3 +60,6 @@ _spawnable_scenes = PackedStringArray("uid://yiapmafoosfp")
 spawn_path = NodePath("../..")
 
 [node name="UserInterface" parent="." instance=ExtResource("5_wfk1n")]
+
+[node name="TestDummy2" parent="." instance=ExtResource("3_cclwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.497391, 3.5401392, -11.849176)
