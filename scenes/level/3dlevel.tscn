@@ -45,10 +45,7 @@ transform = Transform3D(0.452046, 0.891995, 0, -0.891995, 0.452046, 0, 0, 0, 1, 
 transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.318347, -0.318038, -0.0140303, 0.947974, 24.4647, 19.3807, 13.5258)
 
 [node name="TestDummy" parent="." instance=ExtResource("3_cclwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5401392, -11.849176)
-
-[node name="TestDummy" parent="TestDummy" instance=ExtResource("3_cclwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5527, 3.5401392, -11.849176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5401392, 4.792959)
 
 [node name="NetworkTree" parent="." instance=ExtResource("5_6dnwg")]
 
@@ -63,3 +60,6 @@ spawn_path = NodePath("../..")
 
 [node name="TestDummy2" parent="." instance=ExtResource("3_cclwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.497391, 3.5401392, -11.849176)
+
+[node name="TestDummy3" parent="." instance=ExtResource("3_cclwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5527, 7.0802784, -13.641905)
