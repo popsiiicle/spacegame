@@ -10,9 +10,11 @@ var weapon_loaded := false ## Whether a weapon is currently loaded
 
 
 func _ready():
+	
+	#loads the sniper rifle on game load
 	load_weapon.rpc(psniperres)
 	
-## Loads the apropriate weapon to the player model
+## Loads the apropriate weapon to the player model from a resource
 @rpc("any_peer","call_local","reliable")
 func load_weapon(res: pweaponres):
 	
