@@ -21,6 +21,10 @@
 
 ### Peer-To-Peer Multiplayer
 * ~should be very easy and totally painless (it wasn't)~
+* ~create client and server~
+* ~network movement~
+* ~network weapons~
+* add and network player damage
 * add basic gamemode (1v1 first to 5)
 * actual map
 
