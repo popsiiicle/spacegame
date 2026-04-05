@@ -57,9 +57,21 @@ func _ready():
 	#load player as global variable
 	if is_multiplayer_authority():
 		gvars.player = self
+	
 	#set player color
 	gfunc.cprint(self,"node %s is ready" % str(get_parent().name))
 	set_color(mesh)
+	
+	# connect signals
+	healthlogic.destroyed.connect(_on_destroyableobject_destroyed) #object destroyed signal
+
+
+@onready var healthlogic: shootable = $DestroyableObject ## health logic node
+
+# Kills itself when health is 0 is recieved
+func _on_destroyableobject_destroyed():
+	get_parent().queue_free()
+	
 
 #Input.get_vector(), but for 3 axis.  Used for RCS movement
 func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg_z: String, pos_z: String) -> Vector3:
