@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=10 format=3 uid="uid://bfjb177uy7050"]
 
 [ext_resource type="Script" uid="uid://cbyivc4kfpc84" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://ylmptn4rlb1s" path="res://scenes/dummy/test_dummy.tscn" id="3_cclwq"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://bklqvnu5bwflo" path="res://scenes/pcharacter/user_interface.tscn" id="5_wfk1n"]
+[ext_resource type="PackedScene" uid="uid://d2w7nugdoc8s5" path="res://global/escapenode/escape_node.tscn" id="6_wfk1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7hgs"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -63,3 +64,5 @@ spawn_path = NodePath("../..")
 
 [node name="TestDummy2" parent="." instance=ExtResource("3_cclwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.497391, 3.5401392, -11.849176)
+
+[node name="EscapeNode" parent="." instance=ExtResource("6_wfk1n")]
