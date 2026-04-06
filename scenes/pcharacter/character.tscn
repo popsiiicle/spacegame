@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=15 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" uid="uid://rl0ria6dghnu" path="res://scenes/pcharacter/player.gd" id="1_gfh01"]
+[ext_resource type="PackedScene" uid="uid://biew2tdja4p0f" path="res://scenes/pcharacter/deathcam/deathcam.tscn" id="2_i5em6"]
 [ext_resource type="Script" uid="uid://dayrh5mw5t6bj" path="res://scenes/pcharacter/Camera3D.gd" id="2_j2vfj"]
 [ext_resource type="Script" uid="uid://bp81a56ditw6t" path="res://global/state machine template/statemachine.gd" id="2_o1hri"]
 [ext_resource type="Script" uid="uid://2348gpp85rxk" path="res://scenes/pcharacter/pweaponrig.gd" id="3_l0gq2"]
@@ -43,6 +44,7 @@ properties/3/replication_mode = 1
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_gfh01")
+deathcamera = ExtResource("2_i5em6")
 mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]

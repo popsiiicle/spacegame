@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://biew2tdja4p0f"]
+
+[ext_resource type="Script" uid="uid://y3et1nyjch3s" path="res://scenes/pcharacter/deathcam/deathcam.gd" id="1_eqece"]
+
+[node name="DeathCamera" type="Camera3D"]
+fov = 90.0
+script = ExtResource("1_eqece")

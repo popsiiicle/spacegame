@@ -31,6 +31,8 @@ func set_gravity(new_gravity: Vector3):
 @onready var neck := $CameraPivot/Neck
 @onready var camera := $CameraPivot/Neck/Camera3D
 
+@export var deathcamera: PackedScene # The scene containing the camera dropped at player death
+
 @export var mesh: MeshInstance3D
 static var playernumber := 0
 static var colorarray: Array[Color] = [
@@ -68,8 +70,12 @@ func _ready():
 
 @onready var healthlogic: shootable = $DestroyableObject ## health logic node
 
-# Kills itself when health is 0 is recieved
+# Death Function
+var deathcamscene ## Scene for the deathcam
 func _on_destroyableobject_destroyed():
+	if is_multiplayer_authority():
+		deathcamscene = deathcamera.instantiate()
+		gvars.level.add_child(deathcamscene)
 	get_parent().queue_free()
 	
 
