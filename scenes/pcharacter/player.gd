@@ -59,7 +59,6 @@ func _ready():
 		gvars.player = self
 	
 	#set player color
-	gfunc.cprint(self,"node %s is ready" % str(get_parent().name))
 	set_color(mesh)
 	
 	# connect signals
