@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scenes/pcharacter/movement state machine/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scenes/pcharacter/movement state machine/SlidingPlayerState.gd" id="7_xnji0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbh7n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwqc5"]
+resource_local_to_scene = true
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8obhc"]
-material = SubResource("StandardMaterial3D_jbh7n")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wwqc5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_wwqc5")
 height = 1.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jbh7n"]
@@ -46,7 +48,7 @@ script = ExtResource("1_gfh01")
 mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_8obhc")
+mesh = SubResource("CapsuleMesh_wwqc5")
 
 [node name="EnvironmentCollisionShape" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("ConvexPolygonShape3D_jbh7n")
