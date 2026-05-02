@@ -3,9 +3,15 @@ class_name shootable extends Node3D
 
 @export var health: float = 100
 
-signal taken_damage(dmg)
+
+
+var source: Node ## Source of Damage
+signal taken_damage(dmg,source)
+
+
 func _ready():
 	taken_damage.connect(_on_taken_damage)
+	
 
 
 func _physics_process(_delta):
@@ -19,7 +25,7 @@ func _on_taken_damage(damage):
 	health -= damage
 	destroy_check()
 
-signal destroyed
+signal destroyed(source)
 func destroy_check():
 	if health <= 0:
-		destroyed.emit()
+		destroyed.emit(source)

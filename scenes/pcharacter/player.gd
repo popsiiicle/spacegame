@@ -69,12 +69,13 @@ func _ready():
 
 @onready var healthlogic: shootable = $DestroyableObject ## health logic node
 
+var last_damaging_entity: Node3D
 # Death Function
 var deathcamscene ## Scene for the deathcam
-func _on_destroyableobject_destroyed():
+func _on_destroyableobject_destroyed(source):
+	last_damaging_entity = source
 	if is_multiplayer_authority():
-		deathcamscene = deathcamera.instantiate()
-		gvars.level.add_child(deathcamscene)
+		DeathCamera.create_death_camera(gvars.player.get_parent(),last_damaging_entity)
 	get_parent().queue_free()
 	
 
