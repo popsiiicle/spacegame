@@ -23,7 +23,7 @@ points = PackedVector3Array(0.48506296, 0.3382968, 0.07881798, -0.48506257, -0.3
 size = Vector3(0.1, 0.15, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i5em6"]
-radius = 3.5247898
+radius = 0.73927927
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jbh7n"]
 properties/0/path = NodePath("CharacterBody3D:position")
@@ -79,7 +79,7 @@ collision_mask = 0
 inertia = Vector3(4.95, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/DestroyableObject/Hitbox"]
-transform = Transform3D(0.99998313, 0, -0.005811914, 0, 1, 0, 0.005811914, 0, 0.99998313, 0.007863879, 0, 0.46848357)
+transform = Transform3D(0.99998313, 0, -0.005811914, 0, 1, 0, 0.005811914, 0, 0.99998313, 0.007863879, 0, -0.010399997)
 shape = SubResource("SphereShape3D_i5em6")
 
 [node name="PlayerStateMachine" type="Node" parent="CharacterBody3D" node_paths=PackedStringArray("current_state")]
