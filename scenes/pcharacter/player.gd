@@ -93,38 +93,37 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			if !is_multiplayer_authority(): return
-			if gvars.pcamera.fov < 90:
-				sensitivity = SCOPED_SENS_MULTIPLIER * UNSCOPED_SENS
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if !is_multiplayer_authority(): return
+		if gvars.pcamera.fov < 90:
+			sensitivity = SCOPED_SENS_MULTIPLIER * UNSCOPED_SENS
+		else:
+			sensitivity = UNSCOPED_SENS
+		
+		#controls up and down movements of the mouse, moves neck if neck is not moved to the max, rotates body if it isn't
+		rotcameramod = Input.is_action_pressed("rotate")
+		neckroty = neck.rotation.y
+		msign = sign(-event.relative.x)
+		if msign != 0 and !rotcameramod:
+			if msign * neckroty < deg_to_rad(60):
+				neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
 			else:
-				sensitivity = UNSCOPED_SENS
-			
-			#controls up and down movements of the mouse, moves neck if neck is not moved to the max, rotates body if it isn't
-			rotcameramod = Input.is_action_pressed("rotate")
-			neckroty = neck.rotation.y
-			msign = sign(-event.relative.x)
-			if msign != 0 and !rotcameramod:
-				if msign * neckroty < deg_to_rad(60):
-					neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
-				else:
-					cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
-			
-			
-			#controls left and right movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
-			camrotx = camera.rotation.x
-			msign = sign(-event.relative.y)
-			
-			#Rotate camera instead of yaw when the rotate button is held down
-			if msign != 0 and rotcameramod:
-				transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
+				cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
+		
+		
+		#controls left and right movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
+		camrotx = camera.rotation.x
+		msign = sign(-event.relative.y)
+		
+		#Rotate camera instead of yaw when the rotate button is held down
+		if msign != 0 and rotcameramod:
+			transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
+		else:
+			if msign * camrotx < deg_to_rad(60):
+				camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
 			else:
-				if msign * camrotx < deg_to_rad(60):
-					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
-				else:
-					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
-			
+				cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
+		
 
 func _physics_process(_delta):
 	
