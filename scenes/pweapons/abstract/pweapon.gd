@@ -31,14 +31,13 @@ func hitscan_damage(damage: float):
 	hitscaninfo = hitscan_raycast()
 	if hitscaninfo != {}:
 		target = hitscaninfo.collider
-		if target is CollisionObject3D:
-			if target.get_collision_layer_value(2) == true:
-				healthnode = target.get_parent()
-				if healthnode is shootable:
-					healthnode.taken_damage.emit(damage)
-					#add error message later if signal is not recieved
-				else:
-					push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
+		if target is CollisionObject3D and target.get_collision_layer_value(2) == true:
+			healthnode = target.get_parent()
+			if healthnode is shootable:
+				healthnode.taken_damage.emit(damage)
+				#add error message later if signal is not recieved
+			else:
+				push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
 		else:
 			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
