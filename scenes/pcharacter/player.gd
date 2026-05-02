@@ -43,7 +43,7 @@ static var colorarray: Array[Color] = [
 ]
 
 static func set_color(localmeshinstance:MeshInstance3D):
-	gfunc.cprint(localmeshinstance,"player number for color:" + str(playernumber))
+	gfunc.cprint(localmeshinstance,"player %s has color %s" % [localmeshinstance.get_parent().get_parent().name,str(playernumber)])
 	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
 	playernumber += 1
 	
@@ -61,7 +61,6 @@ func _ready():
 		gvars.player = self
 	
 	#set player color
-	gfunc.cprint(self,"node %s is ready" % str(get_parent().name))
 	set_color(mesh)
 	
 	# connect signals

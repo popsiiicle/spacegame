@@ -9,10 +9,12 @@
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scenes/pcharacter/movement state machine/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scenes/pcharacter/movement state machine/SlidingPlayerState.gd" id="7_xnji0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbh7n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwqc5"]
+resource_local_to_scene = true
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8obhc"]
-material = SubResource("StandardMaterial3D_jbh7n")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wwqc5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_wwqc5")
 height = 1.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jbh7n"]
@@ -22,7 +24,7 @@ points = PackedVector3Array(0.48506296, 0.3382968, 0.07881798, -0.48506257, -0.3
 size = Vector3(0.1, 0.15, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i5em6"]
-radius = 3.5247898
+radius = 0.73927927
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jbh7n"]
 properties/0/path = NodePath("CharacterBody3D:position")
@@ -48,7 +50,7 @@ deathcamera = ExtResource("2_i5em6")
 mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_8obhc")
+mesh = SubResource("CapsuleMesh_wwqc5")
 
 [node name="EnvironmentCollisionShape" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("ConvexPolygonShape3D_jbh7n")
@@ -79,7 +81,7 @@ collision_mask = 0
 inertia = Vector3(4.95, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/DestroyableObject/Hitbox"]
-transform = Transform3D(0.99998313, 0, -0.005811914, 0, 1, 0, 0.005811914, 0, 0.99998313, 0.007863879, 0, 0.46848357)
+transform = Transform3D(0.99998313, 0, -0.005811914, 0, 1, 0, 0.005811914, 0, 0.99998313, 0.007863879, 0, -0.010399997)
 shape = SubResource("SphereShape3D_i5em6")
 
 [node name="PlayerStateMachine" type="Node" parent="CharacterBody3D" node_paths=PackedStringArray("current_state")]

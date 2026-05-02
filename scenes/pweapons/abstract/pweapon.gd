@@ -44,7 +44,7 @@ func hitscan_damage(damage: float):
 
 
 ## Spawns a projectile from the launchpoint towards the projdirection.  Speed is determined in projectile code
-func spawn_projectile(projpackedscene: PackedScene,projdirection: Vector3, launchpoint: Node3D) -> void:
+func spawn_projectile(projpackedscene: PackedScene,projdirection: Vector3, launchpoint: Node3D, projowner: Node3D) -> void:
 	if projpackedscene is not PackedScene:
 		push_error("projectile scene invalid")
 	else:
@@ -53,6 +53,7 @@ func spawn_projectile(projpackedscene: PackedScene,projdirection: Vector3, launc
 		
 		#adds to root, adds to scene tree later
 		get_tree().get_current_scene().add_child(PROJ)
+		PROJ.projowner = projowner
 		PROJ.position = launchpoint.global_position
 		PROJ.rotation = launchpoint.global_rotation
 

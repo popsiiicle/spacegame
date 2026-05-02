@@ -4,6 +4,7 @@ class_name pProjectile extends RigidBody3D
 @export var projlifespan := 5.0 ## Time before the projectile is deleted
 @export var direct_hit_damage := 100.0
 var projdirection: Vector3 ## Direction in which the Projectile will be initially launched
+var projowner: Node3D
 
 func _ready():
 	# Launches projectile (FIX LATER)
@@ -43,12 +44,13 @@ func on_body_entered(node):
 	
 	#very jank, correct later (check for mask instead or smth)
 	var target = node.get_parent()
-	if target is shootable:
-		on_hit(node,target)
-		target.taken_damage.emit(direct_hit_damage)
-	else:
-		on_miss(node)
-	on_any_collision(node)
+	if target.get_parent() != projowner:
+		if target is shootable:
+			on_hit(node,target)
+			target.taken_damage.emit(direct_hit_damage)
+		else:
+			on_miss(node)
+		on_any_collision(node)
 
 ## spawns the particle scene whenever called
 func play_collision_particle(particle: PackedScene) -> void:
