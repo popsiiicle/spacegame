@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2w7nugdoc8s5"]
-
-[ext_resource type="Script" uid="uid://b62x7t88yuhbs" path="res://global/escapenode/escape_node.gd" id="1_xhgh1"]
-
-[node name="EscapeNode" type="Node"]
-script = ExtResource("1_xhgh1")
