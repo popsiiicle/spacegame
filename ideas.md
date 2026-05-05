@@ -51,6 +51,20 @@ and some in the future)
 - balanced weapons and artifacts that fit the game will become official 
 - workshop mode for complete character that are somewhat balanced
 
+## Artifacts
+- artifacts are various objects that have been found.
+- will be animate/personified
+- contain 4 abilities
+
+#### Peculiar orb
+- Mixup-style artifact
+Abilities:
+- Orb launch: launches the orb in a straight line
+- Orb tp: tp to orb, with explosion, momentun converved
+- orb tp fake: detonate orb and fake tp animation.  orb detonation deals knockback that can be bounced off of with kick
+- kick: kick towards the orb with a boot sticking on an arm
+- fade: push yourself away from the orb
+- some other way to control the orb?
 
 # random ideas
 
