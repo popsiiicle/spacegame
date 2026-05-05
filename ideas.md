@@ -85,3 +85,5 @@ Abilities:
 - Lots of characters are good for player expression even though they're not unique
 
 - titanfall grapple animation is sick
+
+- arena/gladiator theme for playtest 1v1s 
