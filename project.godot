@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 gvars="*res://global/abstract/globalvars.gd"
 networkhandler="*res://global/networking/network_handler.gd"
-EscapeNode="*res://global/escapenode/escape_node.gd"
+escapenode="*res://global/escapenode/escape_node.gd"
 
 [display]
 
