@@ -52,11 +52,13 @@ func _enter_tree():
 	gfunc.cprint(self,"if %s equals %s" % [get_owner().name, str(multiplayer.get_unique_id())])
 	gfunc.cprint(self,"then multiplayer authority should be equal (it is %s)" % is_multiplayer_authority())
 
+
 #On game start
 func _ready():
 	#load player as global variable
 	if is_multiplayer_authority():
 		gvars.player = self
+		gvars.debug.add_property("player id",get_owner().name,50)
 	
 	#set player color
 	set_color(mesh)
