@@ -1,4 +1,4 @@
-class_name shootable extends Node3D
+class_name DamageNode extends Node3D
 #split into 2 classes later
 
 @export var health: float = 100
