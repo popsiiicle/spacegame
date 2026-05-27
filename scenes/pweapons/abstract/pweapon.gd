@@ -37,6 +37,7 @@ func hitscan_damage(damage: float):
 			if healthnode is ShootableObject:
 				healthnode.taken_damage.emit(damage)
 				#add error message later if signal is not recieved
+				# TODO: actually connect to object correctly
 			else:
 				push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
 	else:
