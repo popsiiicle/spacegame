@@ -86,4 +86,6 @@ Abilities:
 
 - titanfall grapple animation is sick
 
-- arena/gladiator theme for playtest 1v1s 
+- arena/gladiator theme for playtest 1v1s
+
+- faster firing weapons can feel more liberating
