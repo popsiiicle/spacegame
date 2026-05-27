@@ -25,6 +25,14 @@ escapenode="*res://global/escapenode/escape_node.gd"
 
 window/vsync/vsync_mode=0
 
+[editor]
+
+run/main_run_args="-client"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sticky_scribe/plugin.cfg")
+
 [input]
 
 forward={
