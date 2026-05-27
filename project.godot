@@ -28,6 +28,10 @@ window/vsync/vsync_mode=0
 
 run/main_run_args="-client"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sticky_scribe/plugin.cfg")
+
 [input]
 
 forward={
