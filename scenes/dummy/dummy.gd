@@ -4,7 +4,7 @@ class_name dummy extends RigidBody3D
 
 # Connects to the destroyableobject node
 func _ready():
-	healthlogic.destroyed.connect(_on_destroyableobject_destroyed)
+	healthlogic.destroy_object.connect(_on_destroyableobject_destroyed)
 	
 # Kills itself whenever the destroyable object is destroyed
 func _on_destroyableobject_destroyed():

@@ -64,7 +64,7 @@ func _ready():
 	set_color(mesh)
 	
 	# connect signals
-	healthlogic.destroyed.connect(_on_destroyableobject_destroyed) #object destroyed signal
+	healthlogic.destroy_object.connect(_on_destroyableobject_destroyed) #object destroyed signal
 
 
 @onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node

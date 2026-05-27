@@ -35,9 +35,8 @@ func hitscan_damage(damage: float):
 		if target is CollisionObject3D and target.get_collision_layer_value(2) == true:
 			healthnode = target.get_parent()
 			if healthnode is ShootableObject:
-				healthnode.taken_damage.emit(damage)
+				healthnode.taken_damage(damage)
 				#add error message later if signal is not recieved
-				# TODO: actually connect to object correctly
 			else:
 				push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
 	else:
@@ -71,11 +70,14 @@ func path_particle(particlescene: PackedScene,startpoint: Node3D):
 var LeftClickCooldown: Cooldown = Cooldown.create(self) ## Cooldown for leftclick()
 var RightClickCooldown: Cooldown = Cooldown.create(self) ## Cooldown for rightclick()
 
+# todo: add comment describing the difference between _leftclick and leftclick
 func leftclick():
 	pass
 
 @rpc("any_peer","call_local","reliable") 
 func _leftclick():
+	# fix: only runs for the person who shoots the gun
+	gfunc.cprint(self,"leftclick called on this peer")
 	if LeftClickCooldown.is_stopped():
 		leftclick()
 

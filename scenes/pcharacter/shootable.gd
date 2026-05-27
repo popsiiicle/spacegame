@@ -3,23 +3,18 @@ class_name ShootableObject extends Node3D
 
 @export var health: float = 100
 
-signal taken_damage(dmg)
-func _ready():
-	taken_damage.connect(_on_taken_damage)
 
-
-func _physics_process(_delta):
-	gvars.debug.add_property("dummyhealth",health,27)
-	if Input.is_key_pressed(KEY_H):
-		health -= 5
-		destroy_check()
-
-
-func _on_taken_damage(damage):
+func taken_damage(damage):
+	if !multiplayer.is_server():
+		printerr("Client Healthnode recieved an input, but taken_damage should only be transmitted serverside")
 	health -= damage
-	destroy_check()
+	sync_health.rpc(health)
 
-signal destroyed
-func destroy_check():
+signal destroy_object
+
+
+@rpc("any_peer")
+func sync_health(new_health):
+	health = new_health
 	if health <= 0:
-		destroyed.emit()
+		destroy_object.emit()
