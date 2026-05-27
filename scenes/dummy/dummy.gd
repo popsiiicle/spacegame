@@ -1,6 +1,6 @@
 class_name dummy extends RigidBody3D
 
-@onready var healthlogic: shootable = $DestroyableObject
+@onready var healthlogic: ShootableObject = $DestroyableObject
 
 # Connects to the destroyableobject node
 func _ready():

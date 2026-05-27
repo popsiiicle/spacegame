@@ -67,7 +67,7 @@ func _ready():
 	healthlogic.destroyed.connect(_on_destroyableobject_destroyed) #object destroyed signal
 
 
-@onready var healthlogic: shootable = $DestroyableObject ## health logic node
+@onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
 # Kills itself when health is 0 is recieved
 func _on_destroyableobject_destroyed():
