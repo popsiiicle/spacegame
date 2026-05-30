@@ -13,7 +13,7 @@ func taken_damage(damage):
 signal destroy_object
 
 
-@rpc("any_peer")
+@rpc("any_peer","call_local")
 func sync_health(new_health):
 	health = new_health
 	if health <= 0:
