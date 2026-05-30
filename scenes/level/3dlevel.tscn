@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://bklqvnu5bwflo" path="res://scenes/pcharacter/user_interface.tscn" id="5_wfk1n"]
-[ext_resource type="Script" uid="uid://b8ytce0gct330" path="res://global/networking/playermanager/player_manager.gd" id="6_wfk1n"]
+[ext_resource type="Script" uid="uid://b8ytce0gct330" path="res://scenes/level/playermanager/player_manager.gd" id="6_wfk1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7hgs"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

@@ -45,12 +45,16 @@ static var colorarray: Array[Color] = [
 static func set_color(localmeshinstance:MeshInstance3D):
 	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
 	playernumber += 1
+	# HACK: need to give each player a respective color that is persistent
+	if playernumber >= 4:
+		playernumber = 0
 	
 
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
 
+@onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
 #On game start
 func _ready():
@@ -63,16 +67,14 @@ func _ready():
 	set_color(mesh)
 	
 	# connect signals
-	healthlogic.destroy_object.connect(_on_destroyableobject_destroyed) #object destroyed signal
+	healthlogic.destroy_object.connect(_player_destroyed) #object destroyed signal
 
 
-@onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
 # Death Function
-var deathcamscene ## Scene for the deathcam
-func _on_destroyableobject_destroyed():
+func _player_destroyed():
 	if is_multiplayer_authority():
-		DeathCamera.create(self)
+		DeathCamera.create(get_parent())
 	get_parent().queue_free()
 	
 
