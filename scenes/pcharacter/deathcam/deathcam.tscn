@@ -12,7 +12,7 @@ script = ExtResource("4_2c2ry")
 top_level = true
 fov = 90.0
 script = ExtResource("1_eqece")
-phantomcamera = NodePath("")
+phantomcamera = NodePath("PhantomCamera3D")
 
 [node name="PhantomCameraHost" type="Node" parent="."]
 process_priority = 300
