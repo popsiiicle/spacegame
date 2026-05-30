@@ -47,7 +47,7 @@ func on_body_entered(node):
 	if target.get_parent() != projowner:
 		if target is shootable:
 			on_hit(node,target)
-			target.taken_damage.emit(direct_hit_damage,projowner)
+			target.taken_damage.emit(direct_hit_damage)
 		else:
 			on_miss(node)
 		on_any_collision(node)
