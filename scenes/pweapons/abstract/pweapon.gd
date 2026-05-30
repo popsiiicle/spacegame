@@ -74,7 +74,6 @@ func leftclick():
 
 @rpc("any_peer","call_local","reliable") 
 func _leftclick():
-	# fix: only runs for the person who shoots the gun
 	if LeftClickCooldown.is_stopped():
 		leftclick()
 

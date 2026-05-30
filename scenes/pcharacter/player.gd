@@ -72,8 +72,7 @@ func _ready():
 var deathcamscene ## Scene for the deathcam
 func _on_destroyableobject_destroyed():
 	if is_multiplayer_authority():
-		deathcamscene = deathcamera.instantiate()
-		gvars.level.add_child(deathcamscene)
+		DeathCamera.create(self)
 	get_parent().queue_free()
 	
 

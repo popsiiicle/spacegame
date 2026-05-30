@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://y3et1nyjch3s" path="res://scenes/pcharacter/deathcam/deathcam.gd" id="1_eqece"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_0lbb6"]
-[ext_resource type="Script" uid="uid://danx3g2s8bcac" path="res://scenes/pcharacter/deathcam/phantom_camera_3d.gd" id="3_uypxs"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_0lbb6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_2c2ry"]
 
-[sub_resource type="Resource" id="Resource_igclx"]
+[sub_resource type="Resource" id="Resource_uypxs"]
 script = ExtResource("4_2c2ry")
 
 [node name="DeathCamera" type="Camera3D" node_paths=PackedStringArray("phantomcamera")]
 top_level = true
 fov = 90.0
 script = ExtResource("1_eqece")
-phantomcamera = NodePath("PhantomCamera3D")
+phantomcamera = NodePath("")
 
 [node name="PhantomCameraHost" type="Node" parent="."]
 process_priority = 300
@@ -21,7 +21,6 @@ script = ExtResource("2_0lbb6")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-script = ExtResource("3_uypxs")
-look_at_mode = 2
-tween_resource = SubResource("Resource_igclx")
+script = ExtResource("3_0lbb6")
+tween_resource = SubResource("Resource_uypxs")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
