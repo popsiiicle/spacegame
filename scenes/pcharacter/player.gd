@@ -43,7 +43,6 @@ static var colorarray: Array[Color] = [
 ]
 
 static func set_color(localmeshinstance:MeshInstance3D):
-	gfunc.cprint(localmeshinstance,"player %s has color %s" % [localmeshinstance.get_parent().get_parent().name,str(playernumber)])
 	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
 	playernumber += 1
 	
@@ -51,23 +50,23 @@ static func set_color(localmeshinstance:MeshInstance3D):
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
-	gfunc.cprint(self,"if %s equals %s" % [get_owner().name, str(multiplayer.get_unique_id())])
-	gfunc.cprint(self,"then multiplayer authority should be equal (it is %s)" % is_multiplayer_authority())
+
 
 #On game start
 func _ready():
 	#load player as global variable
 	if is_multiplayer_authority():
 		gvars.player = self
+		gvars.debug.add_property("player id",get_owner().name,50)
 	
 	#set player color
 	set_color(mesh)
 	
 	# connect signals
-	healthlogic.destroyed.connect(_on_destroyableobject_destroyed) #object destroyed signal
+	healthlogic.destroy_object.connect(_on_destroyableobject_destroyed) #object destroyed signal
 
 
-@onready var healthlogic: shootable = $DestroyableObject ## health logic node
+@onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
 # Death Function
 var deathcamscene ## Scene for the deathcam

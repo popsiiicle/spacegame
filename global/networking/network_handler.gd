@@ -6,7 +6,6 @@ const PORT := 46985
 var pscene := preload("res://scenes/pcharacter/character.tscn")
 var peer: ENetMultiplayerPeer
 
-
 #create server
 func start_server() -> void:
 	peer = ENetMultiplayerPeer.new()
@@ -28,9 +27,11 @@ func start_client() -> void:
 func _process(_delta):
 	if Input.is_action_pressed("dash"):
 		pass
-	
+
+signal player_joined(id)
 func add_player(peer_id):
 	gfunc.cprint(self,"player joined (peer id: %d)" % peer_id)
 	var player = pscene.instantiate()
 	player.name = str(peer_id)
 	gvars.level.add_child(player)
+	player_joined.emit(peer_id)

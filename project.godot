@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 gvars="*res://global/abstract/globalvars.gd"
 networkhandler="*res://global/networking/network_handler.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+escapenode="*res://global/escapenode/escape_node.gd"
 
 [display]
 
@@ -32,6 +33,7 @@ run/main_run_args="-client"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 [input]
 

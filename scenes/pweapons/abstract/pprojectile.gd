@@ -29,7 +29,7 @@ func _ready():
 
 
 ## called on hit with a player hurtbox
-func on_hit(_node: CollisionObject3D,_target: shootable):
+func on_hit(_node: CollisionObject3D,_target: ShootableObject):
 	pass
 	
 ## called on hit for anything other than a player hurtbox
@@ -45,9 +45,9 @@ func on_body_entered(node):
 	#very jank, correct later (check for mask instead or smth)
 	var target = node.get_parent()
 	if target.get_parent() != projowner:
-		if target is shootable:
+		if target is ShootableObject:
 			on_hit(node,target)
-			target.taken_damage.emit(direct_hit_damage)
+			if multiplayer.is_server(): target.taken_damage(direct_hit_damage)
 		else:
 			on_miss(node)
 		on_any_collision(node)

@@ -8,6 +8,7 @@ const MAX_RANGE = 1000
 ## Casts a ray from the camera and returns the first object it hits. 
 ## Use for custom effects: hitscan_damage() is better suited for dealing damage with hitscan
 func hitscan_raycast() -> Dictionary:
+	if !multiplayer.is_server(): return {} #raycasts are only checked on the server.  
 	var space_state = get_world_3d().direct_space_state
 	var screencenter = get_viewport().size / 2
 	var origin = camera.project_ray_origin(screencenter)
@@ -27,19 +28,17 @@ var hitscaninfo: Dictionary
 ## Performs hitscan_raycast(), finds if whatever is shot is damagable, and then damages the object if it is
 
 func hitscan_damage(damage: float):
-	
+	if !multiplayer.is_server(): return
 	hitscaninfo = hitscan_raycast()
 	if hitscaninfo != {}:
 		target = hitscaninfo.collider
 		if target is CollisionObject3D and target.get_collision_layer_value(2) == true:
 			healthnode = target.get_parent()
-			if healthnode is shootable:
-				healthnode.taken_damage.emit(damage)
+			if healthnode is ShootableObject:
+				healthnode.taken_damage(damage)
 				#add error message later if signal is not recieved
 			else:
 				push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
-		else:
-			push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
 
 ## Spawns a projectile from the launchpoint towards the projdirection.  Speed is determined in projectile code
@@ -69,11 +68,13 @@ func path_particle(particlescene: PackedScene,startpoint: Node3D):
 var LeftClickCooldown: Cooldown = Cooldown.create(self) ## Cooldown for leftclick()
 var RightClickCooldown: Cooldown = Cooldown.create(self) ## Cooldown for rightclick()
 
+# todo: add comment describing the difference between _leftclick and leftclick
 func leftclick():
 	pass
 
 @rpc("any_peer","call_local","reliable") 
 func _leftclick():
+	# fix: only runs for the person who shoots the gun
 	if LeftClickCooldown.is_stopped():
 		leftclick()
 
