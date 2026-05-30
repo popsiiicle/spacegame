@@ -41,7 +41,6 @@ static var colorarray: Array[Color] = [
 ]
 
 static func set_color(localmeshinstance:MeshInstance3D):
-	gfunc.cprint(localmeshinstance,"player %s has color %s" % [localmeshinstance.get_parent().get_parent().name,str(playernumber)])
 	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
 	playernumber += 1
 	
@@ -49,8 +48,6 @@ static func set_color(localmeshinstance:MeshInstance3D):
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
-	gfunc.cprint(self,"if %s equals %s" % [get_owner().name, str(multiplayer.get_unique_id())])
-	gfunc.cprint(self,"then multiplayer authority should be equal (it is %s)" % is_multiplayer_authority())
 
 
 #On game start

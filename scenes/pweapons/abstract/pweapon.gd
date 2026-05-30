@@ -39,8 +39,6 @@ func hitscan_damage(damage: float):
 				#add error message later if signal is not recieved
 			else:
 				push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
-	else:
-		push_error("Attacked hitbox is the child of %s, which is not a CollisionBody3D." % [target])
 
 
 ## Spawns a projectile from the launchpoint towards the projdirection.  Speed is determined in projectile code
@@ -77,7 +75,6 @@ func leftclick():
 @rpc("any_peer","call_local","reliable") 
 func _leftclick():
 	# fix: only runs for the person who shoots the gun
-	gfunc.cprint(self,"leftclick called on this peer")
 	if LeftClickCooldown.is_stopped():
 		leftclick()
 
