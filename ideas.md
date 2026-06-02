@@ -89,3 +89,5 @@ Abilities:
 - arena/gladiator theme for playtest 1v1s
 
 - faster firing weapons can feel more liberating
+
+- finals has good variety bc it's not punishing????
