@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=10 format=3 uid="uid://bfjb177uy7050"]
 
 [ext_resource type="Script" uid="uid://cbyivc4kfpc84" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://ylmptn4rlb1s" path="res://scenes/dummy/test_dummy.tscn" id="3_cclwq"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://bklqvnu5bwflo" path="res://scenes/pcharacter/user_interface.tscn" id="5_wfk1n"]
+[ext_resource type="Script" uid="uid://b8ytce0gct330" path="res://scenes/level/playermanager/player_manager.gd" id="6_wfk1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7hgs"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,44 +23,46 @@ glow_enabled = true
 [node name="Level" type="Node3D"]
 script = ExtResource("1_6dnwg")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Props" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Props"]
 environment = SubResource("Environment_li53y")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.794415, -0.548208, 0.261482, 0, 0.430511, 0.902585, -0.607376, 0.717027, -0.342004, 0, 32.4109, -29.88)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Props"]
+transform = Transform3D(-0.7944147, -0.54820836, 0.261482, 0, 0.4305111, 0.90258527, -0.60737574, 0.717027, -0.34200436, 0, 32.4109, -29.88)
 shadow_enabled = true
 
-[node name="floatingdebris" parent="." instance=ExtResource("3_jbaw8")]
+[node name="floatingdebris" parent="Props" instance=ExtResource("3_jbaw8")]
 transform = Transform3D(0.452046, 0.891995, 0, -0.891995, 0.452046, 0, 0, 0, 1, -20.776, 25.2781, 0.418762)
 
-[node name="floatingdebris2" parent="." instance=ExtResource("3_jbaw8")]
+[node name="floatingdebris2" parent="Props" instance=ExtResource("3_jbaw8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737318, 18.1003, 25.2726)
 
-[node name="floatingdebris3" parent="." instance=ExtResource("3_jbaw8")]
+[node name="floatingdebris3" parent="Props" instance=ExtResource("3_jbaw8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3563, 42.1338, -3.81734)
 
-[node name="floatingdebris4" parent="." instance=ExtResource("3_jbaw8")]
+[node name="floatingdebris4" parent="Props" instance=ExtResource("3_jbaw8")]
 transform = Transform3D(0.452046, 0.891995, 0, -0.891995, 0.452046, 0, 0, 0, 1, -20.776, 25.2781, 0.418762)
 
-[node name="floatingdebris5" parent="." instance=ExtResource("3_jbaw8")]
+[node name="floatingdebris5" parent="Props" instance=ExtResource("3_jbaw8")]
 transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.318347, -0.318038, -0.0140303, 0.947974, 24.4647, 19.3807, 13.5258)
 
-[node name="TestDummy" parent="." instance=ExtResource("3_cclwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5401392, 4.792959)
+[node name="TestDummy" parent="Props" instance=ExtResource("3_cclwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5401392, -11.849176)
+
+[node name="TestDummy2" parent="Props" instance=ExtResource("3_cclwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.497391, 3.5401392, -11.849176)
+
+[node name="TestDummy3" parent="Props" instance=ExtResource("3_cclwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5527, 7.0802784, -23.698353)
 
 [node name="NetworkTree" parent="." instance=ExtResource("5_6dnwg")]
 
-[node name="PlayerSpawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.690218, 0, 0.348876)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PlayerSpawner"]
-_spawnable_scenes = PackedStringArray("uid://yiapmafoosfp")
-spawn_path = NodePath("../..")
-
 [node name="UserInterface" parent="." instance=ExtResource("5_wfk1n")]
 
-[node name="TestDummy2" parent="." instance=ExtResource("3_cclwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.497391, 3.5401392, -11.849176)
+[node name="PlayerManager" type="Node" parent="."]
+script = ExtResource("6_wfk1n")
 
-[node name="TestDummy3" parent="." instance=ExtResource("3_cclwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5527, 7.0802784, -13.641905)
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://yiapmafoosfp")
+spawn_path = NodePath("..")

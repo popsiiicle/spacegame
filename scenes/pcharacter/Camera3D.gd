@@ -9,7 +9,6 @@ func _ready():
 	await owner.ready
 	if is_multiplayer_authority():
 		gvars.pcamera = self
-		gfunc.cprint(self,"making camera current")
 		make_current()
 func reset_fov():
 	#resets fov when the function is called

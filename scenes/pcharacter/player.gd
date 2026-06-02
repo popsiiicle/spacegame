@@ -31,6 +31,8 @@ func set_gravity(new_gravity: Vector3):
 @onready var neck := $CameraPivot/Neck
 @onready var camera := $CameraPivot/Neck/Camera3D
 
+@export var deathcamera: PackedScene # The scene containing the camera dropped at player death
+
 @export var mesh: MeshInstance3D
 static var playernumber := 0
 static var colorarray: Array[Color] = [
@@ -41,25 +43,40 @@ static var colorarray: Array[Color] = [
 ]
 
 static func set_color(localmeshinstance:MeshInstance3D):
-	gfunc.cprint(localmeshinstance,"player number for color:" + str(playernumber))
 	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
 	playernumber += 1
+	# HACK: need to give each player a respective color that is persistent
+	if playernumber >= 4:
+		playernumber = 0
 	
 
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
-	gfunc.cprint(self,"if %s equals %s" % [get_owner().name, str(multiplayer.get_unique_id())])
-	gfunc.cprint(self,"then multiplayer authority should be equal (it is %s)" % is_multiplayer_authority())
+
+@onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
 #On game start
 func _ready():
 	#load player as global variable
 	if is_multiplayer_authority():
 		gvars.player = self
+		gvars.debug.add_property("player id",get_owner().name,50)
+	
 	#set player color
-	gfunc.cprint(self,"node %s is ready" % str(get_parent().name))
 	set_color(mesh)
+	
+	# connect signals
+	healthlogic.destroy_object.connect(_player_destroyed) #object destroyed signal
+
+
+
+# Death Function
+func _player_destroyed(_player):
+	if is_multiplayer_authority():
+		DeathCamera.create(get_parent())
+	get_parent().queue_free()
+	
 
 #Input.get_vector(), but for 3 axis.  Used for RCS movement
 func get_vector3(neg_x: String, pos_x: String, neg_y: String, pos_y: String, neg_z: String, pos_z: String) -> Vector3:
@@ -76,38 +93,37 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			if !is_multiplayer_authority(): return
-			if gvars.pcamera.fov < 90:
-				sensitivity = SCOPED_SENS_MULTIPLIER * UNSCOPED_SENS
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if !is_multiplayer_authority(): return
+		if gvars.pcamera.fov < 90:
+			sensitivity = SCOPED_SENS_MULTIPLIER * UNSCOPED_SENS
+		else:
+			sensitivity = UNSCOPED_SENS
+		
+		#controls up and down movements of the mouse, moves neck if neck is not moved to the max, rotates body if it isn't
+		rotcameramod = Input.is_action_pressed("rotate")
+		neckroty = neck.rotation.y
+		msign = sign(-event.relative.x)
+		if msign != 0 and !rotcameramod:
+			if msign * neckroty < deg_to_rad(60):
+				neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
 			else:
-				sensitivity = UNSCOPED_SENS
-			
-			#controls up and down movements of the mouse, moves neck if neck is not moved to the max, rotates body if it isn't
-			rotcameramod = Input.is_action_pressed("rotate")
-			neckroty = neck.rotation.y
-			msign = sign(-event.relative.x)
-			if msign != 0 and !rotcameramod:
-				if msign * neckroty < deg_to_rad(60):
-					neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
-				else:
-					cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
-			
-			
-			#controls left and right movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
-			camrotx = camera.rotation.x
-			msign = sign(-event.relative.y)
-			
-			#Rotate camera instead of yaw when the rotate button is held down
-			if msign != 0 and rotcameramod:
-				transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
+				cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
+		
+		
+		#controls left and right movements of the mouse, moves camera if camera is not moved to the max, rotates body if it isn't
+		camrotx = camera.rotation.x
+		msign = sign(-event.relative.y)
+		
+		#Rotate camera instead of yaw when the rotate button is held down
+		if msign != 0 and rotcameramod:
+			transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
+		else:
+			if msign * camrotx < deg_to_rad(60):
+				camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
 			else:
-				if msign * camrotx < deg_to_rad(60):
-					camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
-				else:
-					cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
-			
+				cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
+		
 
 func _physics_process(_delta):
 	

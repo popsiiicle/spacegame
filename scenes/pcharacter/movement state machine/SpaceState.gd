@@ -34,8 +34,6 @@ func physics_update(delta):
 	#re-update global var
 	#there's a cleaner way to do this, fix later
 	gvars.player.velocity = velocity
-	gvars.debug.add_property("Velocity",velocity,60)
-	gvars.debug.add_property("pVelocity",gvars.player.velocity,61)
 
 	#go to slidingplayerstate upon touching a wall
 	if gvars.player.is_on_wall() == true:

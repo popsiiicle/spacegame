@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cx0f4yq8f2awq" path="res://scenes/dummy/dummy.gd" id="1_ekeyc"]
 [ext_resource type="Texture2D" uid="uid://t1kdkweuv3ya" path="res://scenes/dummy/dummy.jpg" id="2_6u3n1"]
-[ext_resource type="Script" uid="uid://bw04x56y7gc1m" path="res://scenes/dummy/shootable.gd" id="3_67l2r"]
+[ext_resource type="Script" uid="uid://bw04x56y7gc1m" path="res://scenes/pcharacter/shootable.gd" id="3_67l2r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7rrmn"]
 size = Vector3(5.425212, 5.628, 1.4396973)

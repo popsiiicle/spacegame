@@ -16,14 +16,14 @@ func _ready():
 func _process(delta):
 	if visible:
 		
-		# Display FPS only when visible
+		# Display FPS
 		fps = "%.2f" % (1.0/delta)
 		add_property("FPS",fps,0)
 
 func _physics_process(delta):
 	if visible:
 		
-		# Display TPS only when visible
+		# Display TPS
 		tps = "%.2f" % (1.0/delta)
 		add_property("TPS",tps,1)
 
