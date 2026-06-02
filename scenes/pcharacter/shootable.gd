@@ -10,11 +10,11 @@ func taken_damage(damage):
 	health -= damage
 	sync_health.rpc(health)
 
-signal destroy_object
+signal destroy_object(object)
 
 
 @rpc("any_peer","call_local")
 func sync_health(new_health):
 	health = new_health
 	if health <= 0:
-		destroy_object.emit()
+		destroy_object.emit(get_parent())

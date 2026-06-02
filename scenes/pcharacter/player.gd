@@ -72,7 +72,7 @@ func _ready():
 
 
 # Death Function
-func _player_destroyed():
+func _player_destroyed(_player):
 	if is_multiplayer_authority():
 		DeathCamera.create(get_parent())
 	get_parent().queue_free()

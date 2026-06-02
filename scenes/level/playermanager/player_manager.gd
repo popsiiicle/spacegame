@@ -13,6 +13,7 @@ func _on_player_join(id):
 	var serverplist = playerlist
 	sync_player_list.rpc(serverplist)
 	
+	
 @rpc("any_peer")
 func sync_player_list(serverplist):
 	playerlist = serverplist
