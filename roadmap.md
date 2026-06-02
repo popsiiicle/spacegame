@@ -24,9 +24,15 @@
 * ~create client and server~
 * ~network movement~
 * ~network weapons~
-* add and network player damage
+* ~add and network player damage~
 * add basic gamemode (1v1 first to 5)
 * actual map
+* clean up networking code before pushing to main
+
+### actual ui
+* cooldowns, health?
+* swap weapons on death/spawn
+* show score
 
 ### physics cleanup
 * round player model
@@ -38,7 +44,6 @@
 * dash is oomphier when going against momentum
 
 ### polish
-* basic ui
 * movement sounds
 * clean up code
 * standardize variables
