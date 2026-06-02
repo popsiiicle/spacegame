@@ -1,6 +1,7 @@
 extends Control
 
 @export var level: Node3D
+@onready var ipaddtextbox = $TextEdit
 
 func _ready():
 	await get_parent().get_parent().ready
@@ -14,5 +15,5 @@ func _on_server_pressed():
 	hide()
 
 func _on_client_pressed():
-	networkhandler.start_client()
+	networkhandler.start_client(ipaddtextbox.text)
 	hide()

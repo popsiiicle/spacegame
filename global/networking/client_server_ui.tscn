@@ -26,5 +26,12 @@ text = "Server"
 layout_mode = 2
 text = "Client"
 
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 75.0
+offset_right = 126.0
+offset_bottom = 118.0
+
 [connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
 [connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]

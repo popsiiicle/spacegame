@@ -1,7 +1,9 @@
 extends Node
 
-const IP_ADDRESS := "172.20.159.150"
+
 const PORT := 46985
+
+
 
 var pscene := preload("res://scenes/pcharacter/character.tscn")
 var peer: ENetMultiplayerPeer
@@ -18,7 +20,7 @@ func start_server() -> void:
 	#adds host to lobby
 	add_player(multiplayer.get_unique_id())
 	
-func start_client() -> void:
+func start_client(IP_ADDRESS: String) -> void:
 	peer = ENetMultiplayerPeer.new()
 	var result = peer.create_client(IP_ADDRESS,PORT)
 	multiplayer.multiplayer_peer = peer
