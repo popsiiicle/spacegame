@@ -2,29 +2,52 @@
 
 [ext_resource type="Script" uid="uid://bk1sseekray6d" path="res://global/networking/client_server_ui.gd" id="1_w1788"]
 
-[node name="ClientServerUI" type="Control"]
+[node name="ClientServerUI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1788")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.008918547, 0.02006821, 0.13411269, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -33.0
+offset_right = 29.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w1788")
+theme_override_constants/separation = 17
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 58.0
-offset_bottom = 66.0
-
-[node name="Server" type="Button" parent="VBoxContainer"]
+[node name="Server2" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(150, 75)
 layout_mode = 2
-text = "Server"
+theme_override_font_sizes/font_size = 20
+text = "Host"
 
-[node name="Client" type="Button" parent="VBoxContainer"]
+[node name="Client2" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(150, 75)
 layout_mode = 2
-text = "Client"
+theme_override_font_sizes/font_size = 20
+text = "Join"
 
-[connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
-[connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Server2" to="Control" method="_on_server_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Client2" to="Control" method="_on_client_pressed"]
