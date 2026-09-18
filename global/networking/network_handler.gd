@@ -11,7 +11,13 @@ func start_server() -> void:
 	peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
+	
+	#Unnecessary, but will keep in case it is needed
+	var playerlist: Node = gvars.level.playermanager
+
 	gfunc.cprint(self,"server started")
+	
+	
 	#adds players when they connect
 	multiplayer.peer_connected.connect(add_player)
 

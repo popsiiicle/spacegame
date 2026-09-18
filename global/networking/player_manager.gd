@@ -1,5 +1,8 @@
 extends Node
 
+enum {SERVER, CLIENT}
+var type: String
+
 var playerlist: Dictionary
 var playercount: int = 0
 
