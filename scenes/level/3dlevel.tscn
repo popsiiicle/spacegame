@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=10 format=3 uid="uid://bfjb177uy7050"]
 
 [ext_resource type="Script" uid="uid://cbyivc4kfpc84" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://ylmptn4rlb1s" path="res://scenes/dummy/test_dummy.tscn" id="3_cclwq"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
 [ext_resource type="PackedScene" uid="uid://bklqvnu5bwflo" path="res://scenes/pcharacter/user_interface.tscn" id="5_wfk1n"]
-[ext_resource type="Script" uid="uid://b8ytce0gct330" path="res://global/networking/player_manager.gd" id="6_wfk1n"]
 [ext_resource type="PackedScene" uid="uid://djbv0chmqnmtw" path="res://global/networking/player_list.tscn" id="7_difau"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7hgs"]
@@ -61,11 +60,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5527, 7.0802784, -23.6983
 
 [node name="UserInterface" parent="." instance=ExtResource("5_wfk1n")]
 
-[node name="PlayerManager" type="Node" parent="."]
-script = ExtResource("6_wfk1n")
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://yiapmafoosfp")
 spawn_path = NodePath("..")
 
-[node name="PlayerList" parent="." instance=ExtResource("7_difau")]
+[node name="PlayerManager" parent="." instance=ExtResource("7_difau")]

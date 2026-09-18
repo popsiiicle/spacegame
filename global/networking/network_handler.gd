@@ -13,8 +13,6 @@ func start_server() -> void:
 	multiplayer.multiplayer_peer = peer
 	
 	#Unnecessary, but will keep in case it is needed
-	var playerlist: Node = gvars.level.playermanager
-
 	gfunc.cprint(self,"server started")
 	
 	
@@ -34,15 +32,18 @@ func _process(_delta):
 	if Input.is_action_pressed("dash"):
 		pass
 
-signal player_joined(id)
+signal player_joined(id, playernode: Node3D) #HACK: won't work if there's a main menu or spectator or smth as Node3D may not exist yet
 func add_player(peer_id):
 	gfunc.cprint(self,"player joined (peer id: %d)" % peer_id)
-	spawn_player(peer_id)
-	player_joined.emit(peer_id)
+	var playernode = spawn_player(peer_id)
+	player_joined.emit(peer_id, playernode)
+	gfunc.cprint(self,"sending player join")
 	
 @rpc("any_peer","call_local")
-func spawn_player(peer_id):
+func spawn_player(peer_id) -> Node3D:
 	var player = pscene.instantiate()
 	player.name = str(peer_id)
 	gvars.level.add_child(player)
+	
+	return player
 	
