@@ -36,7 +36,7 @@ func set_gravity(new_gravity: Vector3):
 
 
 
-	
+
 
 
 func _enter_tree():
@@ -46,15 +46,6 @@ func _enter_tree():
 
 var color
 @export var mesh: MeshInstance3D
-static var colorarray: Array[Color] = [
-	Color(0.1,0.1,1,1),
-	Color(1,0,0,1),
-	Color(0,1,0,1),
-	Color(1,1,0,1)
-]
-
-func set_color(colorid):
-	mesh.mesh.material.albedo_color = colorarray[colorid]
 
 #On game start
 func _ready():
@@ -64,12 +55,13 @@ func _ready():
 		gvars.debug.add_property("player id",get_owner().name,50)
 	
 	#set player color
-	gfunc.cprint(self,color)
-	
 	
 	# connect signals
 	healthlogic.destroy_object.connect(_player_destroyed) #object destroyed signal
-
+	
+	await get_tree().create_timer(0.5).timeout  #HACK with a capital H
+	gfunc.cprint(self,gvars.playermanager.playerlist)
+	mesh.mesh.material.albedo_color = gvars.playermanager.playerlist[multiplayer.get_unique_id()]["color"]
 
 
 

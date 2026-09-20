@@ -4,6 +4,7 @@ var debug ## for debug window stuff
 var player: Player ## for state machine stuff
 var pcamera: Camera3D ## The player camera
 var level: Node3D ## The current level
+var playermanager: Node ## The list of players and their basic information
 var args
 
 func _init():
