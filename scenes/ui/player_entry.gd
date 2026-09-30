@@ -1,19 +1,15 @@
 class_name PlayerEntry extends HBoxContainer
 
-@onready var playername: String = $PlayerName.text
-@onready var kills: String = $Kills.text
-@onready var deaths: String = $Deaths.text
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	#gvars.playermanager.updateplayerlist.connect()
-	_on_update_player_list()
+@onready var playername: Label = $PlayerName
+@onready var kills: Label = $Kills
+@onready var deaths: Label = $Deaths
 
-func _on_update_player_list():
-	var playerlist: Array = gvars.playerlist.values()
-	playerlist.sort_custom(sort_by_kills)
-	for playerentry in playerlist:
-		pass
 
-func sort_by_kills(a,b):
-	return a["kills"] >= b["kills"]
+
+static func create(playerlist: VBoxContainer, entrydict: Dictionary):
+	var newentry = preload("res://scenes/ui/player_entry.tscn").instantiate()
+	playerlist.add_child(newentry)
+	newentry.playername.text = entrydict["name"]
+	newentry.kills.text = str(entrydict["kills"])
+	newentry.deaths.text = str(entrydict["deaths"])

@@ -29,7 +29,6 @@ func _on_player_join(id,_playernode):
 		playerlist[id] = emptyplayerinfo.duplicate()
 		playerlist[id]["name"] = "Player " + str(playercount)
 		playerlist[id]["color"] = colorarray[playercount - 1]
-		gfunc.cprint(self,playerlist)
 
 		var serverplist = playerlist
 		

@@ -60,7 +60,6 @@ func _ready():
 	healthlogic.destroy_object.connect(_player_destroyed) #object destroyed signal
 	
 	await get_tree().create_timer(0.5).timeout  #HACK with a capital H
-	gfunc.cprint(self,gvars.playermanager.playerlist)
 	mesh.mesh.material.albedo_color = gvars.playermanager.playerlist[multiplayer.get_unique_id()]["color"]
 
 

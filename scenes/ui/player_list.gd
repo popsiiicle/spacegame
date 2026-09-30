@@ -1,11 +1,18 @@
 extends VBoxContainer
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	#gvars.playermanager.updateplayerlist.connect()
+	_on_update_player_list()
+
+func _on_update_player_list():
+	await get_tree().create_timer(0.5).timeout
+	var playerlist: Array = gvars.playermanager.playerlist.values()
+	playerlist.sort_custom(sort_by_kills)
+	for playerentry in playerlist:
+		PlayerEntry.create(self,playerentry)
+#TODO: delete list before recreating on update, track kills and deaths
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func sort_by_kills(a,b):
+	return a["kills"] >= b["kills"]
