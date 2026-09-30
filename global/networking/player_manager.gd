@@ -8,7 +8,9 @@ var playercount: int = 0
 
 const emptyplayerinfo: Dictionary = {
 	"name": "Player 0",
-	"color": Color(1,1,1,1)
+	"color": Color(1,1,1,1),
+	"kills": 0,
+	"deaths": 0
 }
 
 static var colorarray: Array[Color] = [
@@ -27,14 +29,16 @@ func _on_player_join(id,_playernode):
 		playerlist[id] = emptyplayerinfo.duplicate()
 		playerlist[id]["name"] = "Player " + str(playercount)
 		playerlist[id]["color"] = colorarray[playercount - 1]
-		#TODO: set color in player.gd
 		gfunc.cprint(self,playerlist)
 
 		var serverplist = playerlist
+		
+		updateplayerlist.emit()  #HACK: May not be necessary unless sync player list doesn't run on server
 		sync_player_list.rpc(serverplist)
 	
 
+signal updateplayerlist #For visual player list
 @rpc("any_peer")
 func sync_player_list(serverplist):
 	playerlist = serverplist
-	
+	updateplayerlist.emit()

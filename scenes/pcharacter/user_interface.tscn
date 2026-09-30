@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bklqvnu5bwflo"]
+[gd_scene load_steps=10 format=3 uid="uid://bklqvnu5bwflo"]
 
 [ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://global/resources/misc godot resources/debug_ui.tres" id="1_sjb6h"]
 [ext_resource type="Script" uid="uid://cnn6k2lh4hgd" path="res://scenes/pcharacter/debug_panel.gd" id="2_daahm"]
 [ext_resource type="Script" uid="uid://d02mjq6aauml8" path="res://scenes/ui/healthbargd.gd" id="3_sjb6h"]
+[ext_resource type="PackedScene" uid="uid://hhqjxs2o6bpo" path="res://scenes/ui/player_entry.tscn" id="4_daahm"]
+[ext_resource type="Script" uid="uid://djwebbejik5v3" path="res://scenes/ui/player_list.gd" id="4_rp1ed"]
 
 [sub_resource type="Gradient" id="Gradient_irmqu"]
 offsets = PackedFloat32Array(0.11261261, 0.15765765)
@@ -68,7 +70,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
@@ -81,3 +83,15 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ql3jf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sjb6h")
 show_percentage = false
 script = ExtResource("3_sjb6h")
+
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("4_rp1ed")
+
+[node name="PlayerEntry" parent="MarginContainer/PlayerList" instance=ExtResource("4_daahm")]
+layout_mode = 2
+
+[node name="PlayerEntry2" parent="MarginContainer/PlayerList" instance=ExtResource("4_daahm")]
+layout_mode = 2
