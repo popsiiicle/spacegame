@@ -23,7 +23,7 @@ static var colorarray: Array[Color] = [
 func _ready():
 	gvars.playermanager = self
 	networkhandler.player_joined.connect(_on_player_join)
-func _on_player_join(id,_playernode):
+func _on_player_join(id):
 	if multiplayer.is_server(): 
 		playercount = playercount + 1
 		playerlist[id] = emptyplayerinfo.duplicate()
@@ -36,13 +36,10 @@ func _on_player_join(id,_playernode):
 	
 func player_killed(deadplayer: int,killingplayer: int):
 	if !multiplayer.is_server(): return
-	gfunc.cprint(self,"player killed is " + str(deadplayer) + "player killing is " + str(killingplayer))
-	#gfunc.cprint(self,str(playerlist[str(deadplayer)]["deaths"]))
 	playerlist[killingplayer]["kills"] = playerlist[killingplayer]["kills"] + 1
 	playerlist[deadplayer]["deaths"] += 1
 	sync_player_list.rpc(playerlist)
-	#FIX: sometimes applies death to host instead of right player, kills always count as player 1
-
+	
 signal updateplayerlist #For visual player list
 @rpc("any_peer","call_local")
 func sync_player_list(serverplist):

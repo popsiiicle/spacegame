@@ -35,8 +35,8 @@ func _process(_delta):
 signal player_joined(id, playernode: Node3D) #HACK: won't work if there's a main menu or spectator or smth as Node3D may not exist yet
 func add_player(peer_id):
 	gfunc.cprint(self,"player joined (peer id: %d)" % peer_id)
-	var playernode = spawn_player(peer_id)
-	player_joined.emit(peer_id, playernode)
+	player_joined.emit(peer_id)
+	spawn_player(peer_id) #can add a signal after in order to broadcast the player node
 	gfunc.cprint(self,"sending player join")
 	
 @rpc("any_peer","call_local")

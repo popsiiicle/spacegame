@@ -4,7 +4,7 @@ class_name ShootableObject extends Node3D
 @export var health: float = 100
 
 
-func taken_damage(damage: float,damager):
+func taken_damage(damage: float,damager: int):
 	if !multiplayer.is_server():
 		printerr("Client Healthnode recieved an input, but taken_damage should only be transmitted serverside")
 	health -= damage

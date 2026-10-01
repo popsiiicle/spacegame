@@ -61,10 +61,11 @@ func _ready():
 	if !gvars.playermanager.is_class("Node"):
 		await gvars.playermanager_ready
 	gvars.playermanager.updateplayerlist.connect(_on_player_list_update)
+	if gvars.playermanager.playerlist.has(get_multiplayer_authority()):
+		_on_player_list_update()
 
 func _on_player_list_update():
 	#set player color
-	gfunc.cprint(self,gvars.playermanager.playerlist)
 	mesh.mesh.material.albedo_color = gvars.playermanager.playerlist[get_multiplayer_authority()]["color"]
 
 

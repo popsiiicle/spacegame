@@ -4,7 +4,7 @@ var debug ## for debug window stuff
 var player: Player ## for state machine stuff
 var pcamera: Camera3D ## The player camera
 var level: Node3D ## The current level
-var playermanager: Node: ## The list of players and their basic information
+var playermanager: ## The list of players and their basic information
 	set(value):
 		playermanager = value
 		playermanager_ready.emit()

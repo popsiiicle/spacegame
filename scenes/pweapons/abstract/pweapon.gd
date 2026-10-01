@@ -2,9 +2,13 @@ class_name pweapon extends Node3D
 ## Abstract class for all weapons.  Contains tools for hitscan, projectiles, and inputs
 
 #HACK this might be the worst one yet
-@onready var playerowner: String = str(get_multiplayer_authority())
+var playerowner: int
 @onready var camera: Camera3D = get_parent().get_parent()
 const MAX_RANGE = 1000
+
+func _ready():
+	playerowner = get_parent().get_multiplayer_authority()
+	set_multiplayer_authority(playerowner)
 
 ## Casts a ray from the camera and returns the first object it hits. 
 ## Use for custom effects: hitscan_damage() is better suited for dealing damage with hitscan
