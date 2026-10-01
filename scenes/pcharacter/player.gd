@@ -54,13 +54,18 @@ func _ready():
 		gvars.player = self
 		gvars.debug.add_property("player id",get_owner().name,50)
 	
-	#set player color
 	
 	# connect signals
 	healthlogic.destroy_object.connect(_player_destroyed) #object destroyed signal
 	
-	await get_tree().create_timer(0.5).timeout  #HACK with a capital H
-	mesh.mesh.material.albedo_color = gvars.playermanager.playerlist[multiplayer.get_unique_id()]["color"]
+	if !gvars.playermanager.is_class("Node"):
+		await gvars.playermanager_ready
+	gvars.playermanager.updateplayerlist.connect(_on_player_list_update)
+
+func _on_player_list_update():
+	#set player color
+	gfunc.cprint(self,gvars.playermanager.playerlist)
+	mesh.mesh.material.albedo_color = gvars.playermanager.playerlist[get_multiplayer_authority()]["color"]
 
 
 

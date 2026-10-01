@@ -32,22 +32,19 @@ func _on_player_join(id,_playernode):
 
 		var serverplist = playerlist
 		
-		updateplayerlist.emit()  #HACK: May not be necessary unless sync player list doesn't run on server
 		sync_player_list.rpc(serverplist)
 	
 func player_killed(deadplayer: int,killingplayer: int):
 	if !multiplayer.is_server(): return
 	gfunc.cprint(self,"player killed is " + str(deadplayer) + "player killing is " + str(killingplayer))
 	#gfunc.cprint(self,str(playerlist[str(deadplayer)]["deaths"]))
-	gfunc.cprint(self,playerlist)
 	playerlist[killingplayer]["kills"] = playerlist[killingplayer]["kills"] + 1
 	playerlist[deadplayer]["deaths"] += 1
-	gfunc.cprint(self,playerlist)
 	sync_player_list.rpc(playerlist)
-	#FIX: sometimes applies death to host instead of right player
+	#FIX: sometimes applies death to host instead of right player, kills always count as player 1
 
 signal updateplayerlist #For visual player list
-@rpc("any_peer")
+@rpc("any_peer","call_local")
 func sync_player_list(serverplist):
 	playerlist = serverplist
 	updateplayerlist.emit()
