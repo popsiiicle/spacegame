@@ -11,3 +11,4 @@ func _process(_delta: float) -> void:
 		value = 1 - gvars.player.DashCD.time_left
 	if value == 1:
 		value = 0
+	#TODO: make it not call every frame
