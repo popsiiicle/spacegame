@@ -1,7 +1,8 @@
 class_name pweapon extends Node3D
 ## Abstract class for all weapons.  Contains tools for hitscan, projectiles, and inputs
 
-
+#HACK this might be the worst one yet
+@onready var playerowner: String = str(get_multiplayer_authority())
 @onready var camera: Camera3D = get_parent().get_parent()
 const MAX_RANGE = 1000
 
@@ -35,7 +36,7 @@ func hitscan_damage(damage: float):
 		if target is CollisionObject3D and target.get_collision_layer_value(2) == true:
 			healthnode = target.get_parent()
 			if healthnode is ShootableObject:
-				healthnode.taken_damage(damage)
+				healthnode.taken_damage(damage,playerowner)
 				#add error message later if signal is not recieved
 			else:
 				push_error("CollisionObject (%s) is not a child of a DestroyableObject (%s), but has a collision mask of 2." % [target,healthnode])
