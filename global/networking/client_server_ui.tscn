@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bk1sseekray6d" path="res://global/networking/client_server_ui.gd" id="1_w1788"]
 
 [node name="ClientServerUI" type="CanvasLayer"]
+layer = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
