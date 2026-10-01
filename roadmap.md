@@ -25,14 +25,15 @@
 * ~network movement~
 * ~network weapons~
 * ~add and network player damage~
-* add basic gamemode (1v1 first to 5)
+* add basic gamemode (ffa first to 5 (or 10))
 * actual map
 * clean up networking code before pushing to main
 
 ### actual ui
-* cooldowns, health?
+* cooldowns, health? (done but buggy)
 * swap weapons on death/spawn
 * show score
+* persistent player colors on death
 
 ### physics cleanup
 * round player model
@@ -50,6 +51,9 @@
 * add local classes
 * controls and sens customization
 * integrate weaponrig code into state machine (maybe save for later)
+* sniper scope with gradient and lines
+* make the sky actually dark
+* rocket jumping
 
 ## ***FIRST PLAYTEST***
 
