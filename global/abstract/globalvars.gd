@@ -9,6 +9,7 @@ var playermanager: ## The list of players and their basic information
 		playermanager = value
 		playermanager_ready.emit()
 signal playermanager_ready
+var hud: Control
 
 var args
 

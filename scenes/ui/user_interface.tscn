@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bklqvnu5bwflo"]
+[gd_scene load_steps=13 format=3 uid="uid://bklqvnu5bwflo"]
 
 [ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://global/resources/misc godot resources/debug_ui.tres" id="1_sjb6h"]
+[ext_resource type="Script" uid="uid://deowy8j6c5qlt" path="res://scenes/ui/user_interface.gd" id="1_vo76m"]
 [ext_resource type="Script" uid="uid://cnn6k2lh4hgd" path="res://scenes/pcharacter/debug_panel.gd" id="2_daahm"]
 [ext_resource type="Script" uid="uid://d02mjq6aauml8" path="res://scenes/ui/healthbargd.gd" id="3_sjb6h"]
 [ext_resource type="Script" uid="uid://djwebbejik5v3" path="res://scenes/ui/player_list.gd" id="4_rp1ed"]
@@ -33,7 +34,7 @@ height = 65
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Interface Layer" type="CanvasLayer"]
+[node name="InterfaceLayer" type="CanvasLayer"]
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -43,6 +44,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_vo76m")
+metadata/_edit_use_anchors_ = true
 
 [node name="DebugContainer" type="PanelContainer" parent="UserInterface"]
 z_index = 5
