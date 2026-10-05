@@ -47,7 +47,7 @@ func on_body_entered(node):
 	if target.get_parent() != projowner:
 		if target is ShootableObject:
 			on_hit(node,target)
-			if multiplayer.is_server(): target.taken_damage(direct_hit_damage)
+			if multiplayer.is_server(): target.taken_damage(direct_hit_damage,projowner.get_multiplayer_authority())
 		else:
 			on_miss(node)
 		on_any_collision(node)
