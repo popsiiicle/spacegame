@@ -1,7 +1,12 @@
 extends Node
 
 var debug ## for debug window stuff
-var player: Player ## for state machine stuff
+
+signal playerready
+var player: Player: ## for state machine stuff
+	set(value):
+		player = value
+		playerready.emit()
 var pcamera: Camera3D ## The player camera
 var level: Node3D ## The current level
 var playermanager: ## The list of players and their basic information

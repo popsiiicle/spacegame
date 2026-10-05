@@ -3,7 +3,8 @@ extends TextureProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	#hiding for now until dash is fixed
+	value = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta: float) -> void:
@@ -11,5 +12,4 @@ func _ready() -> void:
 		#value = 1 - gvars.player.DashCD.time_left
 	#if value == 1:
 		#value = 0
-	##TODO: make it not call every frame
 	#HACK Enable Later
