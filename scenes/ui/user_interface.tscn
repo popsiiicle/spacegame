@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=3 uid="uid://bklqvnu5bwflo"]
+
+[ext_resource type="Theme" uid="uid://coft00lm1ektl" path="res://global/resources/misc godot resources/debug_ui.tres" id="1_sjb6h"]
+[ext_resource type="Script" uid="uid://deowy8j6c5qlt" path="res://scenes/ui/user_interface.gd" id="1_vo76m"]
+[ext_resource type="Script" uid="uid://cnn6k2lh4hgd" path="res://scenes/pcharacter/debug_panel.gd" id="2_daahm"]
+[ext_resource type="Script" uid="uid://d02mjq6aauml8" path="res://scenes/ui/healthbargd.gd" id="3_sjb6h"]
+[ext_resource type="Script" uid="uid://djwebbejik5v3" path="res://scenes/ui/player_list.gd" id="4_rp1ed"]
+[ext_resource type="Script" uid="uid://c8uhk7peomgi2" path="res://scenes/ui/dash_cooldown.gd" id="5_rp1ed"]
+
+[sub_resource type="Gradient" id="Gradient_irmqu"]
+offsets = PackedFloat32Array(0.11261261, 0.15765765)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7eonc"]
+gradient = SubResource("Gradient_irmqu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql3jf"]
+bg_color = Color(0.31283602, 0.31283605, 0.3128359, 0.32941177)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjb6h"]
+bg_color = Color(0.17549932, 0.46083617, 0.83206344, 0.77254903)
+
+[sub_resource type="Gradient" id="Gradient_daahm"]
+offsets = PackedFloat32Array(0, 0.704, 0.728, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.49019608, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rp1ed"]
+gradient = SubResource("Gradient_daahm")
+width = 65
+height = 65
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="InterfaceLayer" type="CanvasLayer"]
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_vo76m")
+metadata/_edit_use_anchors_ = true
+
+[node name="DebugContainer" type="PanelContainer" parent="UserInterface"]
+z_index = 5
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = ExtResource("1_sjb6h")
+script = ExtResource("2_daahm")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Crosshair" type="Control" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UserInterface/Crosshair"]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_7eonc")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HealthBar" type="ProgressBar" parent="UserInterface/MarginContainer"]
+custom_minimum_size = Vector2(600, 45)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_ql3jf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sjb6h")
+show_percentage = false
+script = ExtResource("3_sjb6h")
+
+[node name="PlayerList" type="VBoxContainer" parent="UserInterface/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("4_rp1ed")
+
+[node name="Dash Cooldown" type="TextureProgressBar" parent="UserInterface/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.0
+value = 0.4
+fill_mode = 4
+radial_initial_angle = 180.0
+texture_progress = SubResource("GradientTexture2D_rp1ed")
+script = ExtResource("5_rp1ed")

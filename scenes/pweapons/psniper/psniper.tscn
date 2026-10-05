@@ -7,7 +7,7 @@
 
 [node name="Psniper" type="Node3D"]
 script = ExtResource("1_6mq4v")
-damage = 25.0
+damage = 50.0
 hitscan_path_particle = ExtResource("2_cvh4q")
 
 [node name="blockbench_export" parent="." instance=ExtResource("1_gj4gl")]

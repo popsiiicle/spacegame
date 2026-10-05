@@ -23,6 +23,7 @@ var dashdirection: Vector3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 func set_gravity(new_gravity: Vector3):
 	gravity = new_gravity  # Assuming `gravity` is a variable controlling movement
 
@@ -33,28 +34,18 @@ func set_gravity(new_gravity: Vector3):
 
 @export var deathcamera: PackedScene # The scene containing the camera dropped at player death
 
-@export var mesh: MeshInstance3D
-static var playernumber := 0
-static var colorarray: Array[Color] = [
-	Color(0.1,0.1,1,1),
-	Color(1,0,0,1),
-	Color(0,1,0,1),
-	Color(1,1,0,1)
-]
 
-static func set_color(localmeshinstance:MeshInstance3D):
-	localmeshinstance.mesh.material.albedo_color = colorarray[playernumber]
-	playernumber += 1
-	# HACK: need to give each player a respective color that is persistent
-	if playernumber >= 4:
-		playernumber = 0
-	
+
+
 
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
 
 @onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
+
+var color
+@export var mesh: MeshInstance3D
 
 #On game start
 func _ready():
@@ -63,11 +54,19 @@ func _ready():
 		gvars.player = self
 		gvars.debug.add_property("player id",get_owner().name,50)
 	
-	#set player color
-	set_color(mesh)
 	
 	# connect signals
 	healthlogic.destroy_object.connect(_player_destroyed) #object destroyed signal
+	
+	if !gvars.playermanager.is_class("Node"):
+		await gvars.playermanager_ready
+	gvars.playermanager.updateplayerlist.connect(_on_player_list_update)
+	if gvars.playermanager.playerlist.has(get_multiplayer_authority()):
+		_on_player_list_update()
+
+func _on_player_list_update():
+	#set player color
+	mesh.mesh.material.albedo_color = gvars.playermanager.playerlist[get_multiplayer_authority()]["color"]
 
 
 

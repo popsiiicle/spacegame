@@ -9,12 +9,11 @@
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scenes/pcharacter/movement state machine/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scenes/pcharacter/movement state machine/SlidingPlayerState.gd" id="7_xnji0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwqc5"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5em6"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_wwqc5"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_wwqc5")
+[sub_resource type="SphereMesh" id="SphereMesh_i5em6"]
+material = SubResource("StandardMaterial3D_i5em6")
+radius = 0.75
 height = 1.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jbh7n"]
@@ -50,7 +49,7 @@ deathcamera = ExtResource("2_i5em6")
 mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_wwqc5")
+mesh = SubResource("SphereMesh_i5em6")
 
 [node name="EnvironmentCollisionShape" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("ConvexPolygonShape3D_jbh7n")
@@ -70,6 +69,7 @@ script = ExtResource("3_l0gq2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, -2.16)
+visible = false
 mesh = SubResource("PrismMesh_7eonc")
 
 [node name="DestroyableObject" type="Node3D" parent="CharacterBody3D"]
