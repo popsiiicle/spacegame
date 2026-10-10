@@ -1,4 +1,4 @@
-extends Node
+class_name PlayerManager extends Node
 
 enum {SERVER, CLIENT}
 var type: String
@@ -8,9 +8,15 @@ var playercount: int = 0
 
 const emptyplayerinfo: Dictionary = {
 	"name": "Player 0",
+	"weapon": "sniper",
 	"color": Color(1,1,1,1),
 	"kills": 0,
 	"deaths": 0
+}
+
+const weaponpath: Dictionary = {
+	"sniper": "res://scenes/pweapons/psniper/psniper.tres",
+	"rlauncher": "res://scenes/pweapons/prlauncher/prlauncher.tres"
 }
 
 static var colorarray: Array[Color] = [

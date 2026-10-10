@@ -2,8 +2,6 @@
 
 class_name pweaponrig extends Node3D
 
-var psniperpath := "res://scenes/pweapons/psniper/psniper.tres" ## The sniper weapon resource
-var prlauncherpath := "res://scenes/pweapons/prlauncher/prlauncher.tres" ## The sniper weapon resource
 var weaponresource: pweaponres ## Weapon Resource that gets loaded in the load_weapon function
 @export var editorres: pweaponres ## weapon resource that is loaded in the editor
 var _WEAPON_INSTANCE: Node3D ## The weapon node
@@ -13,8 +11,11 @@ var weapon_loaded := false ## Whether a weapon is currently loaded
 func _ready():
 	
 	#loads the sniper rifle on game load
-	load_weapon(psniperpath)
-	
+	if Engine.is_editor_hint():
+		load_weapon(PlayerManager.weaponpath["sniper"])
+	else:
+		await gvars.playermanager_ready
+		load_weapon(gvars.playermanager.playerlist[get_multiplayer_authority()]["weapon"])
 ## Loads the apropriate weapon to the player model from a resource
 @rpc("any_peer","call_local","reliable")
 func load_weapon(weapon_path: String):
@@ -46,10 +47,13 @@ func _process(_delta: float) -> void:
 	
 	
 	# Loads sniper when 1 is pressed, loads rocket launcher when 2 is pressed
-	if Input.is_action_just_pressed("number_1"):
-		load_weapon.rpc(psniperpath)
-	if Input.is_action_just_pressed("number_2"):
-		load_weapon.rpc(prlauncherpath)
+	if gvars.args.has("-dev"):
+		
+		#lets devs swap weapons in game
+		if Input.is_action_just_pressed("number_1"):
+			load_weapon.rpc(PlayerManager.weaponpath["sniper"])
+		if Input.is_action_just_pressed("number_2"):
+			load_weapon.rpc(PlayerManager.weaponpath["rlauncher"])
 		
 	# transfers inputs to the weapon when it is loaded
 	if weapon_loaded:
