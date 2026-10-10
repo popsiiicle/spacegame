@@ -14,8 +14,11 @@ func _ready():
 	if Engine.is_editor_hint():
 		load_weapon(PlayerManager.weaponpath["sniper"])
 	else:
-		await gvars.playermanager_ready
-		load_weapon(gvars.playermanager.playerlist[get_multiplayer_authority()]["weapon"])
+		var selected_weapon = gvars.playermanager.playerlist[get_multiplayer_authority()]["weapon"]
+		load_weapon(PlayerManager.weaponpath[selected_weapon])
+		gfunc.cprint(self,"loading weapon")
+
+
 ## Loads the apropriate weapon to the player model from a resource
 @rpc("any_peer","call_local","reliable")
 func load_weapon(weapon_path: String):

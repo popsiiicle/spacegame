@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg4f5rcwu7ndg"]
+
+[ext_resource type="ButtonGroup" uid="uid://cswwrxnvjdrb" path="res://scenes/pcharacter/deathcam/weapon_select_button_grou.tres" id="1_5qm2u"]
+[ext_resource type="Script" uid="uid://bprk0g6b2o6qo" path="res://scenes/pcharacter/deathcam/weapon_select_button_manager.gd" id="1_y0jex"]
+[ext_resource type="Texture2D" uid="uid://cixs6v7kptu52" path="res://scenes/pweapons/psniper/crosshair.svg" id="2_y0jex"]
+[ext_resource type="Script" uid="uid://c5hxbqtbbcuqh" path="res://scenes/pcharacter/deathcam/weapon_select_button.gd" id="3_32fcg"]
+[ext_resource type="Texture2D" uid="uid://b81xfj1ltr6fb" path="res://scenes/pweapons/prlauncher/incoming-rocket.svg" id="4_up8r5"]
+
+[node name="WeaponSelectButtonManager" type="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("1_y0jex")
+
+[node name="WeaponSelectButton" type="Button" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/icon_hover_color = Color(1, 1, 0.42745098, 1)
+toggle_mode = true
+button_group = ExtResource("1_5qm2u")
+icon = ExtResource("4_up8r5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_32fcg")
+metadata/_custom_type_script = "uid://c5hxbqtbbcuqh"
+
+[node name="WeaponSelectButton2" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/icon_focus_color = Color(0.77254903, 1, 1, 1)
+toggle_mode = true
+button_group = ExtResource("1_5qm2u")
+icon = ExtResource("2_y0jex")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_32fcg")
+metadata/_custom_type_script = "uid://c5hxbqtbbcuqh"
