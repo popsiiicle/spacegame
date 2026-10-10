@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://biew2tdja4p0f"]
+[gd_scene load_steps=9 format=3 uid="uid://biew2tdja4p0f"]
 
 [ext_resource type="Script" uid="uid://y3et1nyjch3s" path="res://scenes/pcharacter/deathcam/deathcam.gd" id="1_eqece"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_0lbb6"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_0lbb6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_2c2ry"]
+[ext_resource type="Texture2D" uid="uid://b81xfj1ltr6fb" path="res://scenes/pweapons/prlauncher/incoming-rocket.svg" id="5_uypxs"]
+[ext_resource type="Texture2D" uid="uid://cixs6v7kptu52" path="res://scenes/pweapons/psniper/crosshair.svg" id="6_2c2ry"]
+[ext_resource type="Script" uid="uid://c5hxbqtbbcuqh" path="res://scenes/pcharacter/deathcam/weapon_change_button.gd" id="6_igclx"]
 
 [sub_resource type="Resource" id="Resource_uypxs"]
 script = ExtResource("4_2c2ry")
@@ -14,7 +17,7 @@ fov = 90.0
 script = ExtResource("1_eqece")
 phantomcamera = NodePath("PhantomCamera3D")
 respawntimer = NodePath("RespawnTimer")
-respawntimerdisplay = NodePath("Control/RespawnTimerDisplay")
+respawntimerdisplay = NodePath("Respawn GUI/RespawnTimerDisplay")
 
 [node name="PhantomCameraHost" type="Node" parent="."]
 process_priority = 300
@@ -31,8 +34,7 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 wait_time = 3.5
 one_shot = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
+[node name="Respawn GUI" type="VBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -44,16 +46,24 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="RespawnTimerDisplay" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ButtonContainer" type="HBoxContainer" parent="Respawn GUI"]
+layout_mode = 2
+
+[node name="WeaponChangeButton" type="Button" parent="Respawn GUI/ButtonContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(1, 1, 0.42745098, 1)
+icon = ExtResource("5_uypxs")
+icon_alignment = 1
+script = ExtResource("6_igclx")
+
+[node name="WeaponChangeButton2" type="Button" parent="Respawn GUI/ButtonContainer"]
+layout_mode = 2
+theme_override_colors/icon_focus_color = Color(0.77254903, 1, 1, 1)
+icon = ExtResource("6_2c2ry")
+
+[node name="RespawnTimerDisplay" type="Label" parent="Respawn GUI"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 27
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_timer_timeout"]
