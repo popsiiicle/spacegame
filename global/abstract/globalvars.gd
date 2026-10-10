@@ -16,7 +16,7 @@ var playermanager: ## The list of players and their basic information
 signal playermanager_ready
 var hud: Control
 
-var args
+var args: PackedStringArray
 
 func _init():
 	args = OS.get_cmdline_args()

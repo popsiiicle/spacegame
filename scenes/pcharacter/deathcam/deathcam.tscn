@@ -48,19 +48,30 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ButtonContainer" type="HBoxContainer" parent="Respawn GUI"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+alignment = 1
 
 [node name="WeaponChangeButton" type="Button" parent="Respawn GUI/ButtonContainer"]
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/icon_hover_color = Color(1, 1, 0.42745098, 1)
 icon = ExtResource("5_uypxs")
-icon_alignment = 1
+flat = true
+expand_icon = true
 script = ExtResource("6_igclx")
 
 [node name="WeaponChangeButton2" type="Button" parent="Respawn GUI/ButtonContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/icon_focus_color = Color(0.77254903, 1, 1, 1)
 icon = ExtResource("6_2c2ry")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("6_igclx")
+metadata/_custom_type_script = "uid://c5hxbqtbbcuqh"
 
 [node name="RespawnTimerDisplay" type="Label" parent="Respawn GUI"]
 layout_mode = 2
