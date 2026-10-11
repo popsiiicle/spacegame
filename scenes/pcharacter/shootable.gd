@@ -15,6 +15,7 @@ signal destroy_object(object: Node)
 
 signal health_changed(health)
 
+
 @rpc("any_peer","call_local")
 func sync_health(new_health,damager):
 	health = new_health

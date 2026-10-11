@@ -16,9 +16,9 @@ func leftclick():
 	LeftClickCooldown.start(1)
 
 # Zoom in
-
 var scope: Control
 func rightclick():
+	#FIX: Swapping weapons while scoped cause other weapons to scope in
 	#zoom
 	camera.fov = zoom_fov
 	
@@ -26,6 +26,7 @@ func rightclick():
 	if !scopeinitialized:
 		scope = scopescene.instantiate()
 		add_child(scope)
+		scopeinitialized = true
 	
 	#show scope and hide crosshair
 	scope.show()
@@ -33,6 +34,11 @@ func rightclick():
 
 #zoom out
 func rightclick_release():
+	if !scopeinitialized:
+		scope = scopescene.instantiate()
+		add_child(scope)
+		scopeinitialized = true
+
 	camera.reset_fov()
 	scope.hide()
 	gvars.hud.crosshairsprite.show()

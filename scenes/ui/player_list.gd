@@ -3,7 +3,6 @@ extends VBoxContainer
 var playerlist: Array
 
 func _ready() -> void:
-	await gvars.playermanager_ready
 	gvars.playermanager.updateplayerlist.connect(_on_update_player_list)
 	_on_update_player_list()
 
