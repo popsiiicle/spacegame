@@ -140,7 +140,8 @@ func _physics_process(_delta):
 	#var direction_2d = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
 	direction_3d = camera.global_transform.basis * input_dir
 
-	
+	if Input.is_action_pressed("altf4"):
+		healthlogic.taken_damage(400,get_multiplayer_authority())
 	
 	#dash execution
 	if Input.is_action_pressed("dash") and DashCD.is_stopped() and is_multiplayer_authority():

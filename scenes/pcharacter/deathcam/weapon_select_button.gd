@@ -8,4 +8,4 @@ func _ready() -> void:
 	toggle_mode = true
 
 func _pressed() -> void:
-	gvars.playermanager.playerlist[multiplayer.get_peer_id()]["weapon"] = weapon
+	gvars.playermanager.playerlist[multiplayer.get_unique_id()]["weapon"] = weapon

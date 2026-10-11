@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://yiapmafoosfp"]
+[gd_scene load_steps=16 format=3 uid="uid://yiapmafoosfp"]
 
 [ext_resource type="Script" uid="uid://rl0ria6dghnu" path="res://scenes/pcharacter/player.gd" id="1_gfh01"]
 [ext_resource type="PackedScene" uid="uid://biew2tdja4p0f" path="res://scenes/pcharacter/deathcam/deathcam.tscn" id="2_i5em6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bw04x56y7gc1m" path="res://scenes/pcharacter/shootable.gd" id="4_wwqc5"]
 [ext_resource type="Script" uid="uid://b3cmm1qd8ebee" path="res://scenes/pcharacter/movement state machine/SpaceState.gd" id="6_ahgpj"]
 [ext_resource type="Script" uid="uid://3np27je7i278" path="res://scenes/pcharacter/movement state machine/SlidingPlayerState.gd" id="7_xnji0"]
+[ext_resource type="PackedScene" uid="uid://bklqvnu5bwflo" path="res://scenes/ui/user_interface.tscn" id="9_8l8mj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5em6"]
 
@@ -98,3 +99,5 @@ script = ExtResource("7_xnji0")
 root_path = NodePath("../..")
 replication_config = SubResource("SceneReplicationConfig_jbh7n")
 visibility_update_mode = 1
+
+[node name="InterfaceLayer" parent="." instance=ExtResource("9_8l8mj")]

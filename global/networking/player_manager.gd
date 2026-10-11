@@ -46,6 +46,10 @@ func player_killed(deadplayer: int,killingplayer: int):
 	playerlist[deadplayer]["deaths"] += 1
 	sync_player_list.rpc(playerlist)
 	
+func _process(_delta: float) -> void:
+	gvars.debug.add_property("Player List",playerlist,14)
+
+
 signal updateplayerlist #For visual player list
 @rpc("any_peer","call_local")
 func sync_player_list(serverplist):
