@@ -4,17 +4,18 @@ static var deathcamscene: PackedScene = load("res://scenes/pcharacter/deathcam/d
 @export var phantomcamera: PhantomCamera3D
 @export var respawntimer: Timer
 @export var respawntimerdisplay: Label
-var player_id: int
+var playerid: int
 
-static func create(deadplayer) -> void:
+static func create(deadplayer: int) -> void:
 	#Adds deathcam to scene
 	var DEATHCAM = deathcamscene.instantiate()
-	gvars.level.add_sibling(DEATHCAM)
-	DEATHCAM.player_id = int(deadplayer.get_name())
+	DEATHCAM.set_multiplayer_authority(deadplayer)
+	gvars.level.add_child(DEATHCAM)
+	DEATHCAM.playerid = int(deadplayer)
 	
 	# FIX: not working Makes the deathcam match the last position of the player's camera before death.  
-	DEATHCAM.position = gvars.pcamera.global_position
-	DEATHCAM.rotation = gvars.pcamera.global_rotation
+	#DEATHCAM.position = gvars.pcamera.global_position
+	#DEATHCAM.rotation = gvars.pcamera.global_rotation
 	
 	#activates camera
 	DEATHCAM.make_current()
@@ -29,6 +30,6 @@ func _process(_delta: float) -> void:
 	respawntimerdisplay.text = "Respawning in " + str(timerfloat)
 func _on_timer_timeout() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	networkhandler.spawn_player.rpc(player_id)
+	networkhandler.spawn_player.rpc(playerid)
 	queue_free()
 	# TODO respawn code

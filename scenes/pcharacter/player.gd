@@ -73,7 +73,7 @@ func _on_player_list_update():
 # Death Function
 func _player_destroyed(_player):
 	if is_multiplayer_authority():
-		DeathCamera.create(get_parent())
+		DeathCamera.create(int(get_parent().get_name()))
 	get_parent().queue_free()
 	
 
