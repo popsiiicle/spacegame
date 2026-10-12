@@ -24,14 +24,10 @@ func start_server() -> void:
 	
 func start_client() -> void:
 	peer = ENetMultiplayerPeer.new()
-	var result = peer.create_client(IP_ADDRESS,PORT)
+	peer.create_client(IP_ADDRESS,PORT)
 	multiplayer.multiplayer_peer = peer
-	gfunc.cprint(self,"client started (%s)" % str(result))
 
-func _process(_delta):
-	if Input.is_action_pressed("dash"):
-		pass
-
+#called on host only (hopefully)
 signal player_joined(id, playernode: Node3D) #HACK: won't work if there's a main menu or spectator or smth as Node3D may not exist yet
 func add_player(peer_id):
 	gfunc.cprint(self,"player joined (peer id: %d)" % peer_id)
@@ -40,10 +36,8 @@ func add_player(peer_id):
 	gfunc.cprint(self,"sending player join")
 
 
-	
-	
 @rpc("any_peer","call_local")
-func spawn_player(peer_id) -> Node3D:
+func spawn_player(peer_id: int) -> Node3D:
 	var player = pscene.instantiate()
 	player.name = str(peer_id)
 	gvars.level.add_child(player)

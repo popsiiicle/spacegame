@@ -12,13 +12,18 @@ static func create(deadplayer: int) -> void:
 	DEATHCAM.set_multiplayer_authority(deadplayer)
 	gvars.level.add_child(DEATHCAM)
 	DEATHCAM.playerid = int(deadplayer)
+	gfunc.cprint(DEATHCAM,"Deathcamera for player " + str(deadplayer) + " has been created.") 
+
 	
 	# FIX: not working Makes the deathcam match the last position of the player's camera before death.  
 	#DEATHCAM.position = gvars.pcamera.global_position
 	#DEATHCAM.rotation = gvars.pcamera.global_rotation
 	
 	#activates camera
-	DEATHCAM.make_current()
+	if DEATHCAM.is_multiplayer_authority():
+		DEATHCAM.make_current()
+	if DEATHCAM.multiplayer.get_unique_id() != 1:
+		print("FUCK NETWORKING")
 	# TODO: Make cam look at killer
 	#DEATHCAM.phantomcamera.look_at_target = killer
 	
@@ -29,6 +34,7 @@ func _process(_delta: float) -> void:
 	var timerfloat: float = snapped(respawntimer.time_left,0.1)
 	respawntimerdisplay.text = "Respawning in " + str(timerfloat)
 func _on_timer_timeout() -> void:
+	if !is_multiplayer_authority(): return
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	networkhandler.spawn_player.rpc(playerid)
 	queue_free()

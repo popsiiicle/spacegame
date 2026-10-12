@@ -7,8 +7,16 @@ var player: Player: ## for state machine stuff
 	set(value):
 		player = value
 		playerready.emit()
+		
+
 var pcamera: Camera3D ## The player camera
-var level: Node3D ## The current level
+
+signal level_ready
+var level: Node3D:  ## The current level
+	set(value):
+		level = value
+		level_ready.emit()
+		
 
 var playermanager: ## The list of players and their basic information
 	set(value):
@@ -19,6 +27,5 @@ signal playermanager_ready
 var hud: Control
 
 var args: PackedStringArray
-
 func _init():
 	args = OS.get_cmdline_args()

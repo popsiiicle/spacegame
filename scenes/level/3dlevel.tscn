@@ -66,5 +66,5 @@ transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.31834
 [node name="PlayerManager" parent="." instance=ExtResource("7_difau")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://yiapmafoosfp")
+_spawnable_scenes = PackedStringArray("uid://yiapmafoosfp", "uid://biew2tdja4p0f")
 spawn_path = NodePath("..")

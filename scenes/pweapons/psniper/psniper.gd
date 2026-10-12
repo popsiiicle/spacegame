@@ -18,6 +18,8 @@ func leftclick():
 # Zoom in
 var scope: Control
 func rightclick():
+	if !is_multiplayer_authority(): return
+
 	#FIX: Swapping weapons while scoped cause other weapons to scope in
 	#zoom
 	camera.fov = zoom_fov
@@ -34,6 +36,7 @@ func rightclick():
 
 #zoom out
 func rightclick_release():
+	if !is_multiplayer_authority(): return
 	if !scopeinitialized:
 		scope = scopescene.instantiate()
 		add_child(scope)
