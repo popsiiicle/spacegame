@@ -16,13 +16,7 @@ var level: Node3D:  ## The current level
 	set(value):
 		level = value
 		level_ready.emit()
-		
 
-var playermanager: ## The list of players and their basic information
-	set(value):
-		playermanager = value
-		playermanager_ready.emit()
-signal playermanager_ready
 
 var hud: Control
 

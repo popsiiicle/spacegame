@@ -26,8 +26,8 @@ static var colorarray: Array[Color] = [
 	Color(1,1,0,1)
 ]
 
+
 func _enter_tree():
-	gvars.playermanager = self
 	networkhandler.player_joined.connect(_on_player_join)
 	if multiplayer.is_server():
 		set_multiplayer_authority(multiplayer.get_unique_id())
@@ -45,7 +45,6 @@ func sync_player_list(serverplist):
 	playerlist = serverplist
 	updateplayerlist.emit()
 
-
 ##SERVER CODE ONLY BELOW
 @rpc("authority","call_local")
 func request_playerlist_sync():
@@ -59,7 +58,6 @@ func _on_player_join(id):
 		playerlist[id]["color"] = colorarray[playercount - 1]
 
 		var serverplist = playerlist
-		
 		sync_player_list.rpc(serverplist)
 	
 func player_killed(deadplayer: int,killingplayer: int):

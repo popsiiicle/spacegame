@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=9 format=3 uid="uid://bfjb177uy7050"]
 
 [ext_resource type="Script" uid="uid://cbyivc4kfpc84" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
 [ext_resource type="Texture2D" uid="uid://dily0riukuls4" path="res://scenes/level/skymaterialfirsthorizon.tres" id="2_difau"]
 [ext_resource type="PackedScene" uid="uid://cbbt0un7hgbln" path="res://scenes/level/floatingdebris.tscn" id="3_jbaw8"]
 [ext_resource type="PackedScene" uid="uid://l0a7a18ibmr1" path="res://scenes/ui/debug_window.tscn" id="4_wfk1n"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
-[ext_resource type="PackedScene" uid="uid://djbv0chmqnmtw" path="res://global/networking/player_list.tscn" id="7_difau"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wfk1n"]
 sky_top_color = Color(0.3711304, 0, 0.06396414, 1)
@@ -62,8 +61,6 @@ transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.31834
 [node name="DebugWindow" parent="." instance=ExtResource("4_wfk1n")]
 
 [node name="Client Server UI" parent="." instance=ExtResource("5_6dnwg")]
-
-[node name="PlayerManager" parent="." instance=ExtResource("7_difau")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://yiapmafoosfp", "uid://biew2tdja4p0f")

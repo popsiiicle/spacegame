@@ -3,7 +3,7 @@ extends VBoxContainer
 var playerlist: Array
 
 func _ready() -> void:
-	gvars.playermanager.updateplayerlist.connect(_on_update_player_list)
+	playermanager.updateplayerlist.connect(_on_update_player_list)
 	_on_update_player_list()
 
 func _on_update_player_list():
@@ -12,7 +12,7 @@ func _on_update_player_list():
 		child.queue_free()
 	
 	#puts playlist in dictionary from array, and sorts it by kills
-	playerlist = gvars.playermanager.playerlist.values()
+	playerlist = playermanager.playerlist.values()
 	playerlist.sort_custom(sort_by_kills)
 	
 	#add each player in order

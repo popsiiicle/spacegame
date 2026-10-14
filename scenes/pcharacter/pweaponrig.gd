@@ -14,8 +14,8 @@ func _ready():
 	if Engine.is_editor_hint():
 		load_weapon(PlayerManager.weaponpath["sniper"])
 	else:
-		gvars.playermanager.request_playerlist_sync.rpc()
-		var selected_weapon = gvars.playermanager.playerlist[get_multiplayer_authority()]["weapon"]
+		playermanager.request_playerlist_sync.rpc()
+		var selected_weapon = playermanager.playerlist[get_multiplayer_authority()]["weapon"]
 		load_weapon(PlayerManager.weaponpath[selected_weapon])
 		gfunc.cprint(self,"loading weapon")
 
