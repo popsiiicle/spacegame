@@ -32,8 +32,13 @@ signal player_joined(id, playernode: Node3D) #HACK: won't work if there's a main
 func add_player(peer_id):
 	gfunc.cprint(self,"player joined (peer id: %d)" % peer_id)
 	player_joined.emit(peer_id)
-	DeathCamera.create(peer_id) #spawn player as respawning camera
-	gfunc.cprint(self,"sending player join")
+	DeathCamera.create(peer_id)
+
+#spawn player as respawning camera (only on authority)
+@rpc("any_peer","call_local")
+func spawn_deathcamera(id: int):
+	if id == multiplayer.get_unique_id():
+		DeathCamera.create(id) #spawn player as respawning camera
 
 
 @rpc("any_peer","call_local")

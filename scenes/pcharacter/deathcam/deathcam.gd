@@ -4,6 +4,7 @@ static var deathcamscene: PackedScene = load("res://scenes/pcharacter/deathcam/d
 @export var phantomcamera: PhantomCamera3D
 @export var respawntimer: Timer
 @export var respawntimerdisplay: Label
+@export var RespawnGUI: VBoxContainer
 var playerid: int
 
 static func create(deadplayer: int) -> void:
@@ -20,16 +21,16 @@ static func create(deadplayer: int) -> void:
 	#DEATHCAM.rotation = gvars.pcamera.global_rotation
 	
 	#activates camera
-	if DEATHCAM.is_multiplayer_authority():
-		DEATHCAM.make_current()
-	if DEATHCAM.multiplayer.get_unique_id() != 1:
-		print("FUCK NETWORKING")
+	
 	# TODO: Make cam look at killer
 	#DEATHCAM.phantomcamera.look_at_target = killer
 	
 func _ready():
 	respawntimer.start()
-	
+	if is_multiplayer_authority():
+		make_current()
+	else:
+		RespawnGUI.hide()
 func _process(_delta: float) -> void:
 	var timerfloat: float = snapped(respawntimer.time_left,0.1)
 	respawntimerdisplay.text = "Respawning in " + str(timerfloat)
