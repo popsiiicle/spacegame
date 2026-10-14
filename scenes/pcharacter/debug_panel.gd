@@ -19,7 +19,8 @@ func _process(delta):
 		# Display FPS
 		fps = "%.2f" % (1.0/delta)
 		add_property("FPS",fps,0)
-
+		
+		add_property("Playerlist",playermanager.playerlist,20)
 func _physics_process(delta):
 	if visible:
 		

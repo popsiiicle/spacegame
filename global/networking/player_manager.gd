@@ -3,7 +3,18 @@ class_name PlayerManager extends Node
 enum {SERVER, CLIENT}
 var type: String
 
-var playerlist: Dictionary
+var playerlistready := false
+var playerlist: Dictionary:
+	set(value):
+		playerlist = value
+		playerlistready = true
+	get:
+		if playerlist == {} and !multiplayer.is_server():
+			request_playerlist_sync.rpc()
+			await updateplayerlist
+			return playerlist
+		else:
+			return playerlist
 var playercount: int = 0
 
 const emptyplayerinfo: Dictionary = {
@@ -35,19 +46,16 @@ func _enter_tree():
 		request_playerlist_sync.rpc()
 
 
-func _process(_delta: float) -> void:
-	gvars.debug.add_property("Player List",playerlist,14)
-
-
 signal updateplayerlist #For visual player list
 @rpc("any_peer","call_remote")
-func sync_player_list(serverplist):
-	playerlist = serverplist
+func sync_player_list(serverlist):
+	playerlist = serverlist
 	updateplayerlist.emit()
 
 ##SERVER CODE ONLY BELOW
 @rpc("authority","call_local")
 func request_playerlist_sync():
+	if !multiplayer.is_server(): return #HACK: authority shouldn't run on client anyway but this should work too with zero problems
 	sync_player_list.rpc(playerlist)
 
 func _on_player_join(id):
@@ -56,9 +64,8 @@ func _on_player_join(id):
 		playerlist[id] = emptyplayerinfo.duplicate()
 		playerlist[id]["name"] = "Player " + str(playercount)
 		playerlist[id]["color"] = colorarray[playercount - 1]
-
-		var serverplist = playerlist
-		sync_player_list.rpc(serverplist)
+		
+		sync_player_list.rpc(playerlist)
 	
 func player_killed(deadplayer: int,killingplayer: int):
 	if !multiplayer.is_server(): return
