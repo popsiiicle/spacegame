@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://y3et1nyjch3s" path="res://scenes/pcharacter/deathcam/deathcam.gd" id="1_eqece"]
 [ext_resource type="PackedScene" uid="uid://cg4f5rcwu7ndg" path="res://scenes/pcharacter/deathcam/weapon_select_button.tscn" id="5_uypxs"]
 
-[node name="DeathCamera" type="Camera3D" node_paths=PackedStringArray("respawntimer", "respawntimerdisplay", "RespawnGUI")]
+[node name="DeathCamera" type="Camera3D" node_paths=PackedStringArray("respawntimer", "respawntimerdisplay")]
 fov = 90.0
 script = ExtResource("1_eqece")
 respawntimer = NodePath("RespawnTimer")
 respawntimerdisplay = NodePath("Respawn GUI/RespawnTimerDisplay")
-RespawnGUI = NodePath("Respawn GUI")
 
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 3.5

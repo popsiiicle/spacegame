@@ -1,10 +1,10 @@
 class_name DeathCamera extends Camera3D
 
 static var deathcamscene: PackedScene = load("res://scenes/pcharacter/deathcam/deathcam.tscn")
-@export var phantomcamera: PhantomCamera3D
+#@export var phantomcamera: PhantomCamera3D
 @export var respawntimer: Timer
 @export var respawntimerdisplay: Label
-@export var RespawnGUI: VBoxContainer
+@export var respawnGUI: VBoxContainer
 var playerid: int
 
 static func create(deadplayer: int) -> void:
@@ -30,7 +30,7 @@ func _ready():
 	if is_multiplayer_authority():
 		make_current()
 	else:
-		RespawnGUI.hide()
+		respawnGUI.hide()
 func _process(_delta: float) -> void:
 	var timerfloat: float = snapped(respawntimer.time_left,0.1)
 	respawntimerdisplay.text = "Respawning in " + str(timerfloat)
