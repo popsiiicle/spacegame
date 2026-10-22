@@ -41,18 +41,22 @@ func _enter_tree():
 		set_multiplayer_authority(multiplayer.get_unique_id())
 	else: 
 		request_playerlist_sync.rpc()
-
-
+		#FIX: Might be causing issues as the script isn't ready yet
+		
+	
 signal updateplayerlist #For visual player list
+
+#server sends the updated playerlist through the @rpc function
 @rpc("any_peer","call_remote")
 func sync_player_list(serverlist):
 	playerlist = serverlist
 	updateplayerlist.emit()
 
 ##SERVER CODE ONLY BELOW
+
+#Client sends this to the server to request updated playerlist information
 @rpc("authority","call_local")
 func request_playerlist_sync():
-	if !multiplayer.is_server(): return #HACK: authority shouldn't run on client anyway but this should work too with zero problems
 	sync_player_list.rpc(playerlist)
 
 func _on_player_join(id):
