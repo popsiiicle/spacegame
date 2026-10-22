@@ -45,7 +45,7 @@ func spawn_deathcamera(id: int):
 func spawn_player(peer_id: int) -> Node3D:
 	var player = pscene.instantiate()
 	player.name = str(peer_id)
-	gvars.level.add_child(player)
+	gvars.level.add_child(player,true)
 	
 	return player
 	

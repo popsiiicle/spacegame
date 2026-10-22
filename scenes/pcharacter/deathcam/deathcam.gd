@@ -11,7 +11,7 @@ static func create(deadplayer: int) -> void:
 	#Adds deathcam to scene
 	var DEATHCAM = deathcamscene.instantiate()
 	DEATHCAM.set_multiplayer_authority(deadplayer)
-	gvars.level.add_child(DEATHCAM)
+	gvars.level.add_child(DEATHCAM,true)
 	DEATHCAM.playerid = int(deadplayer)
 	gfunc.cprint(DEATHCAM,"Deathcamera for player " + str(deadplayer) + " has been created.") 
 
@@ -30,7 +30,8 @@ func _ready():
 	if is_multiplayer_authority():
 		make_current()
 	else:
-		respawnGUI.hide()
+		pass
+		#respawnGUI.hide()
 func _process(_delta: float) -> void:
 	var timerfloat: float = snapped(respawntimer.time_left,0.1)
 	respawntimerdisplay.text = "Respawning in " + str(timerfloat)

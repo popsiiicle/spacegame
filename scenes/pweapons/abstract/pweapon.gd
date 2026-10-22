@@ -1,7 +1,6 @@
 class_name pweapon extends Node3D
 ## Abstract class for all weapons.  Contains tools for hitscan, projectiles, and inputs
 
-#HACK this might be the worst one yet
 var playerowner: int
 @onready var camera: Camera3D = get_parent().get_parent()
 const MAX_RANGE = 1000
@@ -55,7 +54,7 @@ func spawn_projectile(projpackedscene: PackedScene,projdirection: Vector3, launc
 		PROJ.projdirection = projdirection
 		
 		#adds to root, adds to scene tree later
-		get_tree().get_current_scene().add_child(PROJ)
+		get_tree().get_current_scene().add_child(PROJ,true)
 		PROJ.projowner = projowner
 		PROJ.position = launchpoint.global_position
 		PROJ.rotation = launchpoint.global_rotation
