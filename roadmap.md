@@ -36,6 +36,7 @@
 * persistent player colors on death
 
 ### physics cleanup
+* projectiles actually delete themselves
 * round player model
 * ~mouse rotation~
 * add camera snap
