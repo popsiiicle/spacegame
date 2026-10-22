@@ -5,9 +5,6 @@ var type: String
 
 var playerlistready := false
 var playerlist: Dictionary:
-	set(value):
-		playerlist = value
-		playerlistready = true
 	get:
 		if playerlist == {} and !multiplayer.is_server():
 			request_playerlist_sync.rpc()

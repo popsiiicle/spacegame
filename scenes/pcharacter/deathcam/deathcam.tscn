@@ -35,7 +35,4 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("..")
-
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_timer_timeout"]
