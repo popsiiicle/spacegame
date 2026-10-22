@@ -36,8 +36,9 @@ func _process(_delta: float) -> void:
 	var timerfloat: float = snapped(respawntimer.time_left,0.1)
 	respawntimerdisplay.text = "Respawning in " + str(timerfloat)
 func _on_timer_timeout() -> void:
-	if !is_multiplayer_authority(): return
+	if multiplayer.is_server():
+		networkhandler.spawn_player(playerid)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	networkhandler.spawn_player.rpc(playerid)
+	
 	queue_free()
 	# TODO respawn code

@@ -22,10 +22,7 @@ func start_server() -> void:
 	#adds host to lobby
 	add_player(multiplayer.get_unique_id())
 	
-func start_client() -> void:
-	peer = ENetMultiplayerPeer.new()
-	peer.create_client(IP_ADDRESS,PORT)
-	multiplayer.multiplayer_peer = peer
+
 
 #called on host only (hopefully)
 signal player_joined(id, playernode: Node3D) #HACK: won't work if there's a main menu or spectator or smth as Node3D may not exist yet
@@ -39,12 +36,18 @@ func add_player(peer_id):
 func spawn_deathcamera(id: int):
 	DeathCamera.create(id) #spawn player as respawning camera
 
-
-@rpc("any_peer","call_local")
 func spawn_player(peer_id: int) -> Node3D:
 	var player = pscene.instantiate()
 	player.name = str(peer_id)
 	gvars.level.add_child(player,true)
 	
 	return player
+	
+	
+	
+#CLIENT CODE
+func start_client() -> void:
+	peer = ENetMultiplayerPeer.new()
+	peer.create_client(IP_ADDRESS,PORT)
+	multiplayer.multiplayer_peer = peer
 	
