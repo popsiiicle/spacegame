@@ -47,7 +47,7 @@ func _enter_tree():
 signal updateplayerlist #For visual player list
 
 #server sends the updated playerlist through the @rpc function
-@rpc("any_peer","call_remote")
+@rpc("authority","call_remote")
 func sync_player_list(serverlist):
 	playerlist = serverlist
 	updateplayerlist.emit()
@@ -55,8 +55,9 @@ func sync_player_list(serverlist):
 ##SERVER CODE ONLY BELOW
 
 #Client sends this to the server to request updated playerlist information
-@rpc("authority","call_local")
+@rpc("any_peer","call_local")
 func request_playerlist_sync():
+	if !is_multiplayer_authority(): return
 	sync_player_list.rpc(playerlist)
 
 func _on_player_join(id):

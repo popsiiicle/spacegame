@@ -32,8 +32,9 @@ func add_player(peer_id):
 	spawn_deathcamera.rpc(peer_id)
 
 #spawn player as respawning camera (only on authority)
-@rpc("authority","call_local")
+@rpc("any_peer","call_local")
 func spawn_deathcamera(id: int):
+	if !multiplayer.is_server(): return
 	DeathCamera.create(id) #spawn player as respawning camera
 
 func spawn_player(peer_id: int) -> Node3D:
