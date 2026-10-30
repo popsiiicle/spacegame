@@ -28,6 +28,9 @@ func start_server() -> void:
 signal player_joined(id, playernode: Node3D) #HACK: won't work if there's a main menu or spectator or smth as Node3D may not exist yet
 func add_player(peer_id):
 	gfunc.cprint(self,"player joined (peer id: %d)" % peer_id)
+	if peer_id != 1:
+		peer.get_peer(peer_id).set_timeout(30000,30000,60000)
+		#HACK
 	player_joined.emit(peer_id)
 	spawn_deathcamera.rpc(peer_id)
 
@@ -51,4 +54,3 @@ func start_client() -> void:
 	peer = ENetMultiplayerPeer.new()
 	peer.create_client(IP_ADDRESS,PORT)
 	multiplayer.multiplayer_peer = peer
-	
