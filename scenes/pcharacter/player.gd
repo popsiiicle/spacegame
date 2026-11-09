@@ -32,20 +32,21 @@ func set_gravity(new_gravity: Vector3):
 @onready var neck := $CameraPivot/Neck
 @onready var camera := $CameraPivot/Neck/Camera3D
 
+
 @export var deathcamera: PackedScene # The scene containing the camera dropped at player death
 
-
+#for setting colors
+var color
+@export var mesh: MeshInstance3D
 
 
 
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
-
 @onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
-var color
-@export var mesh: MeshInstance3D
+
 
 #On game start
 func _ready():
@@ -57,7 +58,6 @@ func _ready():
 	
 	# connect signals
 	healthlogic.destroy_object.connect(_player_destroyed) #object destroyed signal
-	
 	playermanager.updateplayerlist.connect(_on_player_list_update)
 	if playermanager.playerlist.has(get_multiplayer_authority()):
 		_on_player_list_update()

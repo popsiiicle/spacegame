@@ -7,12 +7,16 @@ static var deathcamscene: PackedScene = load("res://scenes/pcharacter/deathcam/d
 @export var respawnGUI: VBoxContainer
 var playerid: int
 
+#runs on both client and server, but should only have an effect on the client that actually died.  
 static func create(deadplayer: int) -> void:
 	#Adds deathcam to scene
 	var DEATHCAM = deathcamscene.instantiate()
 	DEATHCAM.set_multiplayer_authority(deadplayer)
 	gvars.level.add_child(DEATHCAM,true)
+	
+	#set playerid variable, used to spawn player.  
 	DEATHCAM.playerid = int(deadplayer)
+	
 	gfunc.cprint(DEATHCAM,"Deathcamera for player " + str(deadplayer) + " has been created.") 
 
 	
@@ -30,11 +34,16 @@ func _ready():
 	if is_multiplayer_authority():
 		make_current()
 	else:
-		pass
-		#respawnGUI.hide()
+		respawnGUI.hide()
+
+
 func _process(_delta: float) -> void:
+	#update respawn timer
 	var timerfloat: float = snapped(respawntimer.time_left,0.1)
 	respawntimerdisplay.text = "Respawning in " + str(timerfloat)
+	
+
+#when the timer runs out, spawn the player on the server and then delete all instances of the node
 func _on_timer_timeout() -> void:
 	if multiplayer.is_server():
 		networkhandler.spawn_player(playerid)
