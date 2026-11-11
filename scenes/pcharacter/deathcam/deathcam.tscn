@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://biew2tdja4p0f"]
+[gd_scene load_steps=4 format=3 uid="uid://biew2tdja4p0f"]
 
 [ext_resource type="Script" uid="uid://y3et1nyjch3s" path="res://scenes/pcharacter/deathcam/deathcam.gd" id="1_eqece"]
 [ext_resource type="PackedScene" uid="uid://cg4f5rcwu7ndg" path="res://scenes/pcharacter/deathcam/weapon_select_button.tscn" id="5_uypxs"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mai2u"]
+properties/0/path = NodePath(".:playerid")
+properties/0/spawn = true
+properties/0/replication_mode = 0
 
 [node name="DeathCamera" type="Camera3D" node_paths=PackedStringArray("respawntimer", "respawntimerdisplay", "respawnGUI")]
 fov = 90.0
@@ -34,5 +39,8 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_mai2u")
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_timer_timeout"]

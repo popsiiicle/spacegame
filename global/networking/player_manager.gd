@@ -7,11 +7,8 @@ var playerlistready := false
 var playerlist: Dictionary:
 	get:
 		if playerlist == {} and !multiplayer.is_server():
-			request_playerlist_sync.rpc()
-			await updateplayerlist
-			return playerlist
-		else:
-			return playerlist
+			printerr("playerlist is getting called while it is empty.")
+		return playerlist
 var playercount: int = 0
 
 const emptyplayerinfo: Dictionary = {
@@ -35,19 +32,18 @@ static var colorarray: Array[Color] = [
 ]
 
 
-func _enter_tree():
+func _ready():
 	networkhandler.player_joined.connect(_on_player_join)
-	if multiplayer.is_server():
-		set_multiplayer_authority(multiplayer.get_unique_id())
-	else: 
-		request_playerlist_sync.rpc()
-		#FIX: Might be causing issues as the script isn't ready yet
-		
-	
+	multiplayer.connected_to_server.connect(_on_server_connect)
+
+func _on_server_connect():
+	request_playerlist_sync.rpc()
+
+
 signal updateplayerlist #For visual player list
 
 #server sends the updated playerlist through the @rpc function
-@rpc("authority","call_remote")
+@rpc("authority","call_local")
 func sync_player_list(serverlist):
 	playerlist = serverlist
 	updateplayerlist.emit()

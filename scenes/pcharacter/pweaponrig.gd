@@ -5,19 +5,30 @@ class_name pweaponrig extends Node3D
 var weaponresource: pweaponres ## Weapon Resource that gets loaded in the load_weapon function
 @export var editorres: pweaponres ## weapon resource that is loaded in the editor
 var _WEAPON_INSTANCE: Node3D ## The weapon node
-var weapon_loaded := false ## Whether a weapon is currently loaded
+var loaded_weapon: String ## What weapon is currently loaded
 
 
 func _ready():
 	
-	#loads the sniper rifle on game load
+	#load sniper in engine
 	if Engine.is_editor_hint():
 		load_weapon(PlayerManager.weaponpath["sniper"])
 	else:
+		#connect playerlist and wait for it to update to load the weapon
+		playermanager.updateplayerlist.connect(_on_update_player_list)
 		playermanager.request_playerlist_sync.rpc()
-		var selected_weapon = playermanager.playerlist[get_multiplayer_authority()]["weapon"]
+		
+		
+
+func _on_update_player_list():
+	#load player weapons when the information is recieved from the server
+	var selected_weapon = playermanager.playerlist[get_multiplayer_authority()]["weapon"]
+	
+	if selected_weapon != loaded_weapon:
+		gfunc.cprint(self,"loading weapon " + str(selected_weapon) + " for player " + str(get_multiplayer_authority()))
 		load_weapon(PlayerManager.weaponpath[selected_weapon])
-		gfunc.cprint(self,"loading weapon")
+		loaded_weapon = selected_weapon
+	
 
 
 ## Loads the apropriate weapon to the player model from a resource
@@ -39,7 +50,6 @@ func load_weapon(weapon_path: String):
 		_WEAPON_INSTANCE.rotation = weaponresource.ROTATION
 		_WEAPON_INSTANCE.position = weaponresource.POSITION
 		_WEAPON_INSTANCE.scale = Vector3(weaponresource.SCALE,weaponresource.SCALE,weaponresource.SCALE)
-		weapon_loaded = true
 	else:
 		push_warning("No model scene set for weapon.")
 		
@@ -60,7 +70,7 @@ func _process(_delta: float) -> void:
 			load_weapon.rpc(PlayerManager.weaponpath["rlauncher"])
 		
 	# transfers inputs to the weapon when it is loaded
-	if weapon_loaded:
+	if loaded_weapon != "":
 		if Input.is_action_just_pressed("shoot"):
 			_WEAPON_INSTANCE._leftclick.rpc()
 		if Input.is_action_just_pressed("secondaryfire"):

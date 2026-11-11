@@ -34,6 +34,7 @@ func set_gravity(new_gravity: Vector3):
 
 
 @export var deathcamera: PackedScene # The scene containing the camera dropped at player death
+@onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
 #for setting colors
 var color
@@ -44,7 +45,6 @@ var color
 
 func _enter_tree():
 	set_multiplayer_authority(int(get_owner().name),true)
-@onready var healthlogic: ShootableObject = $DestroyableObject ## health logic node
 
 
 
@@ -63,7 +63,8 @@ func _ready():
 		_on_player_list_update()
 
 func _on_player_list_update():
-	#set player color
+	if playermanager.playerlist == {}: return
+	#send out a playerlist update to the playermanager if the color doesn't change in the future
 	mesh.mesh.material.albedo_color = playermanager.playerlist[get_multiplayer_authority()]["color"]
 
 
