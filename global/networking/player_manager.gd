@@ -13,7 +13,7 @@ var playercount: int = 0
 
 const emptyplayerinfo: Dictionary = {
 	"name": "Player 0",
-	"weapon": "sniper",
+	"weapon": "rlauncher",
 	"color": Color(1,1,1,1),
 	"kills": 0,
 	"deaths": 0

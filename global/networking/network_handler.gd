@@ -1,6 +1,6 @@
 extends Node
 
-const IP_ADDRESS := "localhost"
+const IP_ADDRESS := "2600:4041:506a:5100:1d7b:4c32:cec4:1127"
 const PORT := 46985
 
 var pscene := preload("res://scenes/pcharacter/character.tscn")
@@ -30,7 +30,8 @@ func add_player(peer_id):
 	gfunc.cprint(self,"player joined (peer id: %d)" % peer_id)
 	
 	if peer_id != 1:
-		peer.get_peer(peer_id).set_timeout(30000,30000,60000)
+		pass
+		#peer.get_peer(peer_id).set_timeout(30000,30000,60000)
 		#HACK
 	
 	player_joined.emit(peer_id)
