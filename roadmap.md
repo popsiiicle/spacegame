@@ -31,7 +31,7 @@
 
 ### actual ui
 * cooldowns, health? (done but buggy)
-* swap weapons on death/spawn
+* ~swap weapons on death/spawn~
 * show score
 * persistent player colors on death
 
@@ -49,11 +49,10 @@
 * movement sounds
 * clean up code
 * standardize variables
-* add local classes
 * controls and sens customization
 * integrate weaponrig code into state machine (maybe save for later)
 * sniper scope with gradient and lines
-* make the sky actually dark
+* ~make the sky actually cool~
 * rocket jumping
 
 ## ***FIRST PLAYTEST***
