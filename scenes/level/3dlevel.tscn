@@ -44,6 +44,9 @@ shadow_enabled = true
 [node name="floatingdebris" parent="Props" instance=ExtResource("3_jbaw8")]
 transform = Transform3D(0.452046, 0.891995, 0, -0.891995, 0.452046, 0, 0, 0, 1, -20.776, 25.2781, 0.418762)
 
+[node name="floatingdebris6" parent="Props" instance=ExtResource("3_jbaw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.181215, 18.665052, -57.309517)
+
 [node name="floatingdebris2" parent="Props" instance=ExtResource("3_jbaw8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737318, 18.1003, 25.2726)
 
@@ -65,3 +68,60 @@ transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.31834
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://yiapmafoosfp", "uid://biew2tdja4p0f")
 spawn_path = NodePath("..")
+
+[node name="floatingdebris18" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.78645724, 0.47362912, 2.6903942, -1.1051702, -2.0534513, 0.6684675, 3.3937755, -1.5402459, 4.498068, -26.78555, 57.438484, -81.37227)
+
+[node name="floatingdebris17" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.27635723, 1.0644442, 0.07225412, 1.6517099, 0.1613562, -1.1405896, -0.7010242, -0.03944534, -2.715868, 55.187946, 33.201294, -56.972404)
+
+[node name="floatingdebris16" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.08046785, -0.22917235, 0.9700546, -0.9504154, 0.3109389, -0.0053807497, -0.30039454, -0.9223873, -0.24282902, 33.301483, 29.329533, -77.02777)
+
+[node name="floatingdebris15" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(0.8604283, -0.24645133, -0.4460109, -0.4046443, 0.2015405, -0.8919895, 0.30972123, 0.9479686, 0.07368585, -2.1083765, 32.818977, -75.97406)
+
+[node name="floatingdebris4" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(0.001593717, 0.0031447853, 0.9999938, -0.891995, 0.452046, 0, -0.4520432, -0.89198947, 0.0035255637, 18.683985, 30.26176, -39.178238)
+
+[node name="floatingdebris19" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.53406173, -0.10976224, -0.83829087, -0.3662967, 0.9236827, 0.11241901, 0.76197505, 0.36710182, -0.53350884, -7.353615, 17.151737, -53.41369)
+
+[node name="floatingdebris5" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(0.001593717, 0.0031447853, 0.9999938, -0.891995, 0.452046, 0, -0.4520432, -0.89198947, 0.0035255637, -6.6471977, 29.577986, -38.15811)
+
+[node name="floatingdebris" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(0.452046, 0.891995, 0, 0.28000578, -0.14190158, -0.9494529, -0.84690726, 0.4291964, -0.3139096, -56.65091, 108.0196, -92.1318)
+
+[node name="floatingdebris2" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(1, 0, 0, 0, -0.3139096, -0.9494529, 0, 0.9494529, -0.3139096, -36.61223, 86.67523, -106.748634)
+
+[node name="floatingdebris3" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(1, 0, 0, 0, -0.3139096, -0.9494529, 0, 0.9494529, -0.3139096, -15.51861, 106.75041, -74.79834)
+
+[node name="floatingdebris11" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(0.25981113, -0.18107615, -0.9485309, 0.95592254, 0.18736711, 0.2260669, 0.13678783, -0.96545607, 0.22177447, -37.393917, 108.943954, -94.397964)
+
+[node name="floatingdebris12" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.0440724, -0.31360477, -0.9485309, 0.5992511, -0.76797897, 0.2260669, -0.79934704, -0.5584442, 0.22177447, -59.60071, 132.08319, -100.89548)
+
+[node name="floatingdebris13" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.0440724, -0.31360477, -0.9485309, 0.5992511, -0.76797897, 0.2260669, -0.79934704, -0.5584442, 0.22177447, -40.474667, 119.69006, -137.6294)
+
+[node name="floatingdebris14" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(0.6006116, -0.017619176, -0.7993475, 0.6290086, 0.6275832, 0.45878938, 0.49357274, -0.7783509, 0.3880155, -49.97076, 143.54663, -124.36081)
+
+[node name="floatingdebris6" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.0440724, 0.999029, 0, 0.5992511, 0.026436098, -0.80012447, -0.79934704, -0.03526342, -0.5998336, -11.41021, 97.42634, -101.84552)
+
+[node name="floatingdebris7" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(0.452046, 0.891995, 0, -0.891995, 0.452046, 0, 0, 0, 1, -19.361374, 25.2781, -138.8406)
+
+[node name="floatingdebris8" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6773071, 18.1003, -113.98677)
+
+[node name="floatingdebris9" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.77092, 42.1338, -143.0767)
+
+[node name="floatingdebris10" parent="." instance=ExtResource("3_jbaw8")]
+transform = Transform3D(-0.0440724, 0.999029, 0, -0.947053, -0.0417795, -0.318347, -0.318038, -0.0140303, 0.947974, 25.879333, 19.3807, -125.73357)
