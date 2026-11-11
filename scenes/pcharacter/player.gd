@@ -2,9 +2,8 @@ class_name Player
 extends CharacterBody3D
 
 #movement constants
-const SPEED = 5.0 ## Player speed
-const JUMP_VELOCITY = 4.5 ## Player jump velocity
-const DASHSTRENGTH = 20 ## How strong the dash ability is
+const SPEED = .2 ## Player speed
+const DASHSTRENGTH = 30 ## How strong the dash ability is
 
 #camera variables
 const UNSCOPED_SENS = 0.001 ## Mouse sensitivity
@@ -122,7 +121,7 @@ func _unhandled_input(event):
 				cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
 		
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if !is_multiplayer_authority(): return
 	
@@ -162,4 +161,4 @@ func _physics_process(_delta):
 	#
 	
 	#slides across walls (temporary)
-	move_and_slide()
+	position = position + (velocity * delta)
