@@ -160,5 +160,7 @@ func _physics_process(delta):
 	#
 	#
 	
+	move_and_slide()
+	
 	#slides across walls (temporary)
-	position = position + (velocity * delta)
+	#position = position + (velocity * delta)
