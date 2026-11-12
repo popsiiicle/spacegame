@@ -14,7 +14,8 @@ var rotcameramod: bool ##Whether the rotation modifier for the camera is current
 var neckroty: float ##The current y rotation of the neck node
 var camrotx: float ##The current x rotation of the camera node
 var msign: int ##The sign of left right or up down mouse movement
-var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of the camera
+var direction_3d = Vector3.ZERO ##Direction of input in local coordinates of the camera
+var currentcollision: KinematicCollision3D
 
 #dash ability constants
 var DashCD: Cooldown = Cooldown.create(self) ## cooldown for the dash ability
@@ -123,6 +124,7 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	
+	gvars.debug.add_property("Velocity",velocity.length(),400)
 	if !is_multiplayer_authority(): return
 	
 	#adds variables to debug panels
@@ -161,4 +163,4 @@ func _physics_process(delta):
 	#
 	
 	#slides across walls (temporary)
-	position = position + (velocity * delta)
+	currentcollision = move_and_collide(velocity*delta, false, 0.05)

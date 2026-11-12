@@ -17,8 +17,8 @@ material = SubResource("StandardMaterial3D_i5em6")
 radius = 0.75
 height = 1.5
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jbh7n"]
-points = PackedVector3Array(0.48506296, 0.3382968, 0.07881798, -0.48506257, -0.33829653, -0.07881792, -0.48506296, -0.3382968, 0.07881798, 0.23958854, -0.6846064, -0.056967124, -0.05642293, 0.4285731, -0.46249706, -0.10153345, 0.40606314, 0.46245682, 0.10144249, -0.40607923, 0.46247518, -0.30661854, 0.6360214, -0.07938034, 0.16885656, -0.33775726, -0.46162975, 0.28322884, 0.6344013, -0.14719506, -0.2360109, -0.5171549, -0.34847817, -0.25964442, -0.5871268, 0.25973952, 0.48506296, -0.3382968, -0.07881798, 0.3695329, 0.3359143, -0.3247439, 0.21357861, 0.56185675, 0.3258091, -0.48506296, 0.3382968, -0.07881798, 0.3695329, -0.3359143, 0.3247439, -0.32470056, 0.3358695, 0.36957788, -0.32470036, 0.33586928, -0.36957765, -0.23526779, -0.29139683, 0.43703377, -0.102578394, 0.7065361, 0.17080407, 0.23530373, 0.29132447, 0.4370196, -0.23954822, -0.68462276, -0.056980386, 0.12516996, -0.68286926, 0.21631593, -0.23526733, -0.29139623, -0.4370329, -0.057072587, 0.6845762, -0.23962802, 0.14728552, -0.63438016, -0.2832194, 0.3909446, -0.37967455, -0.2792193, -0.41539037, 0.42653242, 0.21336733, 0.21336854, 0.42653483, -0.4153927, -0.4128901, -0.2677748, -0.2789874, 0.43885362, -0.450029, 0.1237355)
+[sub_resource type="SphereShape3D" id="SphereShape3D_8l8mj"]
+radius = 0.77440596
 
 [sub_resource type="PrismMesh" id="PrismMesh_7eonc"]
 size = Vector3(0.1, 0.15, 0.1)
@@ -52,8 +52,8 @@ mesh = NodePath("MeshInstance3D")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("SphereMesh_i5em6")
 
-[node name="EnvironmentCollisionShape" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("ConvexPolygonShape3D_jbh7n")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_8l8mj")
 
 [node name="CameraPivot" type="Node3D" parent="CharacterBody3D"]
 

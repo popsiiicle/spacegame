@@ -35,16 +35,20 @@ static func create(deadplayer: int) -> void:
 	
 
 func _ready():
-	
+
 	#HACK I have no idea what's happening here but hopefully its fine
 	gfunc.cprint(self,"player id for this deathcam is " + str(playerid))
 	set_multiplayer_authority(playerid)
 	$MultiplayerSynchronizer.set_multiplayer_authority(1)
+	if gvars.args.has("-fastrespawn"):
+		respawntimer.wait_time = 0.5
 	respawntimer.start()
 	if is_multiplayer_authority():
 		make_current()
 	else:
 		respawnGUI.hide()
+		
+
 func _process(_delta: float) -> void:
 	#update respawn timer
 	var timerfloat: float = snapped(respawntimer.time_left,0.1)
