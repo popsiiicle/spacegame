@@ -13,7 +13,6 @@ var slidevector: Vector3
 
 #jumping off wall vectors
 var jumpboost: Vector3 ##The velocity increase you get after jumping on a wall
-const JUMPBOOSTDIFF = 1.2 ## The difference
 var wallnorm: Vector3 ##The wall normal you are jumping off of
 const JUMPBOOST = 4 ##Constant for how far you jump off of a wall
 var jumpangle: float ##The angle between camera direction and wall normal vectors
@@ -58,8 +57,10 @@ func physics_update(_delta):
 		#rotangle = -clamp(0,0.349066-jumpangle,1.13446-jumpangle)
 		#jumpboost = jumpboost.rotated(rotaxis,rotangle)
 		
+		#TODO: make sliding go faster than jumping so that edge cancelling is possible.  velocity makes jumping faster and sliding faster than that.  
+		
 		camvector = -gvars.pcamera.global_transform.basis.z.normalized()
-		jumpboost = camvector * (JUMPBOOST + (JUMPBOOSTDIFF * camvector.dot(PLAYER.velocity.normalized())))
-		PLAYER.velocity = jumpboost + gvars.player.velocity.project(jumpboost)
+		jumpboost = camvector * JUMPBOOST
+		PLAYER.velocity = jumpboost + jumpboost.normalized() * gvars.player.velocity.length()
 		transition.emit("SpaceState")
 		

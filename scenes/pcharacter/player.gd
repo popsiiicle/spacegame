@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody3D
 
 #movement constants
-const SPEED = .2 ## Player speed
 const DASHSTRENGTH = 30 ## How strong the dash ability is
 
 #camera variables
@@ -148,7 +147,9 @@ func _physics_process(delta):
 			dashdirection = - gvars.pcamera.global_basis.z
 		else:
 			dashdirection = direction_3d
-		velocity = velocity + dashdirection * DASHSTRENGTH
+		
+		#works better than I expected for some reason
+		velocity = dashdirection * (DASHSTRENGTH + ((velocity.dot(dashdirection)+1)/2))
 		DashCD.start()
 	
 	#rotation
