@@ -68,7 +68,7 @@
 
 ### After Playtest
 
-* add hybrid camera
+* add more camera options
 * arm cannon, melee hitboxes in weapon class, animations (maybe)
 * artifact and ability classes
 * get some abilities down before the second playtest
