@@ -30,7 +30,8 @@ func enter():
 	#give player boost upon touching the wall
 	PLAYER.velocity = PLAYER.velocity.normalized()*(PLAYER.velocity.length() + SLIDEBOOST) #Add more later
 	
-	
+	#reset dash cd
+	gvars.player.DashCD.stop()
 func physics_update(_delta):
 	if !is_multiplayer_authority(): return
 

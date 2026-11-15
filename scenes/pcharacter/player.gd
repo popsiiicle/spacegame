@@ -127,9 +127,9 @@ func _physics_process(delta):
 	if !is_multiplayer_authority(): return
 	
 	#adds variables to debug panels
-	var dashcdstr = "%.1f" % DashCD.time_left
-	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
-	gvars.debug.add_property("Touching Wall",is_on_wall(),5)
+	#var dashcdstr = "%.1f" % DashCD.time_left
+	#gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
+	#gvars.debug.add_property("Touching Wall",is_on_wall(),5)
 	
 	
 	#gets input direction in 3d and constrains it to 2d
@@ -150,7 +150,7 @@ func _physics_process(delta):
 		
 		#works better than I expected for some reason
 		velocity = dashdirection * (DASHSTRENGTH + ((velocity.dot(dashdirection)+1)/2))
-		DashCD.start()
+		DashCD.start(DASHCD)
 	
 	#rotation
 	#fix so that angular moment is conserved around body rather than camera
