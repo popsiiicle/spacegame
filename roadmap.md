@@ -39,6 +39,7 @@
 * projectiles actually delete themselves
 * ~round player model~
 * ~mouse rotation~
+* camera snap?
 * fix infinite coyote time
 * balance movement stats
 * make backwards drift go slower (fix drift)
