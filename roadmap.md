@@ -26,21 +26,20 @@
 * ~network weapons~
 * ~add and network player damage~
 * ~actual map~
-* ~clean up networking code before pushing to main~
+* clean up networking code before pushing to main
 
 ### actual ui
 * ~cooldowns, health~
 * ~swap weapons on death/spawn~
 * ~show score~
-* persistent player colors on death
-* add basic gamemode (ffa first to 5 (or 10))
+* ~persistent player colors on death~
+* ~add basic gamemode (ffa first to 5 (or 10))~
 
 ### physics cleanup
 * projectiles actually delete themselves
 * ~round player model~
 * ~mouse rotation~
-* add camera snap
-* option for normal 360 camera
+* fix infinite coyote time
 * balance movement stats
 * make backwards drift go slower (fix drift)
 * ~dash is oomphier when going against momentum~
@@ -69,6 +68,7 @@
 
 ### After Playtest
 
+* add hybrid camera
 * arm cannon, melee hitboxes in weapon class, animations (maybe)
 * artifact and ability classes
 * get some abilities down before the second playtest
