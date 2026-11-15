@@ -3,8 +3,8 @@ extends PlayerMovementState
 ## Player state for when the playercharacter is floating in space (default state)
 
 
-const THRUSTVEL = 30 ## Constant thrust velocity using WSAD keys
-const TOPAIRSPEED = 30 ## At this speed, the thrusters shut off
+const THRUSTVEL = 40 ## Constant thrust velocity using WSAD keys
+const TOPAIRSPEED = 17 ## At this speed, the thrusters shut off
 var velocity = Vector3.ZERO ## Shortcut for the player's velocity
 var direction_3d = Vector3.ZERO ## Shortcut for the player's input in player.
 
@@ -19,14 +19,19 @@ func physics_update(delta):
 	#shortcut vars
 	direction_3d = gvars.player.direction_3d
 	velocity = gvars.player.velocity
+	gvars.debug.add_property("direction3d",direction_3d,405)
+
 	#directional movement code (pressing buttons makes you move in that direction in space)
-	if direction_3d:
-		velocity += direction_3d*THRUSTVEL*delta
+	
+	var applythrust: bool ## whether to apply thrust to the player
+	applythrust = (velocity.length() <= TOPAIRSPEED or velocity.length() >= (velocity + direction_3d*THRUSTVEL*delta).length())
+	#TODO: Should be exponentionally slower at high speeds instead of a hard cutoff
+	#TODO: Needs to turn but not increase speed when strafing
+	if direction_3d.length() > Vector3.ZERO.length() and applythrust:
+		var drag_modifier = gfunc.onlypos((velocity.length() - TOPAIRSPEED)) * gfunc.onlypos(velocity.dot(direction_3d))
 		
-		#limits velocity to airspeed (fix so only directional input will not increase airspeed
-		if velocity.length() >= TOPAIRSPEED:
-			velocity = velocity*(TOPAIRSPEED/velocity.length())
-			
+		velocity += direction_3d*THRUSTVEL*delta*(1-drag_modifier)
+
 	
 	# Add a slowdown later
 	if Input.is_action_just_pressed("stop"):
@@ -36,6 +41,6 @@ func physics_update(delta):
 	gvars.player.velocity = velocity
 
 	#go to slidingplayerstate upon touching a wall
-	if gvars.player.is_on_wall() == true:
+	if gvars.player.currentcollision != null:
 		transition.emit("SlidingState")
 	

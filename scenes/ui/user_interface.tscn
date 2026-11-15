@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bklqvnu5bwflo"]
+[gd_scene load_steps=12 format=3 uid="uid://bklqvnu5bwflo"]
 
 [ext_resource type="Script" uid="uid://deowy8j6c5qlt" path="res://scenes/ui/user_interface.gd" id="1_vo76m"]
 [ext_resource type="Script" uid="uid://d02mjq6aauml8" path="res://scenes/ui/healthbargd.gd" id="3_sjb6h"]
 [ext_resource type="Script" uid="uid://djwebbejik5v3" path="res://scenes/ui/player_list.gd" id="4_rp1ed"]
 [ext_resource type="Script" uid="uid://c8uhk7peomgi2" path="res://scenes/ui/dash_cooldown.gd" id="5_rp1ed"]
+[ext_resource type="Script" uid="uid://bi2jwycxsh1g4" path="res://scenes/ui/win_text.gd" id="5_vnpvo"]
 
 [sub_resource type="Gradient" id="Gradient_irmqu"]
 offsets = PackedFloat32Array(0.11261261, 0.15765765)
@@ -88,7 +89,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("4_rp1ed")
 
-[node name="Dash Cooldown" type="TextureProgressBar" parent="UserInterface/MarginContainer"]
+[node name="DashCooldown" type="TextureProgressBar" parent="UserInterface/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -99,3 +100,9 @@ fill_mode = 4
 radial_initial_angle = 180.0
 texture_progress = SubResource("GradientTexture2D_rp1ed")
 script = ExtResource("5_rp1ed")
+
+[node name="WinText" type="Label" parent="UserInterface/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 125
+script = ExtResource("5_vnpvo")

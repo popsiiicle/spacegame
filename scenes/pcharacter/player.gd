@@ -2,10 +2,12 @@ class_name Player
 extends CharacterBody3D
 
 #movement constants
-const SPEED = .2 ## Player speed
 const DASHSTRENGTH = 30 ## How strong the dash ability is
+const DASHCD := 1.75 ## Dash Cooldown
+const MAXHEALTH := 100.0
 
 #camera variables
+const CAMWINDOWSIZE = 90
 const UNSCOPED_SENS = 0.001 ## Mouse sensitivity
 const SCOPED_SENS_MULTIPLIER = 0.31
 var sensitivity: float
@@ -14,7 +16,8 @@ var rotcameramod: bool ##Whether the rotation modifier for the camera is current
 var neckroty: float ##The current y rotation of the neck node
 var camrotx: float ##The current x rotation of the camera node
 var msign: int ##The sign of left right or up down mouse movement
-var direction_3d = Vector3(0,0,0) ##Direction of input in local coordinates of the camera
+var direction_3d = Vector3.ZERO ##Direction of input in local coordinates of the camera
+var currentcollision: KinematicCollision3D
 
 #dash ability constants
 var DashCD: Cooldown = Cooldown.create(self) ## cooldown for the dash ability
@@ -101,7 +104,7 @@ func _unhandled_input(event):
 		neckroty = neck.rotation.y
 		msign = sign(-event.relative.x)
 		if msign != 0 and !rotcameramod:
-			if msign * neckroty < deg_to_rad(60):
+			if msign * neckroty < deg_to_rad(CAMWINDOWSIZE):
 				neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
 			else:
 				cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
@@ -115,7 +118,7 @@ func _unhandled_input(event):
 		if msign != 0 and rotcameramod:
 			transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
 		else:
-			if msign * camrotx < deg_to_rad(60):
+			if msign * camrotx < deg_to_rad(CAMWINDOWSIZE):
 				camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
 			else:
 				cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
@@ -123,12 +126,13 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	
+	gvars.debug.add_property("Velocity",velocity.length(),400)
 	if !is_multiplayer_authority(): return
 	
 	#adds variables to debug panels
-	var dashcdstr = "%.1f" % DashCD.time_left
-	gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
-	gvars.debug.add_property("Touching Wall",is_on_wall(),5)
+	#var dashcdstr = "%.1f" % DashCD.time_left
+	#gvars.debug.add_property("Dash Cooldown",dashcdstr,1)
+	#gvars.debug.add_property("Touching Wall",is_on_wall(),5)
 	
 	
 	#gets input direction in 3d and constrains it to 2d
@@ -146,8 +150,10 @@ func _physics_process(delta):
 			dashdirection = - gvars.pcamera.global_basis.z
 		else:
 			dashdirection = direction_3d
-		velocity = velocity + dashdirection * DASHSTRENGTH
-		DashCD.start()
+		
+		#works better than I expected for some reason
+		velocity = dashdirection * (DASHSTRENGTH + ((velocity.dot(dashdirection)+1)/2))
+		DashCD.start(DASHCD)
 	
 	#rotation
 	#fix so that angular moment is conserved around body rather than camera
@@ -163,4 +169,4 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	#slides across walls (temporary)
-	#position = position + (velocity * delta)
+	currentcollision = move_and_collide(velocity*delta, false, 0.05)

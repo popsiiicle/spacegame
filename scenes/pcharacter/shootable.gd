@@ -1,8 +1,11 @@
 class_name ShootableObject extends Node3D
 #split into 2 classes later
 
-@export var health: float = 100
+var health: float
 
+func _ready() -> void:
+	health = Player.MAXHEALTH
+	playermanager.end_game.connect(_on_end_game)
 
 func taken_damage(damage: float,damager: int):
 	if !multiplayer.is_server():
@@ -13,6 +16,9 @@ func taken_damage(damage: float,damager: int):
 
 signal destroy_object(object: Node)
 
+func _on_end_game(_winner: String):
+	await get_tree().create_timer(5).timeout
+	destroy_object.emit(get_parent())
 signal health_changed(health)
 
 
