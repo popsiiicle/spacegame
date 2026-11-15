@@ -1,7 +1,10 @@
 class_name ShootableObject extends Node3D
 #split into 2 classes later
 
-@export var health: float = 100
+var health: float
+
+func _ready() -> void:
+	health = Player.MAXHEALTH
 
 
 func taken_damage(damage: float,damager: int):

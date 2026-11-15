@@ -3,6 +3,8 @@ extends CharacterBody3D
 
 #movement constants
 const DASHSTRENGTH = 30 ## How strong the dash ability is
+const DASHCD := 1.75 ## Dash Cooldown
+const MAXHEALTH := 100.0
 
 #camera variables
 const UNSCOPED_SENS = 0.001 ## Mouse sensitivity
