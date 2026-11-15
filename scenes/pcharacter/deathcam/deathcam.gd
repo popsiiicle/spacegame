@@ -32,7 +32,7 @@ static func create(deadplayer: int) -> void:
 	#DEATHCAM.phantomcamera.look_at_target = killer
 	
 
-	
+
 
 func _ready():
 

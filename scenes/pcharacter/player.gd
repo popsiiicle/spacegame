@@ -7,6 +7,7 @@ const DASHCD := 1.75 ## Dash Cooldown
 const MAXHEALTH := 100.0
 
 #camera variables
+const CAMWINDOWSIZE = 90
 const UNSCOPED_SENS = 0.001 ## Mouse sensitivity
 const SCOPED_SENS_MULTIPLIER = 0.31
 var sensitivity: float
@@ -103,7 +104,7 @@ func _unhandled_input(event):
 		neckroty = neck.rotation.y
 		msign = sign(-event.relative.x)
 		if msign != 0 and !rotcameramod:
-			if msign * neckroty < deg_to_rad(60):
+			if msign * neckroty < deg_to_rad(CAMWINDOWSIZE):
 				neck.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
 			else:
 				cpivot.rotate_object_local(Vector3(0,1,0),-event.relative.x*sensitivity)
@@ -117,7 +118,7 @@ func _unhandled_input(event):
 		if msign != 0 and rotcameramod:
 			transform.basis = transform.basis.rotated(camera.global_transform.basis.z, event.relative.x * ROTATION_SPEED)
 		else:
-			if msign * camrotx < deg_to_rad(60):
+			if msign * camrotx < deg_to_rad(CAMWINDOWSIZE):
 				camera.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
 			else:
 				cpivot.rotate_object_local(Vector3(1,0,0),-event.relative.y*sensitivity)
