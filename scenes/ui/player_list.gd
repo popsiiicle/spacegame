@@ -18,6 +18,11 @@ func _on_update_player_list():
 	#add each player in order
 	for playerentry in playerlist:
 		PlayerEntry.create(self,playerentry)
+		
 
+	for playerentry in playerlist:
+		if playerentry["kills"] >= 10:
+			playermanager.end_game.emit(playerentry["name"])
+			
 func sort_by_kills(a,b):
 	return a["kills"] >= b["kills"]
