@@ -25,25 +25,30 @@
 * ~network movement~
 * ~network weapons~
 * ~add and network player damage~
-* add basic gamemode (ffa first to 5 (or 10))
-* actual map
-* clean up networking code before pushing to main
+* ~actual map~
+* ~clean up networking code before pushing to main~
 
 ### actual ui
-* cooldowns, health? (done but buggy)
+* ~cooldowns, health~
 * ~swap weapons on death/spawn~
-* show score
+* ~show score~
 * persistent player colors on death
+* add basic gamemode (ffa first to 5 (or 10))
 
 ### physics cleanup
 * projectiles actually delete themselves
-* round player model
+* ~round player model~
 * ~mouse rotation~
 * add camera snap
 * option for normal 360 camera
 * balance movement stats
-* make backwards drift go slower
-* dash is oomphier when going against momentum
+* make backwards drift go slower (fix drift)
+* ~dash is oomphier when going against momentum~
+
+
+### Arm Cannon
+* Add Arm Cannon
+* Add Melee Hitboxes
 
 ### polish
 * movement sounds
@@ -51,8 +56,9 @@
 * standardize variables
 * controls and sens customization
 * integrate weaponrig code into state machine (maybe save for later)
-* sniper scope with gradient and lines
+* ~sniper scope with gradient and lines~
 * ~make the sky actually cool~
+* splash damage for rocket
 * rocket jumping
 
 ## ***FIRST PLAYTEST***
