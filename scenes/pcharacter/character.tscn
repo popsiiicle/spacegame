@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://bklqvnu5bwflo" path="res://scenes/ui/user_interface.tscn" id="9_8l8mj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5em6"]
+resource_local_to_scene = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_i5em6"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_i5em6")
 radius = 0.75
 height = 1.5
