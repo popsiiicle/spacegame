@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c8xl6jcfpm3wh" path="res://scenes/pweapons/prlauncher/projectile/Vine boom sound effect.mp3" id="3_326jn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w6m8d"]
+radius = 1.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lgl8o"]
 properties/0/path = NodePath(".:position")
@@ -17,12 +18,12 @@ collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_w6m8d")
 explosion_particle = ExtResource("2_lgl8o")
-projspeed = 125.0
+projspeed = 85.0
 projlifespan = 20.0
 metadata/_custom_type_script = "uid://duiab2td4u6e5"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 texture = ExtResource("2_326jn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -16,17 +16,17 @@ resource_local_to_scene = true
 [sub_resource type="SphereMesh" id="SphereMesh_i5em6"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_i5em6")
-radius = 0.75
-height = 1.5
+radius = 1.5
+height = 3.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8l8mj"]
-radius = 0.77440596
+radius = 1.5
 
 [sub_resource type="PrismMesh" id="PrismMesh_7eonc"]
 size = Vector3(0.1, 0.15, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i5em6"]
-radius = 0.73927927
+radius = 2.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jbh7n"]
 properties/0/path = NodePath("CharacterBody3D:position")
