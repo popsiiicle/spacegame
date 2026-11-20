@@ -123,6 +123,7 @@ altf4={
 3d_physics/layer_2="Hurtboxes"
 3d_physics/layer_3="Hitboxes"
 3d_physics/layer_4="Players"
+3d_physics/layer_5="Gravity Zones"
 
 [physics]
 
