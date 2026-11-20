@@ -19,8 +19,6 @@ func physics_update(delta):
 	#shortcut vars
 	direction_3d = gvars.player.direction_3d
 	velocity = gvars.player.velocity
-	gvars.debug.add_property("direction3d",direction_3d,405)
-
 	#directional movement code (pressing buttons makes you move in that direction in space)
 	
 	var applythrust: bool ## whether to apply thrust to the player

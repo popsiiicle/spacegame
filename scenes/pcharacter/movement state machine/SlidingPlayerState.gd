@@ -32,6 +32,10 @@ func enter():
 	
 	#reset dash cd
 	gvars.player.DashCD.stop()
+	
+	gfunc.cprint(self,gvars.player.currentcollision.get_collider())
+	
+	$CoyoteTimer.timeout.connect(_on_coyote_timeout)
 func physics_update(_delta):
 	if !is_multiplayer_authority(): return
 
@@ -64,4 +68,14 @@ func physics_update(_delta):
 		jumpboost = camvector * JUMPBOOST
 		PLAYER.velocity = jumpboost + jumpboost.normalized() * gvars.player.velocity.length()
 		transition.emit("SpaceState")
-		
+	
+	#Start Coyote Timer when not touching a wall, break off of wall when 
+	elif gvars.player.currentcollision == null:
+		if $CoyoteTimer.is_stopped():
+			$CoyoteTimer.start()
+	else:
+		$CoyoteTimer.stop()
+
+
+func _on_coyote_timeout():
+	transition.emit("SpaceState")

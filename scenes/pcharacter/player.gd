@@ -166,7 +166,5 @@ func _physics_process(delta):
 	#
 	#
 	
-	move_and_slide()
-	
-	#slides across walls (temporary)
-	currentcollision = move_and_collide(velocity*delta, false, 0.05)
+	currentcollision = move_and_collide(velocity*delta, false, 0.05, true)
+	gvars.debug.add_property("Current Collision",currentcollision,300)
