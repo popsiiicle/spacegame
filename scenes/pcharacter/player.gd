@@ -1,10 +1,17 @@
 class_name Player
-extends CharacterBody3D
+extends PhysicsBody3D
 
 #movement constants
 const DASHSTRENGTH = 30 ## How strong the dash ability is
 const DASHCD := 1.75 ## Dash Cooldown
 const MAXHEALTH := 100.0
+#dash ability constants
+var DashCD: Cooldown = Cooldown.create(self) ## cooldown for the dash ability
+var dashdirection: Vector3
+
+#movement variables
+var velocity: Vector3 ## The velocity of the player
+@onready var movement_state: String = $PlayerStateMachine.current_state.get_name()
 
 #camera variables
 const CAMWINDOWSIZE = 90
@@ -19,9 +26,7 @@ var msign: int ##The sign of left right or up down mouse movement
 var direction_3d = Vector3.ZERO ##Direction of input in local coordinates of the camera
 var currentcollision: KinematicCollision3D
 
-#dash ability constants
-var DashCD: Cooldown = Cooldown.create(self) ## cooldown for the dash ability
-var dashdirection: Vector3
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -161,10 +166,7 @@ func _physics_process(delta):
 	#rotv = rotv + rot_input
 	#transform.basis = transform.basis.rotated(camera.global_transform.basis.z, ROTATIONSPEED * rotv)
 	
-	#update from spacestate
-	# idk what this was
-	#
-	#
-	
+
+	#actually move character and take collision data
 	currentcollision = move_and_collide(velocity*delta, false, 0.05, true)
 	gvars.debug.add_property("Current Collision",currentcollision,300)

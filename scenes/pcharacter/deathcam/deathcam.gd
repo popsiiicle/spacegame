@@ -11,9 +11,7 @@ var playerid: int
 static func create(deadplayer: int) -> void:
 	#Adds deathcam to scene
 	var DEATHCAM = deathcamscene.instantiate()
-
 	DEATHCAM.playerid = int(deadplayer)
-
 	gfunc.cprint(playermanager,"Deathcamera for player " + str(deadplayer) + " has been created.") 
 	gvars.level.add_child(DEATHCAM,true)
 
@@ -33,12 +31,14 @@ static func create(deadplayer: int) -> void:
 	
 
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(playerid)
+	gfunc.cprint(self,"player id for this deathcam is " + str(playerid))
+
 
 func _ready():
 
 	#HACK I have no idea what's happening here but hopefully its fine
-	gfunc.cprint(self,"player id for this deathcam is " + str(playerid))
-	set_multiplayer_authority(playerid)
 	$MultiplayerSynchronizer.set_multiplayer_authority(1)
 	if gvars.args.has("-fastrespawn"):
 		respawntimer.wait_time = 0.5
