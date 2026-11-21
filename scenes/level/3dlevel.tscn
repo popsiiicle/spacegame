@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfjb177uy7050"]
+[gd_scene load_steps=12 format=3 uid="uid://bfjb177uy7050"]
 
 [ext_resource type="Script" uid="uid://cbyivc4kfpc84" path="res://scenes/level/3_dlevel.gd" id="1_6dnwg"]
 [ext_resource type="Texture2D" uid="uid://dily0riukuls4" path="res://scenes/level/skymaterialfirsthorizon.tres" id="2_difau"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bbxxro5d6526m" path="res://scenes/level/level_boundary.gd" id="4_difau"]
 [ext_resource type="PackedScene" uid="uid://l0a7a18ibmr1" path="res://scenes/ui/debug_window.tscn" id="4_wfk1n"]
 [ext_resource type="PackedScene" uid="uid://d1x0yor1ltemf" path="res://global/networking/client_server_ui.tscn" id="5_6dnwg"]
+[ext_resource type="Script" uid="uid://bhxd7n2o5j84x" path="res://addons/settings_menus/ui/pause_menu_ui.gd" id="7_difau"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wfk1n"]
 sky_top_color = Color(0.3711304, 0, 0.06396414, 1)
@@ -146,3 +147,7 @@ shape = SubResource("SphereShape3D_wfk1n")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://yiapmafoosfp", "uid://biew2tdja4p0f")
 spawn_path = NodePath("..")
+
+[node name="PauseMenuUI" type="CanvasLayer" parent="."]
+script = ExtResource("7_difau")
+metadata/_custom_type_script = "uid://bhxd7n2o5j84x"

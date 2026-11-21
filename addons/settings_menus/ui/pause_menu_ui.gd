@@ -110,7 +110,8 @@ func _build() -> void:
 
 	_first_button = _add_button(col, "Resume", resume)
 	_add_button(col, "Options", _open_options)
-	_add_button(col, "Main Menu", _main_menu)
+	#HACK: enable later when the main menu is an actual scene
+	#_add_button(col, "Main Menu", _main_menu)
 	if show_quit and SETTINGS_MANAGER.can_quit():
 		_add_button(col, "Quit to Desktop", _quit)
 
