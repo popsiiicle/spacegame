@@ -17,6 +17,8 @@ var wallnorm: Vector3 ##The wall normal you are jumping off of
 const JUMPBOOST = 4 ##Constant for how far you jump off of a wall
 var jumpangle: float ##The angle between camera direction and wall normal vectors
 
+func _ready():
+	$CoyoteTimer.timeout.connect(_on_coyote_timeout)
 
 
 func enter():
@@ -35,7 +37,6 @@ func enter():
 	
 	gfunc.cprint(self,gvars.player.currentcollision.get_collider())
 	
-	$CoyoteTimer.timeout.connect(_on_coyote_timeout)
 func physics_update(_delta):
 	if !is_multiplayer_authority(): return
 

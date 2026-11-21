@@ -13,6 +13,7 @@ var playercount: int = 0
 
 signal end_game #Signal for ending the game
 
+
 const emptyplayerinfo: Dictionary = {
 	"name": "Player 0",
 	"weapon": "rlauncher",

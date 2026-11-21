@@ -1,6 +1,6 @@
 extends Node
 
-const IP_ADDRESS := "2600:4041:506a:5100:1d7b:4c32:cec4:1127"
+const IP_ADDRESS := "localhost"
 const PORT := 46985
 
 var pscene := preload("res://scenes/pcharacter/character.tscn")

@@ -12,10 +12,15 @@ func _on_body_exited(player: Player):
 	playersoob.append(player)
 	
 func _physics_process(delta: float) -> void:
+	if playersoob == null: return
 	for player in playersoob:
-		accel =  ACCELSTRENGTH * player.global_position.direction_to(self.global_position)
-		player.velocity += accel*delta
-		gvars.debug.add_property("Players Out of Bounds", accel, 700)
+		#FIX gotta get this not spam errors
+		if !is_instance_valid(player):
+			playersoob.erase(player)
+		else:
+			accel =  ACCELSTRENGTH * player.global_position.direction_to(self.global_position)
+			player.velocity += accel*delta
+			gvars.debug.add_property("Players Out of Bounds", accel, 700)
 
 
 func _on_body_entered(player: Player):

@@ -7,7 +7,7 @@ func _ready() -> void:
 	max_value = Player.DASHCD
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if gvars.player is Node:
+	if is_instance_valid(gvars.player):
 		value = max_value - gvars.player.DashCD.time_left
 	if value == max_value:
 		value = 0
