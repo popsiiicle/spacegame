@@ -22,6 +22,7 @@ gvars="*res://global/abstract/globalvars.gd"
 networkhandler="*res://global/networking/network_handler.gd"
 playermanager="*res://global/networking/player_manager.gd"
 escapenode="*res://global/escapenode/escape_node.gd"
+Settings="*res://addons/settings_menus/settings_manager.gd"
 
 [display]
 
@@ -35,7 +36,7 @@ run/main_run_args="-fastrespawn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/settings_menus/plugin.cfg")
 
 [input]
 
