@@ -63,7 +63,11 @@ text = "Join"
 
 [node name="IPEntryField" type="LineEdit" parent="Control/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "localhost"
+placeholder_text = "IP Address"
+
+[node name="PortEntryField" type="LineEdit" parent="Control/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Port Number"
 
 [connection signal="pressed" from="Control/VBoxContainer/Server" to="Control" method="_on_server_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Client" to="Control" method="_on_client_pressed"]

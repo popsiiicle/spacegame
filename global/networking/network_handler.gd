@@ -22,6 +22,25 @@ func start_server() -> void:
 	#adds host to lobby
 	add_player(multiplayer.get_unique_id())
 	
+	#port forwarding with UPNP #HACK 
+	
+	#var upnp = UPNP.new()
+	#var discover_result = upnp.discover()
+	#
+	#if discover_result == UPNP.UPNP_RESULT_SUCCESS:
+		#if upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
+			#
+			#var map_result_udp = upnp.add_port_mapping(PORT,PORT,"godot_udp", "UDP", 0)
+			#var map_result_tcp = upnp.add_port_mapping(PORT,PORT,"godot_tcp", "TCP", 0)
+			#
+			#if not map_result_udp == UPNP.UPNP_RESULT_SUCCESS:
+				#upnp.add_port_mapping(PORT,PORT,"", "UDP")
+			#if not map_result_tcp == UPNP.UPNP_RESULT_SUCCESS:
+				#upnp.add_port_mapping(PORT,PORT,"", "TCP")
+			#if not map_result_udp == UPNP.UPNP_RESULT_SUCCESS or map_result_tcp == UPNP.UPNP_RESULT_SUCCESS:
+				#printerr("Upnp port forwarding failed")
+				
+
 
 
 #called on host only (hopefully)
@@ -62,7 +81,7 @@ func spawn_player(peer_id: int) -> Node3D:
 	
 	
 #CLIENT CODE (server should worry about everything and send back a replicated deathcamera node.)
-func start_client(ipaddress: String) -> void:
+func start_client(ipaddress: String, port: int) -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(ipaddress,PORT)
+	peer.create_client(ipaddress,port)
 	multiplayer.multiplayer_peer = peer

@@ -20,7 +20,13 @@ var ipaddress: String:
 			return "localhost"
 		else:
 			return entryfield
+var port: int:
+	get():
+		if $VBoxContainer/PortEntryField.text == "":
+			return 46985
+		else:
+			return int($VBoxContainer/PortEntryField.text)
 
 func _on_client_pressed():
-	networkhandler.start_client(ipaddress)
+	networkhandler.start_client(ipaddress,port)
 	hide()
