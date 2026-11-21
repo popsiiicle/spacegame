@@ -14,7 +14,7 @@ var velocity: Vector3 ## The velocity of the player
 @onready var movement_state: String = $PlayerStateMachine.current_state.get_name()
 
 #camera variables
-const CAMWINDOWSIZE = 90
+const CAMWINDOWSIZE = 0
 const UNSCOPED_SENS = 0.001 ## Mouse sensitivity
 const SCOPED_SENS_MULTIPLIER = 0.31
 var sensitivity: float
