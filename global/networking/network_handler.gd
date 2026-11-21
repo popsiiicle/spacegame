@@ -62,7 +62,7 @@ func spawn_player(peer_id: int) -> Node3D:
 	
 	
 #CLIENT CODE (server should worry about everything and send back a replicated deathcamera node.)
-func start_client() -> void:
+func start_client(ipaddress: String) -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(IP_ADDRESS,PORT)
+	peer.create_client(ipaddress,PORT)
 	multiplayer.multiplayer_peer = peer

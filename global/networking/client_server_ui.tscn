@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1x0yor1ltemf"]
+[gd_scene load_steps=3 format=3 uid="uid://d1x0yor1ltemf"]
 
 [ext_resource type="Script" uid="uid://bk1sseekray6d" path="res://global/networking/client_server_ui.gd" id="1_w1788"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6xru3"]
+color = Color(0.5058824, 0, 0.27450982, 0.3764706)
+grow_begin = 35.0
+grow_end = 35.0
+thickness = 3
 
 [node name="ClientServerUI" type="CanvasLayer"]
 layer = 2
@@ -38,17 +44,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 17
 
-[node name="Server2" type="Button" parent="Control/VBoxContainer"]
+[node name="Server" type="Button" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(150, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Host"
 
-[node name="Client2" type="Button" parent="Control/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_6xru3")
+
+[node name="Client" type="Button" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(150, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Join"
 
-[connection signal="pressed" from="Control/VBoxContainer/Server2" to="Control" method="_on_server_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Client2" to="Control" method="_on_client_pressed"]
+[node name="IPEntryField" type="LineEdit" parent="Control/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "localhost"
+
+[connection signal="pressed" from="Control/VBoxContainer/Server" to="Control" method="_on_server_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Client" to="Control" method="_on_client_pressed"]

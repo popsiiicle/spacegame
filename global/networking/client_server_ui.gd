@@ -13,6 +13,14 @@ func _on_server_pressed():
 	networkhandler.start_server()
 	hide()
 
+@onready var entryfield: String = $VBoxContainer/IPEntryField.text
+var ipaddress: String:
+	get():
+		if entryfield == "":
+			return "localhost"
+		else:
+			return entryfield
+
 func _on_client_pressed():
-	networkhandler.start_client()
+	networkhandler.start_client(ipaddress)
 	hide()
